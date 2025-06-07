@@ -23,7 +23,7 @@ const footerLinks = {
   ],
   connect: [
     { name: "Book a Call", href: "/book-call", icon: Phone },
-    { name: "LinkedIn", href: "https://linkedin.com/company/tier4ai", icon: Linkedin, external: true },
+    { name: "LinkedIn", href: "https://www.linkedin.com/company/tier-4-intelligence/", icon: Linkedin, external: true },
     { name: "success@tier4.ai", href: "mailto:success@tier4.ai", icon: Mail },
     { name: "1-800-TIER4AI", href: "tel:1-800-843-7424", icon: Phone },
   ],
