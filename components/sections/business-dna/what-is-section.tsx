@@ -1,0 +1,64 @@
+"use client"
+import { CheckCircle, Share2 } from "lucide-react"
+import { motion } from "framer-motion"
+
+const points = [
+  "How work actually flows (not the org chart version)",
+  "The shortcuts your best people use",
+  "Where knowledge lives (and where it's hiding)",
+  "Which systems talk (and which just pretend to)",
+  "The unwritten rules that make everything work",
+]
+
+export default function WhatIsSection() {
+  return (
+    <section className="py-section-padding-mobile md:py-section-padding">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
+        >
+          Like <span className="text-primary-green">23andMe</span> for Your Business
+        </motion.h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-body-large text-text-secondary mb-6">We decode what makes your business unique:</p>
+            <ul className="space-y-4 mb-8">
+              {points.map((point, index) => (
+                <li key={index} className="flex items-start">
+                  <CheckCircle className="h-6 w-6 text-primary-green mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-body text-text-primary">{point}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="bg-card-bg p-6 rounded-lg border border-border-color">
+              <p className="text-lg font-bold text-text-primary">Result:</p>
+              <p className="text-text-secondary">AI that gets your business like a 20-year employee—on day one.</p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+            className="h-96 bg-card-bg rounded-lg border border-border-color flex items-center justify-center p-8"
+          >
+            <div className="text-center text-text-secondary">
+              <Share2 className="h-24 w-24 text-primary-green/50 mx-auto mb-4" />
+              <p className="font-semibold">Interactive Diagram Placeholder</p>
+              <p className="text-sm">Showing interconnected nodes for processes, systems, people, and knowledge.</p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}

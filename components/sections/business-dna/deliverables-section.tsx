@@ -1,0 +1,66 @@
+"use client"
+import { motion } from "framer-motion"
+import { CustomButton } from "@/components/ui/custom-button"
+import { Download } from "lucide-react"
+
+const deliverables = [
+  "Complete Business DNA Visualization",
+  "Process Optimization Report",
+  "System Integration Map",
+  "Knowledge Capture Database",
+  "AI-Ready Data Structure",
+  "90-Day Implementation Plan",
+]
+
+const subtexts = [
+  "Interactive map of your entire operation",
+  "Average 47% efficiency improvement identified",
+  "Every connection documented and optimized",
+  "Your tribal knowledge, preserved forever",
+  "Plug and play with any AI system",
+  "Step-by-step roadmap to AI success",
+]
+
+export default function DeliverablesSection() {
+  return (
+    <section className="py-section-padding-mobile md:py-section-padding">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
+        >
+          What You <span className="text-primary-green">Get</span>
+        </motion.h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {deliverables.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-card-bg p-6 rounded-lg border border-border-color h-full"
+            >
+              <h3 className="text-xl font-bold text-primary-green mb-2">{item}</h3>
+              <p className="text-text-secondary text-sm">{subtexts[index]}</p>
+            </motion.div>
+          ))}
+        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <CustomButton variant="primary" size="default" onClick={() => console.log("Download clicked")}>
+            <Download className="mr-2 h-5 w-5" /> Get Sample Deliverables Pack
+          </CustomButton>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
