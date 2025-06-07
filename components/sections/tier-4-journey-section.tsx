@@ -30,10 +30,9 @@ export default function Tier4JourneySection() {
           className="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-4 md:gap-2 mb-8"
         >
           {journeySteps.map((step, index) => (
-            <>
+            <div key={step.name} className="flex items-center">
               <a
                 href={step.link}
-                key={step.name}
                 className="bg-card-bg p-4 rounded-lg border border-border-color hover:border-primary-green transition-colors flex-grow md:flex-1 flex flex-col justify-center items-center text-center min-w-[200px] md:min-w-0"
               >
                 <h3 className="text-lg font-semibold text-primary-green">
@@ -44,7 +43,7 @@ export default function Tier4JourneySection() {
               {index < journeySteps.length - 1 && (
                 <ArrowRight className="h-8 w-8 text-primary-green my-2 md:my-0 md:self-center transform md:rotate-0 rotate-90" />
               )}
-            </>
+            </div>
           ))}
         </motion.div>
 
