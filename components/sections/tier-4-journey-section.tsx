@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { useState } from "react"
+import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 
 const journeySteps = [
   { name: "Business DNA Map™", price: "$15K-$25K", link: "/business-dna" },
@@ -9,6 +11,7 @@ const journeySteps = [
 ]
 
 export default function Tier4JourneySection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <section className="py-section-padding-mobile md:py-section-padding bg-background">
       <div className="container mx-auto px-4 md:px-6 text-center">
@@ -56,6 +59,27 @@ export default function Tier4JourneySection() {
         >
           Most clients start with DNA Mapping and save $10K on their complete transformation.
         </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8"
+        >
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center justify-center px-6 py-3 border border-primary-green text-primary-green rounded-md hover:bg-primary-green/10 transition-colors font-medium text-sm md:text-base"
+          >
+            Explore Our Process
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </button>
+        </motion.div>
+        
+        <ProcessExplainerModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+        />
       </div>
     </section>
   )

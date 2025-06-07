@@ -2,6 +2,8 @@
 import { Dna, Target, Bot } from "lucide-react"
 import { CustomButton } from "@/components/ui/custom-button"
 import { motion } from "framer-motion"
+import { useState } from "react"
+import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 
 const steps = [
   {
@@ -28,6 +30,7 @@ const steps = [
 ]
 
 export default function HowItWorksSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <section className="py-section-padding-mobile md:py-section-padding">
       <div className="container mx-auto px-4 md:px-6">
@@ -74,11 +77,19 @@ export default function HowItWorksSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <CustomButton variant="secondary" size="secondary" onClick={() => console.log("Explore Our Process clicked")}>
+          <CustomButton 
+            variant="secondary" 
+            size="secondary" 
+            onClick={() => setIsModalOpen(true)}
+          >
             Explore Our Process →
           </CustomButton>
         </motion.div>
       </div>
+      <ProcessExplainerModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   )
 }

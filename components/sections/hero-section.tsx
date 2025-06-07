@@ -2,7 +2,8 @@
 import { CustomButton } from "@/components/ui/custom-button"
 import { CheckCircle, PlayCircle } from "lucide-react"
 import { motion } from "framer-motion"
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState } from "react"
+import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 
 interface Dot {
   x: number
@@ -16,6 +17,7 @@ interface Dot {
 }
 
 export default function HeroSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const trustBadges = [
     "100% Success Rate (Pilot to Production)",
     "Average 5X ROI in 6 Months",
@@ -254,7 +256,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <CustomButton variant="primary" size="default" onClick={() => console.log("See How We Do It clicked")}>
+          <CustomButton variant="primary" size="default" onClick={() => setIsModalOpen(true)}>
             <PlayCircle className="mr-2 h-5 w-5" /> See How We Do It - 7 Min Video
           </CustomButton>
           <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
@@ -276,6 +278,10 @@ export default function HeroSection() {
           ))}
         </motion.div>
       </div>
+      <ProcessExplainerModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   )
 }
