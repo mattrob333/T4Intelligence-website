@@ -6,38 +6,47 @@ import { motion } from "framer-motion"
 const services = [
   {
     icon: Dna,
-    title: "BUSINESS DNA MAP™",
-    tagline: "Teach AI Your Secret Sauce",
-    price: "$15K-$25K", // UPDATED
-    features: ["Map your entire operation", "Capture tribal knowledge", "Connect all systems", "30-day delivery"],
+    title: "AI READINESS AUDIT",
+    tagline: "Teach AI Your Business in 30 Days",
+    price: "$15K-$25K",
+    features: [
+      "Find your top 10 automation opportunities",
+      "Calculate exact ROI for each",
+      "Get your AI transformation roadmap",
+      "100% credit toward full implementation"
+    ],
     ctaText: "Learn More →",
-    ctaLink: "/business-dna",
+    ctaLink: "/ai-readiness-audit",
   },
   {
     icon: MapPinned,
-    title: "AI OPPORTUNITY BLUEPRINT™",
-    tagline: "Find Your Hidden Millions",
-    price: "$40K-$60K", // UPDATED
+    title: "FIRST AI WINS PACKAGE",
+    tagline: "Deploy Your First Profitable AI in 90 Days",
+    price: "$40K-$60K",
     isMostPopular: true,
-    bundleDiscountText: "Save $10K with DNA Map", // ADDED
     features: [
-      "Top 10 AI opportunities",
-      "ROI calculations included",
-      "90-day quick wins",
-      "Credits toward implementation",
+      "We build your highest-ROI AI first",
+      "Working solution, not just plans",
+      "Pays for itself in 6 months",
+      "Success fee only after proven ROI"
     ],
-    ctaText: "Get Your Blueprint →",
-    ctaLink: "/opportunity-blueprint",
+    ctaText: "Get Started →",
+    ctaLink: "/first-ai-wins",
   },
   {
     icon: UserTie,
-    title: "FRACTIONAL CAO",
-    tagline: "Your AI Executive On-Demand",
-    price: "$8K-$15K/month", // UPDATED
-    features: ["World-class leadership", "80% less than full-time", "Scale up or down", "No long-term contracts"],
-    ctaText: "Meet Your CAO →",
-    ctaLink: "/fractional-cao",
-  },
+    title: "AI EXECUTIVE-AS-A-SERVICE",
+    tagline: "Your $400K AI Exec for 80% Less",
+    price: "$8K-$15K/month",
+    features: [
+      "Fortune 500 AI leadership",
+      "Without Fortune 500 prices",
+      "Scale up or down anytime",
+      "They've done this 100+ times"
+    ],
+    ctaText: "Meet Your AI Exec →",
+    ctaLink: "/ai-executive",
+  }
 ]
 
 export default function ServicesOverviewSection() {
@@ -51,7 +60,7 @@ export default function ServicesOverviewSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Choose Your Path to <span className="text-primary-green">AI Success</span>
+          <span className="text-primary-green">Proven</span> AI Solutions, <span className="text-primary-green">Guaranteed</span> Results
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (

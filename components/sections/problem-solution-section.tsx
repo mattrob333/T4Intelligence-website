@@ -4,33 +4,33 @@ import { motion } from "framer-motion"
 
 const comparisonData = [
   {
-    title: "The McKinsey Way",
+    title: "The $3M PowerPoint",
     points: [
-      { text: "$3M for strategy decks", type: "negative" },
-      { text: "18-month timelines", type: "negative" },
-      { text: "88% failure rate", type: "negative" },
-      { text: 'Generic "best practices"', type: "negative" },
-      { text: "Your AI still doesn't work", type: "negative" },
+      { text: "$3M for 500 slides you'll never read", type: "negative" },
+      { text: "18 months to tell you what you already know", type: "negative" },
+      { text: "9 out of 10 fail completely", type: "negative" },
+      { text: "Copy-paste solutions from 1995", type: "negative" },
+      { text: "Year 2: Still in 'pilot phase'", type: "negative" },
     ],
   },
   {
-    title: "The DIY Disaster",
+    title: "The Frankenstein Approach",
     points: [
-      { text: 'Hiring random "AI experts"', type: "negative" },
-      { text: "Pilots that never scale", type: "negative" },
-      { text: "$2M down the drain", type: "negative" },
-      { text: "Team burnout", type: "negative" },
-      { text: "Board losing patience", type: "negative" },
+      { text: "$200K salaries for YouTube graduates", type: "negative" },
+      { text: "37 pilots, 0 production wins", type: "negative" },
+      { text: "Burn rate: $167K/month for nothing", type: "negative" },
+      { text: "Your best people quit in frustration", type: "negative" },
+      { text: "CEO on the hot seat by Q3", type: "negative" },
     ],
   },
   {
-    title: "The Tier 4 Way",
+    title: "The Only Way That Works",
     points: [
-      { text: "Working AI in 90 days", type: "positive" },
-      { text: "80% less cost", type: "positive" },
-      { text: "100% success rate", type: "positive" },
-      { text: "AI that knows YOUR business", type: "positive" },
-      { text: "ROI you can measure", type: "positive" },
+      { text: "Live, profitable AI by Day 91", type: "positive" },
+      { text: "$600K not $3M (math below)", type: "positive" },
+      { text: "12 for 12 clients profitable", type: "positive" },
+      { text: "Trained on YOUR data, not Wikipedia", type: "positive" },
+      { text: "Average: $2.4M saved Year 1", type: "positive" },
     ],
   },
 ]
@@ -46,7 +46,7 @@ export default function ProblemSolutionSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          The <span className="text-primary-green">Expensive Truth</span> About AI
+          Why <span className="text-primary-green">88% of Companies</span> Waste $2M+ on AI That Never Works
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {comparisonData.map((column, index) => (
@@ -76,6 +76,17 @@ export default function ProblemSolutionSection() {
             </motion.div>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 bg-card-bg p-6 md:p-8 rounded-card border border-border-color max-w-3xl mx-auto text-center"
+        >
+          <p className="text-text-secondary text-lg">
+            The math is simple: McKinsey costs $3M and fails 88% of the time. Expected value: -$2.64M. We cost $600K and work every time. Expected value: +$1.8M. This isn't rocket science.
+          </p>
+        </motion.div>
       </div>
     </section>
   )
