@@ -4,6 +4,7 @@ import { CheckCircle, PlayCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useCallback, useState } from "react"
 import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
+import { AnimatedShinyTextDemo } from "@/components/ui/animated-shiny-text-demo"
 
 interface Dot {
   x: number
@@ -236,6 +237,14 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center py-section-padding-mobile md:py-section-padding overflow-hidden bg-background">
       <canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full pointer-events-none" />
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-2"
+        >
+          <AnimatedShinyTextDemo />
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
