@@ -119,35 +119,43 @@ This format enables AI to:
               {/* Code Block Container */}
               <div className="bg-background border border-border-color rounded-lg relative group">
                 <div className="p-6 font-mono text-sm text-[#E0E0E0] leading-relaxed overflow-x-auto">
-                  <style jsx global>{`
-                    .markdown-preview h1, .markdown-preview h2, .markdown-preview h3, .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 { color: var(--primary-green); margin-bottom: 0.5em; margin-top: 1em; }
-                    .markdown-preview strong, .markdown-preview b { color: var(--accent-gold); }
-                    .markdown-preview ul, .markdown-preview ol { color: #E0E0E0; margin-left: 1.5em; }
-                    .markdown-preview li { margin-bottom: 0.25em; }
-                    .markdown-preview p { margin-bottom: 0.5em; color: #E0E0E0; }
-                    .markdown-preview code { background-color: #2a2a2a; padding: 0.2em 0.4em; border-radius: 3px; font-size: 85%; color: #E0E0E0; }
-                    .markdown-preview pre > code { padding: 1em; display: block; overflow-x: auto;}
-                    .markdown-preview blockquote { border-left: 3px solid var(--border-color); padding-left: 1em; margin-left: 0; color: #B0B0B0; font-style: italic; }
-                    /* Attempt to style numbers - this is very basic and might not catch all cases or differentiate +/- */
-                    .markdown-preview p :global(> span[data-number]) { color: #60a5fa; /* Light blue for numbers */ }
-                  `}</style>
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
-                    className="markdown-preview"
                     components={{
-                      p: ({ node, ...props }) => {
-                        // Basic attempt to wrap numbers for styling, very naive
-                        const children = React.Children.toArray(props.children).map((child) => {
-                          if (typeof child === "string") {
-                            return child.replace(/(\b\d+(\.\d+)?%?\b)/g, "<span data-number>$1</span>")
-                          }
-                          return child
-                        })
-                        // This is a hack and not robust for complex markdown or security.
-                        // For proper styling, a more sophisticated AST manipulation or custom renderer is needed.
-                        // For now, we'll rely on the global styles for basic elements.
-                        return <p {...props} />
+                      h1: ({ node, ...props }) => <h1 className="text-primary-green mb-2 mt-4 text-2xl font-bold" {...props} />,
+                      h2: ({ node, ...props }) => <h2 className="text-primary-green mb-2 mt-4 text-xl font-bold" {...props} />,
+                      h3: ({ node, ...props }) => <h3 className="text-primary-green mb-2 mt-4 text-lg font-bold" {...props} />,
+                      h4: ({ node, ...props }) => <h4 className="text-primary-green mb-2 mt-4 text-base font-bold" {...props} />,
+                      h5: ({ node, ...props }) => <h5 className="text-primary-green mb-2 mt-4 text-sm font-bold" {...props} />,
+                      h6: ({ node, ...props }) => <h6 className="text-primary-green mb-2 mt-4 text-xs font-bold" {...props} />,
+                      strong: ({ node, ...props }) => <strong className="text-accent-gold" {...props} />,
+                      b: ({ node, ...props }) => <b className="text-accent-gold" {...props} />,
+                      ul: ({ node, ...props }) => <ul className="list-disc ml-6 text-[#E0E0E0] my-2" {...props} />,
+                      ol: ({ node, ...props }) => <ol className="list-decimal ml-6 text-[#E0E0E0] my-2" {...props} />,
+                      li: ({ node, ...props }) => <li className="mb-1 text-[#E0E0E0]" {...props} />,
+                      p: ({ node, ...props }) => <p className="mb-2 text-[#E0E0E0]" {...props} />,
+                      code: ({ node, inline, className, children, ...props }) => {
+                        if (inline) {
+                          return (
+                            <code className="bg-[#2a2a2a] px-1 py-0.5 rounded text-[#E0E0E0] text-[85%]" {...props}>
+                              {children}
+                            </code>
+                          )
+                        }
+                        return (
+                          <pre className="bg-[#2a2a2a] p-4 rounded my-2 overflow-x-auto">
+                            <code className="text-[#E0E0E0] text-[85%] block" {...props}>
+                              {children}
+                            </code>
+                          </pre>
+                        )
                       },
+                      blockquote: ({ node, ...props }) => (
+                        <blockquote 
+                          className="border-l-4 border-border-color pl-4 my-4 text-[#B0B0B0] italic"
+                          {...props}
+                        />
+                      ),
                     }}
                   >
                     {markdownContent}

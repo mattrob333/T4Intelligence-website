@@ -6,46 +6,49 @@ import { motion } from "framer-motion"
 const services = [
   {
     icon: Dna,
-    title: "AI READINESS AUDIT",
-    tagline: "Teach AI Your Business in 30 Days",
+    title: "BUSINESS INTELLIGENCE VAULT",
+    tagline: "Build Your AI's Knowledge Foundation",
     price: "$15K-$25K",
     features: [
-      "Find your top 10 automation opportunities",
-      "Calculate exact ROI for each",
-      "Get your AI transformation roadmap",
-      "100% credit toward full implementation"
+      "Deep-dive analysis of your entire operation",
+      "Capture 20 years of tribal knowledge in 30 days",
+      "Create your proprietary AI training data",
+      "Map every process, system, and shortcut",
+      "100% credit toward implementation"
     ],
-    ctaText: "Learn More →",
-    ctaLink: "/ai-readiness-audit",
+    ctaText: "BUILD YOUR VAULT →",
+    ctaLink: "/business-dna",
   },
   {
     icon: MapPinned,
-    title: "FIRST AI WINS PACKAGE",
-    tagline: "Deploy Your First Profitable AI in 90 Days",
+    title: "PROFIT AUTOMATION STUDIO",
+    tagline: "Turn Opportunities Into Operating Income",
     price: "$40K-$60K",
     isMostPopular: true,
     features: [
-      "We build your highest-ROI AI first",
-      "Working solution, not just plans",
-      "Pays for itself in 6 months",
-      "Success fee only after proven ROI"
+      "Build your highest-ROI automation first",
+      "Live, working AI - not PowerPoints",
+      "Guaranteed 3X return in 12 months",
+      "Deploy across all departments",
+      "Pay balance only after proven results"
     ],
-    ctaText: "Get Started →",
-    ctaLink: "/first-ai-wins",
+    ctaText: "START BUILDING →",
+    ctaLink: "/opportunity-blueprint",
   },
   {
     icon: UserTie,
     title: "AI EXECUTIVE-AS-A-SERVICE",
-    tagline: "Your $400K AI Exec for 80% Less",
+    tagline: "Your $400K AI Leader for 80% Less",
     price: "$8K-$15K/month",
     features: [
-      "Fortune 500 AI leadership",
-      "Without Fortune 500 prices",
-      "Scale up or down anytime",
-      "They've done this 100+ times"
+      "Seasoned AI executive on demand",
+      "100+ successful implementations",
+      "Strategic oversight + hands-on execution",
+      "Scale up during critical phases",
+      "No equity, no long-term contracts"
     ],
-    ctaText: "Meet Your AI Exec →",
-    ctaLink: "/ai-executive",
+    ctaText: "MEET YOUR EXEC →",
+    ctaLink: "/fractional-cao",
   }
 ]
 

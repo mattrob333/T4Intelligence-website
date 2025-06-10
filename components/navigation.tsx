@@ -13,9 +13,9 @@ const navItems = [
     name: "Services",
     href: "#",
     dropdown: [
-      { name: "Business DNA Map", href: "/business-dna" },
-      { name: "AI Opportunity Blueprint", href: "/opportunity-blueprint" },
-      { name: "Fractional CAO", href: "/fractional-cao" },
+      { name: "Business Intelligence Vault", href: "/business-dna" },
+      { name: "Profit Automation Studio", href: "/opportunity-blueprint" },
+      { name: "AI Executive-as-a-Service", href: "/fractional-cao" },
     ],
   },
   { name: "About", href: "/about" },

@@ -8,23 +8,23 @@ import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 const steps = [
   {
     number: "01",
-    title: "MAP YOUR BUSINESS DNA",
+    title: "WE SCAN YOUR OPERATION",
     timeframe: "Week 1-4",
-    description: "We decode how your business really works—every process, system, and shortcut.",
+    description: "Like an MRI for your business. We map every process, capture every 'that's how we've always done it,' and turn your tribal knowledge into AI fuel.",
     icon: Dna,
   },
   {
     number: "02",
-    title: "FIND YOUR GOLDMINE",
+    title: "WE SHOW YOU THE MONEY",
     timeframe: "Week 5-8",
-    description: "Identify the exact automations that will save you millions (with the math to prove it).",
+    description: "We find where you're hemorrhaging cash. Example: 'Your team spends 2,400 hours/month on X. AI can do it in 40 hours. That's $312K/year saved.' With receipts.",
     icon: Target,
   },
   {
     number: "03",
-    title: "DEPLOY YOUR AI TEAM",
+    title: "WE BUILD YOUR MONEY MACHINE",
     timeframe: "Week 9-12",
-    description: "Launch AI that speaks your language and delivers results from day one.",
+    description: "Launch custom AI employees pre-loaded with your playbook. They start profitable on day one because they already know your business better than new hires ever could.",
     icon: Bot,
   },
 ]

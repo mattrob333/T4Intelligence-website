@@ -77,44 +77,59 @@ const RealExample = ({ children }: { children: React.ReactNode }) => (
 
 const OverviewTab = () => (
   <div className="space-y-8">
-    <SectionHeader>How We Turn Business Chaos Into AI-Powered Clarity</SectionHeader>
+    <SectionHeader>Our 3-Step Process to AI Transformation</SectionHeader>
     <p className="text-body-large text-text-secondary">
-      The exact methodology we use to guarantee your AI actually makes money. While others guess, we map. While others
-      hope, we measure. While others disappoint, we deliver.
+      From chaos to clarity in 12 weeks. We don't just implement AI - we transform your business operations with
+      measurable, bankable results.
     </p>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+    <div className="grid grid-cols-1 gap-6 mt-8">
+      {/* Step 1 */}
       <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <Dna className="h-8 w-8 text-primary-green mb-3" />
-        <h4 className="text-xl font-bold text-white mb-2">Business DNA Map™ Technology</h4>
-        <p className="text-text-secondary">
-          Your AI doesn't just know about AI - it knows about YOUR business. Your Business DNA Map™ captures tribal
-          knowledge, understands your specific processes, and continuously learns.
-        </p>
+        <div className="flex items-start gap-4">
+          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
+            01
+          </div>
+          <div>
+            <h4 className="text-xl font-bold text-white mb-2">WE SCAN YOUR OPERATION</h4>
+            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 1-4</p>
+            <p className="text-text-secondary italic">
+              "Like an MRI for your business. We map every process, capture every 'that's how we've always done it,' and turn your tribal knowledge into AI fuel."
+            </p>
+          </div>
+        </div>
       </div>
+
+      {/* Step 2 */}
       <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <Search className="h-8 w-8 text-primary-green mb-3" />
-        <h4 className="text-xl font-bold text-white mb-2">AI-Guided Discovery</h4>
-        <p className="text-text-secondary">
-          We don't guess what questions to ask - our AI tells us. No generic frameworks, just targeted questions for
-          faster, deeper insights.
-        </p>
+        <div className="flex items-start gap-4">
+          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
+            02
+          </div>
+          <div>
+            <h4 className="text-xl font-bold text-white mb-2">WE SHOW YOU THE MONEY</h4>
+            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 5-8</p>
+            <p className="text-text-secondary italic">
+              "We find where you're hemorrhaging cash. Example: 'Your team spends 2,400 hours/month on X. AI can do it in 40 hours. That's $312K/year saved.' With receipts."
+            </p>
+          </div>
+        </div>
       </div>
+
+      {/* Step 3 */}
       <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <BarChart3 className="h-8 w-8 text-primary-green mb-3" />
-        <h4 className="text-xl font-bold text-white mb-2">ROI-First Approach</h4>
-        <p className="text-text-secondary">
-          Every recommendation comes with math to prove it. We model financial impact, calculate risk-adjusted ROI, and
-          provide clear payback timelines.
-        </p>
-      </div>
-      <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <CalendarClock className="h-8 w-8 text-primary-green mb-3" />
-        <h4 className="text-xl font-bold text-white mb-2">Rapid Implementation</h4>
-        <p className="text-text-secondary">
-          From insight to implementation in 90 days, not 18 months. We use pre-built frameworks and proven change
-          management to accelerate delivery.
-        </p>
+        <div className="flex items-start gap-4">
+          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
+            03
+          </div>
+          <div>
+            <h4 className="text-xl font-bold text-white mb-2">WE BUILD YOUR MONEY MACHINE</h4>
+            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 9-12</p>
+            <p className="text-text-secondary italic">
+              "Launch custom AI employees pre-loaded with your playbook. They start profitable on day one because they already know your business better than new hires ever could."
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -455,10 +470,10 @@ export default function ProcessExplainerModal({ isOpen, onClose }: ProcessExplai
               </div>
               <button
                 onClick={onClose}
+                className="text-text-secondary hover:text-white p-2 rounded-full hover:bg-[#2A2A2A] transition-colors"
                 aria-label="Close modal"
-                className="p-2 rounded-lg text-text-secondary hover:bg-border-color hover:text-white transition-colors"
               >
-                <X size={24} />
+                <X className="h-5 w-5" viewBox="0 0 24 24" />
               </button>
             </div>
 
@@ -469,13 +484,7 @@ export default function ProcessExplainerModal({ isOpen, onClose }: ProcessExplai
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
-                    className={cn(
-                      "px-3 py-4 text-sm font-medium transition-colors whitespace-nowrap",
-                      activeTab === tab.id
-                        ? "text-background bg-primary-green shadow-md shadow-primary-green/20"
-                        : "text-text-secondary hover:bg-border-color hover:text-white",
-                      "rounded-t-md",
-                    )}
+                    className="px-3 py-4 text-sm font-medium transition-colors whitespace-nowrap rounded-t-md"
                   >
                     {tab.label}
                   </button>
@@ -487,11 +496,10 @@ export default function ProcessExplainerModal({ isOpen, onClose }: ProcessExplai
             <div ref={contentRef} className="p-6 md:p-8 overflow-y-auto flex-grow">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  className="flex space-x-1 overflow-x-auto pb-1 scrollbar-hide"
                 >
                   {renderContent()}
                 </motion.div>
