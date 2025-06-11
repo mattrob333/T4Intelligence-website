@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import * as React from "react"
 import Link from "next/link"
 import { CustomButton } from "@/components/ui/custom-button"
 import { Menu, X, ChevronDown } from "lucide-react"
@@ -18,16 +18,14 @@ const navItems = [
       { name: "YOUR CHIEF AI OFFICER", href: "/fractional-cao" },
     ],
   },
-  { name: "About", href: "/about" },
-  { name: "Case Studies", href: "/case-studies" },
 ]
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [isOpen, setIsOpen] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
+  const [openDropdown, setOpenDropdown] = React.useState<string | null>(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }

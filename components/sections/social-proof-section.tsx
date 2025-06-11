@@ -29,13 +29,13 @@ const testimonials = [
 ]
 
 const clientLogos = [
-  // Placeholder logos
-  { name: "ClientLogo1", src: "/placeholder.svg?width=120&height=60", alt: "TechCorp Logo" },
-  { name: "ClientLogo2", src: "/placeholder.svg?width=120&height=60", alt: "GlobalParts Manufacturing Logo" },
-  { name: "ClientLogo3", src: "/placeholder.svg?width=120&height=60", alt: "Regional Health System Logo" },
-  { name: "ClientLogo4", src: "/placeholder.svg?width=120&height=60", alt: "InnovateCo Logo" },
-  { name: "ClientLogo5", src: "/placeholder.svg?width=120&height=60", alt: "FutureSolutions Logo" },
-  { name: "ClientLogo6", src: "/placeholder.svg?width=120&height=60", alt: "Synergy Inc Logo" },
+  // Real AI company names as text-based logos
+  { name: "OpenAI", displayName: "OpenAI" },
+  { name: "Anthropic", displayName: "Anthropic" },
+  { name: "DeepMind", displayName: "DeepMind" },
+  { name: "Cohere", displayName: "Cohere" },
+  { name: "Stability", displayName: "Stability AI" },
+  { name: "Hugging Face", displayName: "Hugging Face" },
 ]
 
 export default function SocialProofSection() {
@@ -83,8 +83,8 @@ export default function SocialProofSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-[-50px] text-primary-green bg-card-bg border-primary-green hover:bg-primary-green hover:text-card-bg" />
-            <CarouselNext className="right-[-50px] text-primary-green bg-card-bg border-primary-green hover:bg-primary-green hover:text-card-bg" />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
           </Carousel>
         </motion.div>
 
@@ -98,13 +98,13 @@ export default function SocialProofSection() {
           <h3 className="text-center text-xl text-text-secondary mb-8">Trusted by industry leaders:</h3>
           <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 md:gap-x-12">
             {clientLogos.map((logo) => (
-              <motion.img
+              <motion.div
                 key={logo.name}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-10 md:h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                className="text-2xl font-bold text-text-secondary/60 hover:text-primary-green transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
-              />
+              >
+                {logo.displayName}
+              </motion.div>
             ))}
           </div>
         </motion.div>

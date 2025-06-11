@@ -4,9 +4,7 @@ import { Linkedin, Mail, Phone } from "lucide-react"
 
 const footerLinks = {
   company: [
-    { name: "About Tier 4", href: "/about" },
     { name: "Our Team", href: "/team" },
-    { name: "Case Studies", href: "/case-studies" },
     { name: "Contact", href: "/contact" },
   ],
   services: [

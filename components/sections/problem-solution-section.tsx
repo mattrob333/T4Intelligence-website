@@ -84,7 +84,7 @@ export default function ProblemSolutionSection() {
           className="mt-12 bg-card-bg p-6 md:p-8 rounded-card border border-border-color max-w-3xl mx-auto text-center"
         >
           <p className="text-text-secondary text-lg">
-            The math is simple: McKinsey costs $3M and fails 88% of the time. Expected value: -$2.64M. We cost $600K and work every time. Expected value: +$1.8M. This isn't rocket science.
+            The math is simple: Top firms cost $3M and fail 88% of the time. Expected value: -$2.64M. We cost $600K and work every time. Expected value: +$1.8M. This isn't rocket science.
           </p>
         </motion.div>
       </div>

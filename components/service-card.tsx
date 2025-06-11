@@ -1,10 +1,10 @@
 "use client"
 import { CustomButton } from "@/components/ui/custom-button"
-import type { LucideIcon } from "lucide-react"
+import type { ElementType } from "react"
 import { motion } from "framer-motion"
 
 interface ServiceCardProps {
-  icon: LucideIcon
+  icon: ElementType
   title: string
   tagline: string
   price?: string
@@ -12,6 +12,9 @@ interface ServiceCardProps {
   ctaText: string
   ctaLink: string
   isMostPopular?: boolean
+  isMaximumValue?: boolean
+  stepNumber?: number
+  bottomNote?: string
   className?: string
   bundleDiscountText?: string
 }
@@ -25,6 +28,9 @@ export default function ServiceCard({
   ctaText,
   ctaLink,
   isMostPopular = false,
+  isMaximumValue = false,
+  stepNumber,
+  bottomNote,
   className = "",
   bundleDiscountText,
 }: ServiceCardProps) {
@@ -34,35 +40,66 @@ export default function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5 }}
-      whileHover={{ y: -5, borderColor: "var(--primary-green)" }}
-      className={`bg-card-bg p-8 rounded-card border border-color flex flex-col h-full relative overflow-hidden transition-all duration-300 ease-in-out ${className}`}
+      whileHover={{ y: -5, borderColor: isMaximumValue ? "var(--accent-gold)" : "var(--primary-green)" }}
+      className={`bg-card-bg p-8 rounded-card border ${
+        isMaximumValue 
+          ? "border-accent-gold border-2 shadow-lg shadow-accent-gold/20" 
+          : "border-border-color"
+      } flex flex-col h-full relative overflow-hidden transition-all duration-300 ease-in-out ${className}`}
+      style={isMaximumValue ? { 
+        boxShadow: "0 0 30px rgba(255, 215, 0, 0.1), 0 10px 25px -5px rgba(0, 0, 0, 0.3)" 
+      } : {}}
     >
+      {/* Step Badge */}
+      {stepNumber && (
+        <div className="absolute top-4 left-4 bg-primary-green text-background text-xs font-bold px-3 py-1 rounded-full">
+          STEP {stepNumber}
+        </div>
+      )}
+      
+      {/* Maximum Value Badge for CAO */}
+      {isMaximumValue && (
+        <div className="absolute top-4 right-4 bg-accent-gold text-secondary-black text-xs font-bold px-3 py-1 rounded-full">
+          MAXIMUM VALUE
+        </div>
+      )}
+      
       {bundleDiscountText && (
         <div className="absolute top-2 left-2 bg-primary-green text-background text-xs font-bold px-3 py-1 rounded-full shadow-md">
           {bundleDiscountText}
         </div>
       )}
-      {isMostPopular && (
-        <div className="absolute top-0 right-0 bg-accent-gold text-secondary-black text-xs font-bold px-4 py-1 transform translate-x-1/4 -translate-y-1/4 rotate-45">
-          Most Popular
+      
+      {isMostPopular && !isMaximumValue && (
+        <div className="absolute top-4 right-4 bg-accent-gold text-secondary-black text-xs font-bold px-3 py-1 rounded-full">
+          POPULAR
         </div>
       )}
-      <div className="flex items-center mb-4">
-        <Icon className="h-10 w-10 text-primary-green mr-4" />
+      
+      <div className="flex items-center mb-4 mt-8">
+        <Icon className={`h-10 w-10 ${isMaximumValue ? "text-accent-gold" : "text-primary-green"} mr-4`} />
         <h3 className="text-subsection font-bold text-text-primary">{title}</h3>
       </div>
       <p className="text-text-secondary mb-1">{tagline}</p>
-      <p className="text-3xl font-extrabold text-primary-green mb-6">{price}</p>
+      {price && <p className="text-3xl font-extrabold text-primary-green mb-6">{price}</p>}
 
       <ul className="space-y-2 text-text-secondary mb-8 flex-grow">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center">
-            <span className="text-primary-green mr-2">✓</span> {feature}
+            <span className={`${isMaximumValue ? "text-accent-gold" : "text-primary-green"} mr-2`}>✓</span> {feature}
           </li>
         ))}
       </ul>
+      
+      {/* Bottom Note */}
+      {bottomNote && (
+        <p className="text-sm text-text-secondary mb-4 text-center italic">
+          {bottomNote}
+        </p>
+      )}
+      
       <CustomButton
-        variant="secondary"
+        variant={isMaximumValue ? "primary" : "secondary"}
         size="secondary"
         className="w-full mt-auto"
         onClick={() => (window.location.href = ctaLink)}
