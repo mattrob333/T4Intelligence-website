@@ -26,7 +26,15 @@ export async function POST(request: NextRequest) {
     if (!baseId || !tableId || !apiKey) {
       console.error('Missing Airtable environment variables')
       return NextResponse.json(
-        { error: 'Server configuration error' },
+        { 
+          error: 'Server configuration error',
+          message: 'Airtable integration is not properly configured. Please check that AIRTABLE_BASE_ID, AIRTABLE_TABLE_ID, and AIRTABLE_API_KEY are set in your .env.local file.',
+          missingVars: {
+            AIRTABLE_BASE_ID: !baseId,
+            AIRTABLE_TABLE_ID: !tableId,
+            AIRTABLE_API_KEY: !apiKey
+          }
+        },
         { status: 500 }
       )
     }
@@ -40,7 +48,6 @@ export async function POST(request: NextRequest) {
         'Company Name': formData.companyName || '',
         'Role': formData.role || '',
         'Phone Number': formData.phone || '',
-        'Annual Revenue': formData.annualRevenue || '',
         'Number of Employees': formData.numEmployees || '',
         'Industry': formData.industry || '',
         'AI Status': formData.aiStatus || '',

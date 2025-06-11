@@ -9,7 +9,7 @@ export async function GET() {
       companyName: 'Test Company',
       role: 'CEO/President',
       phone: '555-1234',
-      annualRevenue: '$1M-$10M',
+      // Remove annualRevenue - not in Airtable schema
       numEmployees: '11-50',
       industry: 'Technology',
       aiStatus: 'Exploring AI',

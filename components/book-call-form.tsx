@@ -215,11 +215,14 @@ export function BookCallForm() {
     
     setIsSubmitting(true)
     try {
-      console.log("Form submitted:", data)
+      console.log("=== Form Submission Debug ===")
+      console.log("Form data being sent:", JSON.stringify(data, null, 2))
+      console.log("Submission URL:", '/api/book-call')
       
       // Add validation check
       const isValid = await form.trigger()
       if (!isValid) {
+        console.log("Form validation failed")
         toast({
           title: "Please Complete All Required Fields",
           description: "Make sure all required fields (marked with *) are filled out correctly.",
@@ -229,6 +232,7 @@ export function BookCallForm() {
         return
       }
       
+      console.log("Form validation passed, sending request...")
       const response = await fetch('/api/book-call', {
         method: 'POST',
         headers: {
@@ -237,9 +241,16 @@ export function BookCallForm() {
         body: JSON.stringify(data),
       })
 
+      console.log("Response status:", response.status)
       const result = await response.json()
+      console.log("Response data:", result)
 
       if (!response.ok) {
+        // Check if it's a configuration error
+        if (result.missingVars) {
+          console.error('Airtable configuration error:', result)
+          throw new Error('Form submission is not configured yet. Please contact us directly at contact@t4intelligence.com')
+        }
         throw new Error(result.error || `Server error: ${response.status}`)
       }
 
