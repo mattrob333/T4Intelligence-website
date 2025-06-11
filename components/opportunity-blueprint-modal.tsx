@@ -117,7 +117,7 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-[16px] w-full max-w-[900px] max-h-[90vh] flex flex-col overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 md:p-8 border-b border-[#2A2A2A] flex-shrink-0">

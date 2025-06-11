@@ -458,7 +458,7 @@ export default function ProcessExplainerModal({ isOpen, onClose }: ProcessExplai
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="bg-secondary-black border border-border-color rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/10"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-5 md:p-6 border-b border-border-color flex-shrink-0 bg-[#1A1A1A]">
