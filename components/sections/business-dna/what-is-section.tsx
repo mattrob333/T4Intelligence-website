@@ -1,5 +1,6 @@
 "use client"
 import { CheckCircle, Share2 } from "lucide-react"
+import Image from "next/image"
 import { motion } from "framer-motion"
 
 const points = [
@@ -50,13 +51,14 @@ export default function WhatIsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="h-96 bg-card-bg rounded-lg border border-border-color flex items-center justify-center p-8"
+            className="relative h-96 bg-card-bg rounded-lg border border-border-color overflow-hidden"
           >
-            <div className="text-center text-text-secondary">
-              <Share2 className="h-24 w-24 text-primary-green/50 mx-auto mb-4" />
-              <p className="font-semibold">Interactive Diagram Placeholder</p>
-              <p className="text-sm">Showing interconnected nodes for processes, systems, people, and knowledge.</p>
-            </div>
+            <Image 
+              src="/images/what-is-foundation.png"
+              alt="Diagram explaining what a business AI Foundation is"
+              fill
+              className="object-cover"
+            />
           </motion.div>
         </div>
       </div>

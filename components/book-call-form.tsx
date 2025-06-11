@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import { useState, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -187,8 +187,16 @@ const OptionalFormLabel = ({ children }: { children: React.ReactNode }) => (
 )
 
 export function BookCallForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+  
   const form = useForm<BookCallFormValues>({
     resolver: zodResolver(formSchema),
+    mode: "onBlur", // Validate on blur for better UX
     defaultValues: {
       fullName: "",
       email: "",
@@ -199,29 +207,60 @@ export function BookCallForm() {
       biggestOpportunity: "",
       questions: "",
       preferredTimes: [],
-      // role: undefined, // Or a default role if appropriate
-      // annualRevenue: undefined,
-      // numEmployees: undefined,
-      // industry: undefined,
-      // aiStatus: undefined,
-      // biggestChallenge: undefined,
-      // implementationTimeline: undefined,
-      // budgetRange: undefined,
-      // decisionProcess: undefined,
-      // meetingFormat: undefined,
-      // timeZone: undefined,
     },
   })
 
   async function onSubmit(data: BookCallFormValues) {
-    console.log("Form submitted:", data)
-    toast({
-      title: "Consultation Request Sent!",
-      description:
-        "We've received your details and will be in touch shortly to confirm your strategic AI consultation.",
-      variant: "default",
-    })
-    form.reset()
+    if (isSubmitting) return // Prevent double submission
+    
+    setIsSubmitting(true)
+    try {
+      console.log("Form submitted:", data)
+      
+      // Add validation check
+      const isValid = await form.trigger()
+      if (!isValid) {
+        toast({
+          title: "Please Complete All Required Fields",
+          description: "Make sure all required fields (marked with *) are filled out correctly.",
+          variant: "destructive",
+        })
+        setIsSubmitting(false)
+        return
+      }
+      
+      const response = await fetch('/api/book-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || `Server error: ${response.status}`)
+      }
+
+      toast({
+        title: "🎉 Consultation Request Sent!",
+        description:
+          "We've received your details and will be in touch shortly to confirm your strategic AI consultation.",
+        variant: "default",
+      })
+      
+      form.reset()
+    } catch (error) {
+      console.error('Form submission error:', error)
+      toast({
+        title: "❌ Submission Failed",
+        description: error instanceof Error ? error.message : "There was an error submitting your request. Please try again or contact us directly.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const SectionHeader = ({ title }: { title: string }) => (
@@ -807,10 +846,17 @@ export function BookCallForm() {
           </div>
           <Button
             type="submit"
-            className="w-full bg-accent-gold hover:bg-accent-gold/90 text-secondary-black font-bold py-3 px-6 text-lg rounded-button shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:translate-y-[-2px] focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
-            disabled={form.formState.isSubmitting}
+            className="w-full bg-accent-gold hover:bg-accent-gold/90 text-secondary-black font-bold py-3 px-6 text-lg rounded-button shadow-md hover:shadow-lg transition-all duration-300 ease-in-out hover:translate-y-[-2px] focus-visible:ring-2 focus-visible:ring-yellow-300 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            disabled={isSubmitting}
           >
-            {form.formState.isSubmitting ? "Scheduling..." : "Schedule My Strategic AI Consultation"}
+            {isSubmitting && isMounted ? (
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-4 h-4 border-2 border-secondary-black border-t-transparent rounded-full animate-spin"></div>
+                <span>Scheduling...</span>
+              </div>
+            ) : (
+              "Schedule My Strategic AI Consultation"
+            )}
           </Button>
         </footer>
       </form>

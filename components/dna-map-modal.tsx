@@ -81,7 +81,7 @@ const DnaMapModal: React.FC<DnaMapModalProps> = ({ isOpen, onClose, markdownCont
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="bg-secondary-black border border-border-color rounded-card w-full max-w-[900px] max-h-[90vh] flex flex-col overflow-hidden md:rounded-[16px]"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+            onClick={(e: React.MouseEvent) => e.stopPropagation()} // Prevent closing when clicking inside modal
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 md:p-8 border-b border-border-color flex-shrink-0">
