@@ -4,30 +4,40 @@ import { CustomButton } from "@/components/ui/custom-button"
 
 const packages = [
   {
-    name: "Starter",
-    hours: "Approx. 20-25 hours/month", // Adjusted description for clarity
-    price: "$8,000/month", // UPDATED
-    perfectFor: "Initial AI pilots & strategy",
-    includes: ["Strategic oversight", "Monthly board updates", "Team guidance", "Pilot project leadership"],
-  },
-  {
-    name: "Growth",
-    hours: "Approx. 35-40 hours/month", // Adjusted description
-    price: "$12,000/month", // UPDATED (Kept within new range)
-    perfectFor: "Scaling AI initiatives",
-    isMostPopular: true,
-    includes: ["Everything in Starter", "Weekly team meetings", "Direct implementation support", "Vendor negotiations"],
-  },
-  {
-    name: "Transform",
-    hours: "Approx. 50-60 hours/month", // Adjusted description
-    price: "$15,000/month", // UPDATED
-    perfectFor: "Full transformation leadership",
+    name: "Advisor",
+    subtitle: "Strategic Guidance",
+    perfectFor: "Perfect for AI Beginners",
     includes: [
-      "Everything in Growth",
-      "Deeper operational involvement",
-      "Complete AI program ownership",
-      "Board advisory option",
+      "Regular strategic sessions",
+      "Quarterly planning",
+      "Board update support",
+      "Team accessibility",
+      "Single focus area"
+    ],
+  },
+  {
+    name: "Partner",
+    subtitle: "Active Leadership",
+    perfectFor: "Scale AI Across Teams",
+    isMostPopular: true,
+    includes: [
+      "Deep involvement",
+      "Bi-weekly leadership",
+      "Direct board engagement",
+      "Multi-team coordination",
+      "Priority support"
+    ],
+  },
+  {
+    name: "Executive",
+    subtitle: "Full Transformation",
+    perfectFor: "Enterprise-Wide AI Leadership",
+    includes: [
+      "Intensive engagement",
+      "Weekly presence",
+      "C-suite integration",
+      "Company-wide mandate",
+      "Custom roadmaps"
     ],
   },
 ]
@@ -43,7 +53,7 @@ export default function EngagementPackagesSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Choose Your <span className="text-primary-green">Leadership Level</span>
+          Choose Your <span className="text-primary-green">Leadership Model</span>
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {packages.map((pkg, index) => (
@@ -61,9 +71,8 @@ export default function EngagementPackagesSection() {
                 </div>
               )}
               <h3 className="text-subsection font-bold text-text-primary text-center">{pkg.name}</h3>
-              <p className="text-center text-text-secondary mb-4">{pkg.perfectFor}</p>
-              <p className="text-4xl font-extrabold text-primary-green text-center my-4">{pkg.price}</p>
-              <p className="text-center text-text-secondary mb-6">{pkg.hours}</p>
+              <p className="text-center text-primary-green font-medium mb-2">{pkg.subtitle}</p>
+              <p className="text-center text-text-secondary mb-6 italic">{pkg.perfectFor}</p>
               <ul className="space-y-2 text-text-secondary mb-8 flex-grow">
                 {pkg.includes.map((item) => (
                   <li key={item} className="flex items-start">
@@ -88,10 +97,10 @@ export default function EngagementPackagesSection() {
           transition={{ duration: 0.6 }}
           className="mt-12 text-center bg-card-bg p-8 rounded-lg border border-border-color"
         >
-          <h3 className="text-subsection font-bold text-text-primary">Custom Package</h3>
-          <p className="text-text-secondary mb-4">Perfect for unique needs</p>
-          <CustomButton variant="secondary" size="secondary">
-            Let's Talk
+          <h3 className="text-subsection font-bold text-text-primary">Custom Engagements Available</h3>
+          <p className="text-text-secondary mb-4">"Every company is unique. Let's design what works for you."</p>
+          <CustomButton variant="secondary" size="default">
+            DESIGN YOUR SOLUTION →
           </CustomButton>
         </motion.div>
       </div>

@@ -6,22 +6,38 @@ import { CustomButton } from "@/components/ui/custom-button"
 const timelineSteps = [
   {
     title: "WEEK 1-2: Deep Discovery",
-    details: ["Interview your experts", "Shadow key processes", "Map system connections", "Document tribal knowledge"],
+    subtitle: "Intelligence Gathering",
+    details: [
+      "Interview your experts",
+      "Map current workflows",
+      "Document tribal knowledge",
+      "Audit all systems",
+      "Capture the \"why\" behind the \"how\""
+    ],
     icon: Search,
   },
   {
-    title: "WEEK 3: Build Your DNA Map",
+    title: "WEEK 3: Build Your Foundation",
+    subtitle: "Asset Creation",
     details: [
-      "Create visual process flows",
-      "Connect knowledge nodes",
-      "Identify automation points",
-      "Test understanding",
+      "Create AI instruction sets",
+      "Build knowledge graphs",
+      "Connect process maps",
+      "Design automation blueprints",
+      "Structure for AI consumption"
     ],
     icon: Network,
   },
   {
     title: "WEEK 4: Activate Your AI",
-    details: ["Load DNA into AI systems", "Train on your language", "Validate comprehension", "Deploy first use cases"],
+    subtitle: "Intelligence Deployment",
+    details: [
+      "Test with AI models",
+      "Validate comprehension",
+      "Refine instructions",
+      "Create AI playbooks",
+      "Deploy first use cases"
+    ],
     icon: Power,
   },
 ]
@@ -55,7 +71,8 @@ export default function ProcessTimelineSection() {
                 <div className="bg-primary-green/10 p-4 rounded-full mb-4">
                   <step.icon className="h-8 w-8 text-primary-green" />
                 </div>
-                <h3 className="text-subsection-mobile font-bold text-text-primary mb-2">{step.title}</h3>
+                <h3 className="text-subsection-mobile font-bold text-text-primary">{step.title}</h3>
+                <p className="text-primary-green font-medium mb-2">{step.subtitle}</p>
                 <ul className="text-text-secondary text-sm space-y-1 list-inside list-disc text-left">
                   {step.details.map((detail) => (
                     <li key={detail}>{detail}</li>
@@ -77,7 +94,7 @@ export default function ProcessTimelineSection() {
             size="secondary"
             onClick={() => console.log("See Process in Action clicked")}
           >
-            See the Process in Action →
+            SEE THE PROCESS IN ACTION →
           </CustomButton>
         </motion.div>
       </div>

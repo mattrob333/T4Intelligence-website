@@ -4,21 +4,21 @@ import { CustomButton } from "@/components/ui/custom-button"
 import { Download } from "lucide-react"
 
 const deliverables = [
-  "Complete Business DNA Visualization",
-  "Process Optimization Report",
-  "System Integration Map",
+  "Complete Business Intelligence Files",
+  "Process Automation Blueprints",
+  "AI Instruction Library",
   "Knowledge Capture Database",
-  "AI-Ready Data Structure",
-  "90-Day Implementation Plan",
+  "AI-Ready Data Architecture",
+  "90-Day Implementation Roadmap"
 ]
 
 const subtexts = [
-  "Interactive map of your entire operation",
-  "Average 47% efficiency improvement identified",
-  "Every connection documented and optimized",
-  "Your tribal knowledge, preserved forever",
-  "Plug and play with any AI system",
-  "Step-by-step roadmap to AI success",
+  "Structured docs AI can read and understand - your entire operation decoded",
+  "Every workflow mapped with clear automation opportunities identified and prioritized",
+  "Pre-written prompts and commands that make AI think like your best employees",
+  "Your tribal knowledge, documented forever - no more losing IP when people leave",
+  "Your systems mapped so AI knows where everything lives and how to access it",
+  "Step-by-step plan showing which automations to build first for maximum ROI"
 ]
 
 export default function DeliverablesSection() {
@@ -32,7 +32,7 @@ export default function DeliverablesSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          What You <span className="text-primary-green">Get</span>
+          What Your <span className="text-primary-green">Foundation Contains</span>
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {deliverables.map((item, index) => (
@@ -57,7 +57,7 @@ export default function DeliverablesSection() {
           className="text-center"
         >
           <CustomButton variant="primary" size="default" onClick={() => console.log("Download clicked")}>
-            <Download className="mr-2 h-5 w-5" /> Get Sample Deliverables Pack
+            <Download className="mr-2 h-5 w-5" /> GET SAMPLE FOUNDATION FILES →
           </CustomButton>
         </motion.div>
       </div>

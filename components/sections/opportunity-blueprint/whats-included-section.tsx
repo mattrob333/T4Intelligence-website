@@ -1,49 +1,54 @@
 "use client"
 import { motion } from "framer-motion"
-import { BarChart3, Microscope, Calculator, Rocket, Download } from "lucide-react"
+import { Download } from "lucide-react"
 import { CustomButton } from "@/components/ui/custom-button"
 
-const includedItems = [
+interface FeatureItem {
+  title: string;
+  description: string;
+  icon: string;
+  highlight?: boolean;
+}
+
+const features: FeatureItem[] = [
   {
-    icon: BarChart3,
-    title: "Executive Summary",
-    details: [
-      "Top 10 opportunities ranked by ROI",
-      "Expected savings for each",
-      "Investment requirements",
-      "Quick win identification",
-    ],
+    title: "AI Employees",
+    description: "Fully functional AI team members that work 24/7/365",
+    icon: "🤖",
+    highlight: true
   },
   {
-    icon: Microscope,
-    title: "Detailed Analysis",
-    details: [
-      "Process-by-process breakdown",
-      "Integration requirements",
-      "Technical specifications",
-      "Success metrics defined",
-    ],
+    title: "Custom Automations",
+    description: "Tailored workflows that integrate with your existing systems",
+    icon: "⚙️",
+    highlight: true
   },
   {
-    icon: Calculator,
-    title: "Financial Model",
-    details: [
-      "3-year ROI projections",
-      "Cost-benefit analysis",
-      "Payback period calculations",
-      "Budget recommendations",
-    ],
+    title: "Live Dashboards",
+    description: "Real-time visibility into performance and ROI metrics",
+    icon: "📊",
+    highlight: true
   },
   {
-    icon: Rocket,
-    title: "90-Day Action Plan",
-    details: ["What to automate first", "Week-by-week timeline", "Resource requirements", "Early warning indicators"],
+    title: "Hands-On Training",
+    description: "Comprehensive training for your team to manage and scale AI",
+    icon: "👨‍🏫"
+  },
+  {
+    title: "Security & Compliance",
+    description: "Enterprise-grade security protocols and compliance measures",
+    icon: "🔒"
+  },
+  {
+    title: "Ongoing Support",
+    description: "Dedicated support team for continuous optimization",
+    icon: "🛠️"
   },
 ]
 
 export default function WhatsIncludedSection() {
   return (
-    <section className="py-section-padding-mobile md:py-section-padding">
+    <section className="py-section-padding-mobile md:py-section-padding bg-card-bg">
       <div className="container mx-auto px-4 md:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -52,30 +57,54 @@ export default function WhatsIncludedSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Your Complete <span className="text-primary-green">AI Roadmap</span>
+          Here's <span className="text-primary-green">What You're Getting</span>
         </motion.h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
-          {includedItems.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {features.map((feature: FeatureItem, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card-bg p-6 rounded-lg border border-border-color flex items-start gap-4"
+              className={`p-6 rounded-lg border ${feature.highlight ? 'border-primary-green bg-secondary-black/50' : 'border-border-color'} hover:border-primary-green transition-all duration-300 h-full flex flex-col`}
             >
-              <item.icon className="h-8 w-8 text-primary-green mt-1 flex-shrink-0" />
-              <div>
-                <h3 className="text-xl font-bold text-text-primary mb-2">{item.title}</h3>
-                <ul className="text-sm text-text-secondary space-y-1">
-                  {item.details.map((detail) => (
-                    <li key={detail}>✓ {detail}</li>
-                  ))}
-                </ul>
-              </div>
+              <div className="text-4xl mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-bold text-text-primary mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-text-secondary mt-auto">
+                {feature.description}
+              </p>
+              {feature.highlight && (
+                <div className="mt-3">
+                  <span className="inline-block bg-primary-green/10 text-primary-green text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    Most Valuable
+                  </span>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <p className="text-text-secondary text-lg max-w-3xl mx-auto mb-8">
+            No theory. No PowerPoints. Just working AI that delivers real ROI starting Week 1.
+          </p>
+          <CustomButton
+            variant="primary"
+            size="default"
+            onClick={() => console.log("Get Started clicked")}
+            className="mx-auto"
+          >
+            Start Building Your AI Team
+          </CustomButton>
+        </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +113,7 @@ export default function WhatsIncludedSection() {
           className="text-center"
         >
           <CustomButton variant="secondary" size="secondary" onClick={() => console.log("Download Sample Blueprint")}>
-            <Download className="mr-2 h-5 w-5" /> Get Sample Blueprint (PDF)
+            <Download className="mr-2 h-5 w-5" /> GET SAMPLE BLUEPRINT DECK →
           </CustomButton>
         </motion.div>
       </div>

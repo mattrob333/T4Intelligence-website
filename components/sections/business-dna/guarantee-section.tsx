@@ -16,12 +16,12 @@ export default function GuaranteeSection() {
         >
           <ShieldCheck className="h-16 w-16 text-accent-gold mx-auto mb-4" />
           <h2 className="text-section-headline-mobile md:text-section-headline text-text-primary mb-4">
-            Our <span className="text-accent-gold">Bulletproof Guarantee</span>
+            Our <span className="text-accent-gold">Foundation Guarantee</span>
           </h2>
           <p className="text-body-large-mobile md:text-body-large text-text-secondary max-w-3xl mx-auto mb-4">
-            If your AI isn't working better than a new employee within 90 days, we'll refund every penny.
+            If your AI Foundation isn't fully operational and delivering value within 30 days, we'll work until it does - no extra charge.
           </p>
-          <p className="text-text-secondary/70 italic mb-10">(Never happened. Won't start with you.)</p>
+          <p className="text-text-secondary/70 italic mb-10">(Our track record? 100% success rate.)</p>
         </motion.div>
 
         <motion.div
@@ -31,17 +31,17 @@ export default function GuaranteeSection() {
           transition={{ duration: 0.6, delay: 0.1 }} // Adjust delay
           className="my-12 max-w-2xl mx-auto text-center bg-card-bg p-6 rounded-lg border border-border-color"
         >
-          <h3 className="text-subsection-mobile md:text-subsection font-bold text-primary-green mb-3">WHAT'S NEXT?</h3>
+          <h3 className="text-subsection-mobile md:text-subsection font-bold text-primary-green mb-3">WHAT'S INCLUDED?</h3>
           <p className="text-text-secondary mb-4">
-            After your Business DNA Map, continue with the AI Opportunity Blueprint and{" "}
-            <span className="font-semibold text-accent-gold">save $10K</span> off the regular price.
+            Your complete AI Foundation includes process automation, data integration, and custom AI workflows - all designed to{' '}
+            <span className="font-semibold text-accent-gold">deliver measurable ROI within 30 days</span>.
           </p>
           <CustomButton
             variant="secondary"
             size="secondary"
-            onClick={() => (window.location.href = "/opportunity-blueprint")}
+            onClick={() => (window.location.href = "/foundation-details")}
           >
-            Learn About AI Opportunity Blueprint →
+            Explore Foundation Details →
           </CustomButton>
         </motion.div>
 
@@ -53,7 +53,7 @@ export default function GuaranteeSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <CustomButton variant="primary" size="default" onClick={() => console.log("Start Your DNA Mapping clicked")}>
-            Start Your DNA Mapping
+Build Your AI Foundation
           </CustomButton>
           <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
             Talk to Our Team

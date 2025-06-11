@@ -7,7 +7,7 @@ interface ServiceCardProps {
   icon: LucideIcon
   title: string
   tagline: string
-  price: string
+  price?: string
   features: string[]
   ctaText: string
   ctaLink: string

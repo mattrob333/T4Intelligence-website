@@ -254,7 +254,7 @@ export default function HeroSection() {
             We Turn Your Messy Business Into An <span className="text-primary-green">AI-Powered Profit Machine</span> in 90 Days
           </h1>
           <p className="text-body-large-mobile md:text-body-large text-text-secondary max-w-3xl mx-auto mb-10">
-            While McKinsey charges $3M for PowerPoints, we build AI that actually runs your business. Working AI in 90 days. 5X ROI in 6 months. Or you don't pay.
+            While top consulting firms charge millions for PowerPoints, we build AI that actually runs your business. Working AI in 90 days. 5X ROI in 6 months. Or you don't pay.
           </p>
         </motion.div>
 

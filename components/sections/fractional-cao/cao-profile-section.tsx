@@ -5,20 +5,20 @@ import { CustomButton } from "@/components/ui/custom-button"
 
 const expertiseAreas = [
   "AI Strategy",
-  "Machine Learning",
+  "Digital Transformation",
   "Process Automation",
-  "Change Management",
-  "Board Governance",
-  "Team Building",
-  "Vendor Management",
-  "Financial Planning",
+  "Change Leadership",
+  "Board Advisory",
+  "Team Development",
+  "Vendor Negotiation",
+  "ROI Optimization",
 ]
 
 const stats = [
-  { value: "15+", label: "Years Experience" },
-  { value: "100+", label: "Implementations Led" },
-  { value: "50+", label: "Companies Transformed" },
-  { value: "850%", label: "Average ROI Delivered" },
+  { value: "15+", label: "Years Leading Tech" },
+  { value: "100+", label: "AI Transformations" },
+  { value: "50+", label: "Companies Elevated" },
+  { value: "$850M+", label: "Value Created" },
 ]
 
 export default function CaoProfileSection() {
@@ -72,17 +72,25 @@ export default function CaoProfileSection() {
               transition={{ duration: 0.7 }}
               className="bg-card-bg p-6 rounded-lg border border-border-color"
             >
-              <p className="text-sm text-text-secondary">CAO Profile 1</p>
-              <h4 className="text-xl font-bold text-text-primary">Available Upon Engagement</h4>
-              <p className="text-text-secondary">
-                <span className="font-semibold">Background:</span> Former VP of AI at Fortune 500
-              </p>
-              <p className="text-text-secondary">
-                <span className="font-semibold">Specialty:</span> Manufacturing & Supply Chain
-              </p>
-              <p className="text-primary-green">
-                <span className="font-semibold">Notable Win:</span> $47M savings at global manufacturer
-              </p>
+              <h4 className="text-xl font-bold text-text-primary mb-4">Typical Background:</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Former VP/SVP of AI</span> at Fortune 500</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Led transformations</span> generating $50M+ annually</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Published thought leader</span> on enterprise AI</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Board advisor</span> to multiple tech companies</span>
+                </li>
+              </ul>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -91,17 +99,25 @@ export default function CaoProfileSection() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="bg-card-bg p-6 rounded-lg border border-border-color"
             >
-              <p className="text-sm text-text-secondary">CAO Profile 2</p>
-              <h4 className="text-xl font-bold text-text-primary">Available Upon Engagement</h4>
-              <p className="text-text-secondary">
-                <span className="font-semibold">Background:</span> 3x AI Startup Founder
-              </p>
-              <p className="text-text-secondary">
-                <span className="font-semibold">Specialty:</span> Healthcare & Life Sciences
-              </p>
-              <p className="text-primary-green">
-                <span className="font-semibold">Notable Win:</span> 90% automation of clinical workflows
-              </p>
+              <h4 className="text-xl font-bold text-text-primary mb-4">How They Engage:</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Hands-on leadership</span> - not just strategy</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Builds while teaching</span> - elevates your team</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Always accessible</span> for critical decisions</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary-green mr-2">•</span>
+                  <span className="text-text-secondary"><span className="font-semibold">Your voice</span> in vendor negotiations</span>
+                </li>
+              </ul>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -110,7 +126,7 @@ export default function CaoProfileSection() {
               transition={{ duration: 0.6 }}
             >
               <CustomButton variant="primary" size="default" className="w-full">
-                Schedule CAO Matching Call →
+                DISCUSS YOUR NEEDS →
               </CustomButton>
             </motion.div>
           </div>

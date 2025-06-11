@@ -4,18 +4,18 @@ import { CheckCircle, XCircle } from "lucide-react"
 
 const needs = [
   "Strategic AI vision",
-  "Someone who's done this before",
-  "Executive who speaks to boards",
+  "Someone who's done this 100+ times",
+  "Technical + business expertise",
   "Leader who can execute",
-  "Expert who prevents failures",
+  "Board-level strategic thinking",
 ]
 
 const cantAfford = [
-  "$400K+ base salary",
-  "Equity dilution",
-  "2-year commitments",
-  "Wrong hire risk",
-  "6-month search process",
+  "❌ Another failed AI pilot",
+  "❌ Full-time executive overhead",
+  "❌ 18-month learning curves",
+  "❌ Wrong hire disasters",
+  "❌ Competitor advantages",
 ]
 
 export default function ProblemSolutionSection() {
@@ -76,10 +76,10 @@ export default function ProblemSolutionSection() {
           className="bg-primary-green/10 border border-primary-green p-8 rounded-lg text-center max-w-3xl mx-auto"
         >
           <h3 className="text-subsection font-bold text-primary-green mb-2">
-            Get 20% of their time. Get 100% of their expertise.
+            Get Fortune 500 Leadership. Pay What Makes Sense.
           </h3>
           <p className="text-text-secondary">
-            Your Fractional CAO brings 15+ years experience, 100+ implementations, and zero learning curve.
+            Experience the expertise of a seasoned AI executive without the full-time commitment or cost.
           </p>
         </motion.div>
       </div>

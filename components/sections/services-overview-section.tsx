@@ -6,9 +6,8 @@ import { motion } from "framer-motion"
 const services = [
   {
     icon: Dna,
-    title: "BUSINESS INTELLIGENCE VAULT",
+    title: "FOUNDATION",
     tagline: "Build Your AI's Knowledge Foundation",
-    price: "$15K-$25K",
     features: [
       "Deep-dive analysis of your entire operation",
       "Capture 20 years of tribal knowledge in 30 days",
@@ -16,14 +15,13 @@ const services = [
       "Map every process, system, and shortcut",
       "100% credit toward implementation"
     ],
-    ctaText: "BUILD YOUR VAULT →",
+    ctaText: "GET STARTED →",
     ctaLink: "/business-dna",
   },
   {
     icon: MapPinned,
-    title: "PROFIT AUTOMATION STUDIO",
+    title: "THE BUILD",
     tagline: "Turn Opportunities Into Operating Income",
-    price: "$40K-$60K",
     isMostPopular: true,
     features: [
       "Build your highest-ROI automation first",
@@ -32,14 +30,13 @@ const services = [
       "Deploy across all departments",
       "Pay balance only after proven results"
     ],
-    ctaText: "START BUILDING →",
+    ctaText: "LEARN MORE →",
     ctaLink: "/opportunity-blueprint",
   },
   {
     icon: UserTie,
-    title: "AI EXECUTIVE-AS-A-SERVICE",
-    tagline: "Your $400K AI Leader for 80% Less",
-    price: "$8K-$15K/month",
+    title: "YOUR CHIEF AI OFFICER",
+    tagline: "Your AI Leadership On Demand",
     features: [
       "Seasoned AI executive on demand",
       "100+ successful implementations",
@@ -47,7 +44,7 @@ const services = [
       "Scale up during critical phases",
       "No equity, no long-term contracts"
     ],
-    ctaText: "MEET YOUR EXEC →",
+    ctaText: "MEET YOUR CAO →",
     ctaLink: "/fractional-cao",
   }
 ]

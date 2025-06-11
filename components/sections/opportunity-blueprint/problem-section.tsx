@@ -3,25 +3,40 @@ import { motion } from "framer-motion"
 import { CustomButton } from "@/components/ui/custom-button"
 
 const problems = [
-  { title: "Chatbot Nobody Uses", cost: "$50K", roi: "-100%" },
-  { title: '"AI-Enabled" CRM', cost: "$200K", roi: "0%" },
-  { title: "Random Process Automation", cost: "$150K", roi: "Maybe 50%" },
+  {
+    title: "The Pilot Graveyard",
+    emoji: "⚰️",
+    description: "37 Pilots, Zero Production",
+    status: "Still Testing"
+  },
+  {
+    title: "The Consultant Theater",
+    emoji: "🎭",
+    description: "$3M for Strategy Decks",
+    status: "Still Planning"
+  },
+  {
+    title: "The DIY Disaster",
+    emoji: "🔥",
+    description: "Random Tools Everywhere",
+    status: "Still Broken"
+  }
 ]
 
 export default function ProblemSection() {
   return (
-    <section className="py-section-padding-mobile md:py-section-padding">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-12 sm:py-16 md:py-24 bg-card-bg">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-text-primary mb-10 sm:mb-12 md:mb-16 px-2"
         >
-          Most Companies Automate the <span className="text-primary-green">Wrong Things</span>
+          While Others Are Still In Meetings, We're Already Building
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {problems.map((problem, index) => (
             <motion.div
               key={index}
@@ -29,33 +44,24 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card-bg p-6 rounded-lg border border-border-color text-center"
+              className="bg-secondary-black p-6 sm:p-6 md:p-8 rounded-lg border border-border-color text-center h-full flex flex-col"
             >
-              <h3 className="text-subsection-mobile font-bold text-text-primary mb-2">{problem.title}</h3>
-              <p className="text-text-secondary">Typical Cost: {problem.cost}</p>
-              <p className="text-2xl font-bold text-error mt-2">Typical ROI: {problem.roi}</p>
+              <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{problem.emoji}</div>
+              <h3 className="text-lg sm:text-xl font-bold text-primary-green mb-2">"{problem.title}"</h3>
+              <p className="text-xl sm:text-2xl font-bold text-text-primary mb-2 sm:mb-3">{problem.description}</p>
+              <p className="text-sm sm:text-base text-text-secondary italic mt-auto">Status: {problem.status}</p>
             </motion.div>
           ))}
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto"
+        <motion.p 
+          className="text-center text-text-secondary mt-12 text-lg max-w-3xl mx-auto"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
         >
-          <p className="text-body-large text-text-secondary mb-8">
-            What if you're leaving millions on the table by automating the wrong things while ignoring your biggest
-            opportunities?
-          </p>
-          <CustomButton
-            variant="secondary"
-            size="secondary"
-            onClick={() => console.log("See What You're Missing clicked")}
-          >
-            See What You're Missing →
-          </CustomButton>
-        </motion.div>
+          We skip the BS and build working AI. Your first automation goes live in Week 2.
+        </motion.p>
       </div>
     </section>
   )

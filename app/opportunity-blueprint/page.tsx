@@ -5,6 +5,8 @@ import SolutionProcessSection from "@/components/sections/opportunity-blueprint/
 import WhatsIncludedSection from "@/components/sections/opportunity-blueprint/whats-included-section"
 import PricingComparisonSection from "@/components/sections/opportunity-blueprint/pricing-comparison-section"
 import SuccessMetricsSection from "@/components/sections/opportunity-blueprint/success-metrics-section"
+import FAQSection from "@/components/sections/opportunity-blueprint/faq-section"
+import FinalCTASection from "@/components/sections/opportunity-blueprint/final-cta-section"
 
 export const metadata: Metadata = {
   title: "AI Opportunity Blueprint™ | Tier 4 Intelligence",
@@ -21,6 +23,8 @@ export default function OpportunityBlueprintPage() {
       <WhatsIncludedSection />
       <PricingComparisonSection />
       <SuccessMetricsSection />
+      <FAQSection />
+      <FinalCTASection />
     </>
   )
 }

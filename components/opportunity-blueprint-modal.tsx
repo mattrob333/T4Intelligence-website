@@ -1,11 +1,9 @@
 "use client"
 
-import React, { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import { X, Copy, Check, Target } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CustomButton } from "@/components/ui/custom-button"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
 import { cn } from "@/lib/utils"
 
 interface BlueprintModalProps {
@@ -54,85 +52,50 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
     }
   }
 
-  // Custom renderers for ReactMarkdown
-  const renderers = {
-    h1: ({ node, ...props }: any) => <h1 className="text-primary-green mb-2 mt-4 text-2xl font-bold" {...props} />,
-    h2: ({ node, ...props }: any) => <h2 className="text-primary-green mb-2 mt-4 text-xl font-bold" {...props} />,
-    h3: ({ node, ...props }: any) => <h3 className="text-primary-green mb-1 mt-3 text-lg font-semibold" {...props} />,
-    strong: ({ node, ...props }: any) => <strong className="text-accent-gold" {...props} />,
-    p: ({ node, children, ...props }: any) => {
-      const processChildren = (childArray: React.ReactNode[]): React.ReactNode[] => {
-        return childArray.map((child, index) => {
-          if (typeof child === "string") {
-            let processedString = child
-            // Dollar amounts
-            processedString = processedString.replace(/(\$\d[\d,.]*M?)/g, '<span class="text-primary-green">$1</span>')
-            // Percentages (savings/positive)
-            processedString = processedString.replace(
-              /(\d[\d,.]*%\s*(return|savings|identified|complete|CONFIDENCE|CONFIDENCE LEVEL))/gi,
-              '<span class="text-primary-green">$1</span>',
-            )
-            // Percentages (costs/negative or neutral)
-            processedString = processedString.replace(
-              /(\d[\d,.]*%\s*(downtime|waste|of production time))/gi,
-              '<span class="text-accent-red">$1</span>',
-            )
-            // General percentages not caught above
-            processedString = processedString.replace(
-              /(\b\d[\d,.]*%)(?!<\/span>)/g,
-              '<span class="text-text-secondary">$1</span>',
-            )
-
-            // Status indicators
-            processedString = processedString.replace(
-              /✅/g,
-              '<span class="text-primary-green inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-check-circle mr-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>',
-            )
-            processedString = processedString.replace(
-              /⚠️/g,
-              '<span class="text-accent-gold inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-alert-triangle mr-1"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>',
-            )
-            processedString = processedString.replace(
-              /❌/g,
-              '<span class="text-accent-red inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-x-circle mr-1"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg></span>',
-            )
-
-            return <span key={index} dangerouslySetInnerHTML={{ __html: processedString }} />
-          }
-          if (React.isValidElement(child) && child.props && child.props.children) {
-            // @ts-ignore
-            return React.cloneElement(child, {
-              ...child.props,
-              children: processChildren(React.Children.toArray(child.props.children)),
-            })
-          }
-          return child
-        })
-      }
-      return (
-        <p className="mb-2 text-text-secondary" {...props}>
-          {processChildren(React.Children.toArray(children))}
-        </p>
-      )
-    },
-    li: ({ node, ...props }: any) => <li className="mb-1 ml-4 text-text-secondary" {...props} />,
-    ul: ({ node, ...props }: any) => <ul className="list-disc list-inside mb-2" {...props} />,
-    ol: ({ node, ...props }: any) => <ol className="list-decimal list-inside mb-2" {...props} />,
-    code: ({ node, inline, className, children, ...props }: any) => {
-      const match = /language-(\w+)/.exec(className || "")
-      return !inline && match ? (
-        // This part is for fenced code blocks, which we don't have in the sample.
-        // Keeping it for completeness but it won't be used for this markdown.
-        <pre className="bg-black p-4 rounded-md overflow-x-auto" {...props}>
-          <code className={cn(className, "text-sm")}>{String(children).replace(/\n$/, "")}</code>
-        </pre>
-      ) : (
-        <code className="bg-neutral-700 text-neutral-300 px-1 py-0.5 rounded text-sm" {...props}>
-          {children}
-        </code>
-      )
-    },
-  }
+  // Process markdown content with our custom formatting
+  const processMarkdown = (content: string): string => {
+    // Process dollar amounts
+    content = content.replace(/(\$\d[\d,.]*M?)/g, '<span class="text-primary-green">$1</span>');
+    
+    // Process percentages (savings/positive)
+    content = content.replace(
+      /(\d[\d,.]*%\s*(return|savings|identified|complete|CONFIDENCE|CONFIDENCE LEVEL))/gi,
+      '<span class="text-primary-green">$1</span>'
+    );
+    
+    // Process percentages (costs/negative or neutral)
+    content = content.replace(
+      /(\d[\d,.]*%\s*(downtime|waste|of production time))/gi,
+      '<span class="text-accent-red">$1</span>'
+    );
+    
+    // Process general percentages not caught above
+    content = content.replace(
+      /(\b\d[\d,.]*%)(?!<\/span>)/g,
+      '<span class="text-text-secondary">$1</span>'
+    );
+    
+    // Process status indicators
+    content = content.replace(
+      /✅/g,
+      '<span class="text-primary-green inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-check-circle mr-1"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>'
+    );
+    
+    content = content.replace(
+      /⚠️/g,
+      '<span class="text-accent-gold inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-alert-triangle mr-1"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></span>'
+    );
+    
+    content = content.replace(
+      /❌/g,
+      '<span class="text-accent-red inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-x-circle mr-1"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg></span>'
+    );
+    
+    return content;
+  };
+  
+  // Process the markdown content before passing it to ReactMarkdown
+  const processedContent = processMarkdown(markdownContent);
 
   return (
     <AnimatePresence>
@@ -215,13 +178,12 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
                     .blueprint-markdown-preview .text-accent-red { color: #FF6B6B !important; } /* Red for costs/negative percentages */
                     .blueprint-markdown-preview .text-text-secondary { color: #B0B0B0 !important; } /* For general percentages or less emphasized text */
                   `}</style>
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    className="blueprint-markdown-preview"
-                    components={renderers}
-                  >
-                    {markdownContent}
-                  </ReactMarkdown>
+                  <div 
+                    className="blueprint-markdown-preview" 
+                    dangerouslySetInnerHTML={{ 
+                      __html: processedContent 
+                    }} 
+                  />
                 </div>
                 <button
                   onClick={handleCopy}

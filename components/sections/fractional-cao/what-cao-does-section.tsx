@@ -3,30 +3,40 @@ import { motion } from "framer-motion"
 
 const timeline = [
   {
-    title: "MONTH 1: Foundation & Strategy",
+    title: "MONTH 0: Foundation Strategy",
     tasks: [
-      "Assess current AI readiness",
-      "Define 3-year AI vision",
-      "Build 90-day roadmap",
-      "Establish governance framework",
+      "AI maturity assessment",
+      "Quick win identification",
+      "90-day sprint planning",
+      "Team alignment sessions",
     ],
   },
   {
-    title: "MONTH 2-3: Launch & Implementation",
-    tasks: ["Select pilot projects", "Build your AI team", "Implement first solutions", "Report early wins"],
+    title: "MONTH 1-3: Launch & Build",
+    tasks: [
+      "First automations live",
+      "Team training programs",
+      "Process optimization",
+      "ROI tracking setup"
+    ],
   },
   {
     title: "MONTH 4-6: Scale & Optimize",
     tasks: [
-      "Expand successful pilots",
-      "Optimize AI performance",
-      "Build center of excellence",
-      "Train internal teams",
+      "Department-wide rollouts",
+      "Advanced automations",
+      "Performance optimization",
+      "Next phase planning"
     ],
   },
   {
     title: "ONGOING: Leadership & Growth",
-    tasks: ["Board presentations", "Strategic adjustments", "Vendor management", "Continuous innovation"],
+    tasks: [
+      "Strategic oversight",
+      "Continuous innovation",
+      "Competitive analysis",
+      "Board reporting"
+    ],
   },
 ]
 

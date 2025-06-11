@@ -30,9 +30,9 @@ interface ProcessExplainerModalProps {
 
 const tabs = [
   { id: "overview", label: "Overview" },
-  { id: "phase1", label: "Phase 1: DNA Mapping" },
-  { id: "phase2", label: "Phase 2: Goldmine" },
-  { id: "phase3", label: "Phase 3: AI Team" },
+  { id: "phase1", label: "Foundation" },
+  { id: "phase2", label: "The Build" },
+  { id: "phase3", label: "Your Chief AI Officer" },
   { id: "results", label: "Results & Guarantee" },
 ]
 
@@ -137,7 +137,7 @@ const OverviewTab = () => (
 
 const Phase1Tab = () => (
   <div className="space-y-4">
-    <SectionHeader>Phase 1: MAP YOUR BUSINESS DNA (Weeks 1-4)</SectionHeader>
+    <SectionHeader>Foundation: Map Your Business DNA (Weeks 1-4)</SectionHeader>
     <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">
       We study your business like scholars preparing for a dissertation.
     </p>
@@ -234,7 +234,7 @@ const Phase1Tab = () => (
 
 const Phase2Tab = () => (
   <div className="space-y-4">
-    <SectionHeader>Phase 2: FIND YOUR GOLDMINE (Weeks 5-8)</SectionHeader>
+    <SectionHeader>The Build: Find Your Goldmine (Weeks 5-8)</SectionHeader>
     <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">We identify exactly where AI will make you millions.</p>
     <WeekBlock week="Week 5" title="Automation Opportunity Analysis" icon={TrendingUp}>
       <ul className="list-disc list-inside text-text-secondary space-y-2">
@@ -283,7 +283,7 @@ const Phase2Tab = () => (
 
 const Phase3Tab = () => (
   <div className="space-y-4">
-    <SectionHeader>Phase 3: DEPLOY YOUR AI TEAM (Weeks 9-12)</SectionHeader>
+    <SectionHeader>Your Chief AI Officer: Deploy Your AI Team (Weeks 9-12)</SectionHeader>
     <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">
       Launch AI that speaks your language and delivers results from day one.
     </p>

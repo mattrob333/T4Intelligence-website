@@ -5,9 +5,9 @@ import { motion } from "framer-motion"
 const points = [
   "How work actually flows (not the org chart version)",
   "The shortcuts your best people use",
-  "Where knowledge lives (and where it's hiding)",
+  "Tribal knowledge that took years to build",
   "Which systems talk (and which just pretend to)",
-  "The unwritten rules that make everything work",
+  "The unwritten rules that make everything work"
 ]
 
 export default function WhatIsSection() {
@@ -21,7 +21,7 @@ export default function WhatIsSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Like <span className="text-primary-green">23andMe</span> for Your Business
+          Like a <span className="text-primary-green">Data Room</span> for the AI Era
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -40,8 +40,9 @@ export default function WhatIsSection() {
               ))}
             </ul>
             <div className="bg-card-bg p-6 rounded-lg border border-border-color">
-              <p className="text-lg font-bold text-text-primary">Result:</p>
-              <p className="text-text-secondary">AI that gets your business like a 20-year employee—on day one.</p>
+              <p className="text-lg font-bold text-text-primary">Your Foundation Becomes Your Competitive Moat</p>
+              <p className="text-text-secondary">Growing organizational knowledge for processes, systems, people, and AI that compounds in value over time.</p>
+              <p className="mt-4 font-medium text-text-primary">In 30 days your business has a 23-page playbook any AI can use.</p>
             </div>
           </motion.div>
           <motion.div

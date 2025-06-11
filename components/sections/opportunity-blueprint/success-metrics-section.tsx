@@ -1,11 +1,12 @@
 "use client"
 import { motion } from "framer-motion"
+import { CustomButton } from "@/components/ui/custom-button"
 
 const metrics = [
-  { value: "47", label: "Average Opportunities Found", subtext: "Per company" },
-  { value: "$2.5M", label: "Average Savings Identified", subtext: "Annual" },
-  { value: "37 days", label: "Fastest ROI", subtext: "Record implementation" },
-  { value: "100%", label: "Success Rate", subtext: "Finding $500K+ savings" },
+  { value: "47", label: "Bottlenecks Found", subtext: "Manufacturing" },
+  { value: "$2.5M", label: "Annual Savings", subtext: "Identified" },
+  { value: "37 days", label: "To First ROI", subtext: "Average" },
+  { value: "100%", label: "Success Rate", subtext: "Guaranteed" },
 ]
 
 export default function SuccessMetricsSection() {
@@ -19,7 +20,7 @@ export default function SuccessMetricsSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Blueprint <span className="text-primary-green">Success Stories</span>
+Blueprint <span className="text-primary-green">Success Stories</span>
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {metrics.map((metric, index) => (
@@ -45,9 +46,13 @@ export default function SuccessMetricsSection() {
           className="bg-card-bg p-8 rounded-lg border border-primary-green max-w-3xl mx-auto text-center"
         >
           <p className="text-body-large italic text-text-primary mb-4">
-            "The Blueprint paid for itself 100x over. We found $3M in savings we had no idea existed."
+            "The Blueprint paid for itself 23X over. We found $2M in savings we had no idea existed."
           </p>
-          <p className="font-semibold text-primary-green">Jennifer Wu, COO, Regional Health System</p>
+          <div className="mt-6">
+            <CustomButton variant="primary" size="default" className="w-full max-w-xs mx-auto">
+              Get Your 10% Efficiency Gains Guaranteed →
+            </CustomButton>
+          </div>
         </motion.div>
       </div>
     </section>

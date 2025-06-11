@@ -10,9 +10,9 @@ const footerLinks = {
     { name: "Contact", href: "/contact" },
   ],
   services: [
-    { name: "Business Intelligence Vault", href: "/business-dna" },
-    { name: "Profit Automation Studio", href: "/opportunity-blueprint" },
-    { name: "AI Executive-as-a-Service", href: "/fractional-cao" },
+    { name: "FOUNDATION", href: "/business-dna" },
+    { name: "THE BUILD", href: "/opportunity-blueprint" },
+    { name: "YOUR CHIEF AI OFFICER", href: "/fractional-cao" },
     { name: "Resources", href: "/resources" },
   ],
   connect: [

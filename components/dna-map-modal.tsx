@@ -134,7 +134,7 @@ This format enables AI to:
                       ol: ({ node, ...props }) => <ol className="list-decimal ml-6 text-[#E0E0E0] my-2" {...props} />,
                       li: ({ node, ...props }) => <li className="mb-1 text-[#E0E0E0]" {...props} />,
                       p: ({ node, ...props }) => <p className="mb-2 text-[#E0E0E0]" {...props} />,
-                      code: ({ node, inline, className, children, ...props }) => {
+                      code: ({ node, inline, className, children, ...props }: any) => {
                         if (inline) {
                           return (
                             <code className="bg-[#2a2a2a] px-1 py-0.5 rounded text-[#E0E0E0] text-[85%]" {...props}>

@@ -48,7 +48,7 @@ export default function RoiCalculatorSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Calculate Your DNA Mapping <span className="text-primary-green">ROI</span>
+          Calculate Your <span className="text-primary-green">Foundation ROI</span>
         </motion.h2>
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <motion.form
@@ -59,90 +59,102 @@ export default function RoiCalculatorSection() {
             onSubmit={calculateRoi}
             className="bg-card-bg p-8 rounded-lg border border-border-color space-y-6"
           >
-            <div className="space-y-2">
-              <Label htmlFor="revenue">Your annual revenue ($)</Label>
-              <Input
-                id="revenue"
-                type="number"
-                placeholder="e.g., 50000000"
-                value={revenue}
-                onChange={(e) => setRevenue(e.target.value)}
-                required
-              />
+            <div className="space-y-8">
+              <div>
+                <Label htmlFor="revenue" className="text-text-primary">
+                  Your annual revenue ($)
+                </Label>
+                <Input
+                  id="revenue"
+                  type="number"
+                  value={revenue}
+                  onChange={(e) => setRevenue(e.target.value)}
+                  placeholder="1,000,000"
+                  className="mt-2"
+                />
+              </div>
+              <div>
+                <Label htmlFor="employees" className="text-text-primary">
+                  Number of employees (#)
+                </Label>
+                <Input
+                  id="employees"
+                  type="number"
+                  value={employees}
+                  onChange={(e) => setEmployees(e.target.value)}
+                  placeholder="10"
+                  className="mt-2"
+                />
+              </div>
+              <div>
+                <Label htmlFor="hours" className="text-text-primary">
+                  Hours spent on repetitive tasks weekly (#)
+                </Label>
+                <Input
+                  id="hours"
+                  type="number"
+                  value={hours}
+                  onChange={(e) => setHours(e.target.value)}
+                  placeholder="20"
+                  className="mt-2"
+                />
+              </div>
+              <div>
+                <Label htmlFor="cost" className="text-text-primary">
+                  Average employee hourly cost ($)
+                </Label>
+                <Input
+                  id="cost"
+                  type="number"
+                  value={cost}
+                  onChange={(e) => setCost(e.target.value)}
+                  placeholder="50"
+                  className="mt-2"
+                />
+              </div>
+              <CustomButton type="submit" variant="primary" size="default" className="w-full">
+                Show My Savings
+              </CustomButton>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="employees">Number of employees (#)</Label>
-              <Input
-                id="employees"
-                type="number"
-                placeholder="e.g., 250"
-                value={employees}
-                onChange={(e) => setEmployees(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="hours">Hours spent on repetitive tasks weekly (#)</Label>
-              <Input
-                id="hours"
-                type="number"
-                placeholder="e.g., 10"
-                value={hours}
-                onChange={(e) => setHours(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="cost">Average employee hourly cost ($)</Label>
-              <Input
-                id="cost"
-                type="number"
-                placeholder="e.g., 45"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                required
-              />
-            </div>
-            <CustomButton type="submit" variant="primary" size="default" className="w-full">
-              Show My Savings
-            </CustomButton>
           </motion.form>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="bg-card-bg p-8 rounded-lg border border-border-color space-y-6 h-full flex flex-col justify-center"
+            className="bg-card-bg p-8 rounded-lg border border-border-color h-full"
           >
+            <h3 className="text-xl font-bold text-text-primary mb-4">
+              Your Foundation ROI
+            </h3>
+            <p className="text-text-secondary mb-6">
+              Most businesses see 40%+ efficiency gains just from documenting their processes properly. The AI automation that follows typically delivers 5-10X returns.
+            </p>
             {results ? (
-              <>
-                <div>
-                  <p className="text-text-secondary">Potential Annual Savings</p>
-                  <p className="text-4xl font-bold text-primary-green">
-                    ${results.savings.toLocaleString("en-US", { maximumFractionDigits: 0 })}
-                  </p>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-text-secondary">Annual Savings:</span>
+                  <span className="text-2xl font-bold text-primary-green">
+                    ${results.savings.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                  </span>
                 </div>
-                <div>
-                  <p className="text-text-secondary">ROI on $15k Investment (example)</p>
-                  <p className="text-4xl font-bold text-primary-green">{results.roi.toFixed(0)}%</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-text-secondary">Efficiency Gain:</span>
+                  <span className="text-xl font-bold text-primary-green">
+                    {results.efficiency.toFixed(1)}%
+                  </span>
                 </div>
-                <div>
-                  <p className="text-text-secondary">Potential Efficiency Improvement</p>
-                  <p className="text-4xl font-bold text-primary-green">{results.efficiency.toFixed(0)}%</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-text-secondary">ROI (1st Year):</span>
+                  <span className="text-2xl font-bold text-primary-green">
+                    {results.roi.toFixed(0)}%
+                  </span>
                 </div>
-                <CustomButton
-                  variant="secondary"
-                  size="secondary"
-                  className="w-full"
-                  onClick={() => console.log("Get Detailed Analysis clicked")}
-                >
-                  Get Your Detailed Analysis →
-                </CustomButton>
-              </>
-            ) : (
-              <div className="text-center text-text-secondary">
-                <p>Fill out the form to see your potential savings.</p>
               </div>
+            ) : (
+              <p className="text-text-secondary">
+                Enter your business details to see your potential ROI
+              </p>
             )}
           </motion.div>
         </div>

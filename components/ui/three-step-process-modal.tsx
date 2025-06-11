@@ -12,7 +12,7 @@ interface ThreeStepProcessModalProps {
 
 const steps = [
   {
-    title: "MAP YOUR BUSINESS DNA",
+    title: "FOUNDATION",
     timeframe: "Week 1-4",
     description: "We study your business like scholars preparing for a dissertation to understand every nuance of your operations.",
     icon: (
@@ -23,7 +23,7 @@ const steps = [
     color: "from-primary-green/10 to-primary-green/5"
   },
   {
-    title: "FIND YOUR GOLDMINE",
+    title: "THE BUILD",
     timeframe: "Week 5-8",
     description: "We identify exactly where AI will make the most impact in your business and calculate the potential ROI.",
     icon: (
@@ -34,7 +34,7 @@ const steps = [
     color: "from-yellow-500/10 to-yellow-500/5"
   },
   {
-    title: "DEPLOY YOUR AI TEAM",
+    title: "YOUR CHIEF AI OFFICER",
     timeframe: "Week 9-12",
     description: "We implement AI solutions that work seamlessly with your team, delivering measurable results from day one.",
     icon: (
