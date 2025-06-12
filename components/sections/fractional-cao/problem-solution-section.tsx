@@ -30,7 +30,7 @@ export default function ProblemSolutionSection() {
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
           You Need AI Leadership. <br className="md:hidden" />
-          <span className="text-primary-green">You Can't Afford It.</span>
+          <span className="text-primary-green">We Made It Accessible.</span>
         </motion.h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <motion.div
