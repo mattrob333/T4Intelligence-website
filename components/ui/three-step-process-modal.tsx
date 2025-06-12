@@ -1,5 +1,6 @@
 "use client"
 
+import React, { MouseEvent } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Target, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -86,7 +87,7 @@ export function ThreeStepProcessModal({ isOpen, onClose }: ThreeStepProcessModal
           exit={{ scale: 0.95, opacity: 0, y: 20 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="bg-secondary-black border border-border-color rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/10"
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e: MouseEvent) => e.stopPropagation()}
         >
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-border-color bg-[#1A1A1A]">
