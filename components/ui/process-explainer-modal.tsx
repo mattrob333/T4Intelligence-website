@@ -1,539 +1,444 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import {
-  X,
-  Dna,
-  Target,
-  Bot,
-  Clipboard,
-  Search,
-  BrainCircuit,
-  ShieldCheck,
-  TrendingUp,
-  Users,
-  FileText,
-  CalendarClock,
-  BarChart3,
-  CheckCircle,
-  Phone,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
-import { CustomButton } from "@/components/ui/custom-button"
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Phone, ArrowRight, CheckCircle, Layers, GitBranch, Database, BrainCircuit, Code2, ShieldCheck, Target, Lightbulb, Cog, BookOpen } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ProcessExplainerModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-const tabs = [
-  { id: "overview", label: "Overview" },
-  { id: "phase1", label: "Foundation" },
-  { id: "phase2", label: "The Build" },
-  { id: "phase3", label: "Your Chief AI Officer" },
-  { id: "results", label: "Results & Guarantee" },
-]
+interface TabButtonProps {
+  label: string;
+  isActive: boolean;
+  onClick: () => void;
+}
 
-const SectionHeader = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="pl-5 text-2xl md:text-3xl font-bold text-white border-l-4 border-primary-green mb-4">{children}</h3>
-)
+const TabButton = ({ label, isActive, onClick }: TabButtonProps) => (
+  <button
+    onClick={onClick}
+    className={cn(
+      "px-6 py-4 text-sm sm:text-base font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none",
+      isActive
+        ? "border-primary-green text-primary-green"
+        : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
+    )}
+  >
+    {label}
+  </button>
+);
 
-const WeekBlock = ({
-  week,
-  title,
-  icon: Icon,
-  children,
-}: {
-  week: string
-  title: string
-  icon: React.ElementType
-  children: React.ReactNode
-}) => (
-  <div className="bg-[#151515] border border-border-color rounded-xl p-6 mb-5">
-    <div className="flex items-center mb-3">
-      <Icon className="h-6 w-6 text-primary-green mr-3" />
-      <h4 className="text-xl font-semibold text-primary-green">
-        {week}: {title}
-      </h4>
-    </div>
-    {children}
-  </div>
-)
+interface StepCardProps {
+  number: string;
+  title: string;
+  timeline: string;
+  description: string;
+  highlights: string[];
+  icon?: React.ElementType; // Optional icon for tech highlights
+}
 
-const WhatYouGet = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-[#1A1A1A] border-l-4 border-accent-gold rounded-r-lg p-4 my-4">
-    <p className="font-semibold text-white mb-2">What You Get:</p>
-    <div className="text-text-secondary text-sm space-y-1">{children}</div>
-  </div>
-)
-
-const RealExample = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-primary-green/5 border border-primary-green/20 rounded-lg p-4 my-4">
-    <p className="italic text-primary-green/80 text-sm">{children}</p>
-  </div>
-)
-
-const OverviewTab = () => (
-  <div className="space-y-8">
-    <SectionHeader>Our 3-Step Process to AI Transformation</SectionHeader>
-    <p className="text-body-large text-text-secondary">
-      From chaos to clarity in 12 weeks. We don't just implement AI - we transform your business operations with
-      measurable, bankable results.
-    </p>
-
-    <div className="grid grid-cols-1 gap-6 mt-8">
-      {/* Step 1 */}
-      <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <div className="flex items-start gap-4">
-          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
-            01
-          </div>
-          <div>
-            <h4 className="text-xl font-bold text-white mb-2">WE SCAN YOUR OPERATION</h4>
-            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 1-4</p>
-            <p className="text-text-secondary italic">
-              "Like an MRI for your business. We map every process, capture every 'that's how we've always done it,' and turn your tribal knowledge into AI fuel."
-            </p>
-          </div>
-        </div>
+const StepCard = ({ number, title, timeline, description, highlights, icon: HighlightIcon }: StepCardProps) => (
+  <div className="bg-gradient-to-br from-[#2a2a2a] to-[#1e1e1e] border border-[#333] rounded-xl p-6 sm:p-8 transition-all duration-300 hover:border-primary-green hover:shadow-lg hover:shadow-primary-green/10 hover:-translate-y-1">
+    <div className="flex items-center mb-5">
+      <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-green to-[#00cc6a] text-black text-xl sm:text-2xl font-extrabold rounded-lg mr-4">
+        {number}
       </div>
-
-      {/* Step 2 */}
-      <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <div className="flex items-start gap-4">
-          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
-            02
-          </div>
-          <div>
-            <h4 className="text-xl font-bold text-white mb-2">WE SHOW YOU THE MONEY</h4>
-            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 5-8</p>
-            <p className="text-text-secondary italic">
-              "We find where you're hemorrhaging cash. Example: 'Your team spends 2,400 hours/month on X. AI can do it in 40 hours. That's $312K/year saved.' With receipts."
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Step 3 */}
-      <div className="bg-[#151515] border border-border-color rounded-xl p-6">
-        <div className="flex items-start gap-4">
-          <div className="bg-primary-green/10 text-primary-green font-bold text-2xl rounded-lg w-12 h-12 flex items-center justify-center flex-shrink-0">
-            03
-          </div>
-          <div>
-            <h4 className="text-xl font-bold text-white mb-2">WE BUILD YOUR MONEY MACHINE</h4>
-            <p className="text-text-secondary mb-2 font-medium text-primary-green">Week 9-12</p>
-            <p className="text-text-secondary italic">
-              "Launch custom AI employees pre-loaded with your playbook. They start profitable on day one because they already know your business better than new hires ever could."
-            </p>
-          </div>
-        </div>
+      <div>
+        <h3 className="text-lg sm:text-xl font-bold text-white">{title}</h3>
+        <div className="text-xs sm:text-sm text-primary-green font-semibold mt-1">{timeline}</div>
       </div>
     </div>
+    <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-5">{description}</p>
+    <ul className="space-y-2">
+      {highlights.map((highlight, index) => (
+        <li key={index} className="flex items-start text-xs sm:text-sm text-gray-400">
+          {HighlightIcon ? (
+            <HighlightIcon className="w-4 h-4 mr-2 mt-0.5 text-primary-green flex-shrink-0" />
+          ) : (
+            <span className="text-primary-green mr-2 mt-0.5 flex-shrink-0">▶</span>
+          )}
+          {highlight}
+        </li>
+      ))}
+    </ul>
   </div>
-)
+);
 
-const Phase1Tab = () => (
-  <div className="space-y-4">
-    <SectionHeader>Foundation: Map Your Business DNA (Weeks 1-4)</SectionHeader>
-    <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">
-      We study your business like scholars preparing for a dissertation.
-    </p>
-    <WeekBlock week="Week 1" title="The Deep Dive Discovery" icon={Search}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">Strategic Assessment:</span> We study everything public about your
-          business before we even meet.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Stakeholder Interviews:</span> AI-guided conversations with your
-          key people (30 mins each).
-        </li>
-        <li>
-          <span className="font-semibold text-white">Shadow Key Processes:</span> We observe how work actually flows,
-          not the org chart version.
-        </li>
-        <li>
-          <span className="font-semibold text-white">System Audit:</span> Map every software, integration, and data
-          source.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p>Current state analysis with bottleneck identification.</p>
-        <p>Process flow documentation that captures "how things really work".</p>
-        <p>System integration map showing what talks to what (and what doesn't).</p>
-      </WhatYouGet>
-      <RealExample>
-        "We discovered a $150M manufacturer was losing $340K annually because their 'integrated' ERP and inventory
-        systems weren't actually talking to each other. Orders were being double-entered manually across 3 systems."
-      </RealExample>
-    </WeekBlock>
-    <WeekBlock week="Week 2" title="Tribal Knowledge Capture" icon={Users}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">Knowledge Extraction:</span> Document the unwritten rules that make
-          everything work.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Relationship Mapping:</span> Who knows what, who talks to whom,
-          where expertise really lives.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Risk Assessment:</span> Identify knowledge that walks out the door
-          when people retire.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p>A searchable tribal knowledge database.</p>
-        <p>A risk assessment for critical knowledge gaps.</p>
-      </WhatYouGet>
-    </WeekBlock>
-    <WeekBlock week="Week 3" title="Data & Systems Intelligence" icon={FileText}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">Data Flow Analysis:</span> Where data lives, how it moves, where it
-          gets stuck.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Integration Assessment:</span> What systems can connect, what needs
-          bridges.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Performance Baseline:</span> Current metrics for everything we plan
-          to improve.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p>A complete data architecture map.</p>
-        <p>An integration readiness assessment and baseline metrics dashboard.</p>
-      </WhatYouGet>
-    </WeekBlock>
-    <WeekBlock week="Week 4" title="Business DNA Map™ Construction" icon={BrainCircuit}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">AI Knowledge Building:</span> All insights compiled into your
-          Business DNA Map™.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Validation Sessions:</span> You review and confirm our
-          understanding.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Opportunity Ranking:</span> Prioritized list of automation
-          opportunities with ROI projections.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p className="font-bold">Your complete Business DNA Map™.</p>
-      </WhatYouGet>
-    </WeekBlock>
-  </div>
-)
 
-const Phase2Tab = () => (
-  <div className="space-y-4">
-    <SectionHeader>The Build: Find Your Goldmine (Weeks 5-8)</SectionHeader>
-    <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">We identify exactly where AI will make you millions.</p>
-    <WeekBlock week="Week 5" title="Automation Opportunity Analysis" icon={TrendingUp}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">ROI Modeling:</span> Calculate exact savings for each automation
-          opportunity.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Effort vs. Impact Matrix:</span> Quick wins vs. transformational
-          projects.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Business Case Development:</span> Financial justification for each
-          initiative.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p>Ranked list of opportunities with projected ROI.</p>
-        <p>Implementation effort estimates and risk assessments.</p>
-      </WhatYouGet>
-      <RealExample>
-        "For a $75M parts manufacturer, we identified 23 automation opportunities worth $3.2M annually. The top 5
-        initiatives alone would pay for the entire engagement in 7.2 months."
-      </RealExample>
-    </WeekBlock>
-    <WeekBlock week="Week 8" title="Implementation Blueprint Creation" icon={Clipboard}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">Project Roadmap:</span> 90-day implementation timeline with
-          milestones.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Business Case Finalization:</span> Complete ROI projections and
-          risk mitigation.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Quick Wins Identification:</span> 30-day wins to build momentum.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p className="font-bold">Your AI Opportunity Blueprint with guaranteed ROI projections.</p>
-      </WhatYouGet>
-    </WeekBlock>
-  </div>
-)
-
-const Phase3Tab = () => (
-  <div className="space-y-4">
-    <SectionHeader>Your Chief AI Officer: Deploy Your AI Team (Weeks 9-12)</SectionHeader>
-    <p className="text-text-secondary text-lg -mt-3 mb-6 pl-6">
-      Launch AI that speaks your language and delivers results from day one.
-    </p>
-    <WeekBlock week="Week 9" title="AI System Configuration" icon={Bot}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">System Integration:</span> Connect AI to your existing tools and
-          workflows.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Quick Win Implementation:</span> Deploy first automation projects.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Dashboard Setup:</span> Real-time monitoring of AI performance and
-          ROI.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p>Live AI advisory team trained on your business.</p>
-        <p>First automation projects operational.</p>
-      </WhatYouGet>
-    </WeekBlock>
-    <WeekBlock week="Week 12" title="Transition to Ongoing Success" icon={CheckCircle}>
-      <ul className="list-disc list-inside text-text-secondary space-y-2">
-        <li>
-          <span className="font-semibold text-white">Success Validation:</span> Confirm achievement of projected
-          outcomes.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Handoff to Internal Team:</span> Full ownership transfer with
-          ongoing support plan.
-        </li>
-        <li>
-          <span className="font-semibold text-white">Strategic Review Schedule:</span> Quarterly assessments and
-          expansion planning.
-        </li>
-      </ul>
-      <WhatYouGet>
-        <p className="font-bold">A fully operational AI team + transition to an ongoing partnership.</p>
-      </WhatYouGet>
-    </WeekBlock>
-  </div>
-)
-
-const ResultsTab = () => (
-  <div className="space-y-8">
-    <SectionHeader>Results & Guarantee</SectionHeader>
-    <div className="relative bg-gradient-to-br from-primary-green/10 to-secondary-black border-2 border-primary-green rounded-2xl p-8 text-center">
-      <div className="absolute top-4 right-4 bg-primary-green text-background text-xs font-bold px-3 py-1 rounded-full shadow-md">
-        GUARANTEED
-      </div>
-      <ShieldCheck className="h-12 w-12 text-primary-green mx-auto mb-4" />
-      <h4 className="text-2xl font-bold text-white mb-2">We're So Confident, We Guarantee Results</h4>
-      <p className="text-text-secondary max-w-2xl mx-auto">
-        If your AI implementation doesn't achieve the projected ROI within 12 months, we'll continue working at no
-        charge until it does.
+const ProcessTabContent = () => (
+  <div className="space-y-10">
+    <div className="text-center max-w-3xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+        Three Phases to <span className="text-primary-green">AI That Knows Your Business</span>
+      </h2>
+      <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+        We don't build generic AI and hope it works. We engineer a custom intelligence system that understands your industry, your processes, and your unique operational DNA before it ever touches your business.
       </p>
     </div>
-
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-      <div className="bg-[#151515] p-4 rounded-lg">
-        <p className="text-3xl font-bold text-primary-green">4.2</p>
-        <p className="text-sm text-text-secondary">Months to First ROI</p>
-      </div>
-      <div className="bg-[#151515] p-4 rounded-lg">
-        <p className="text-3xl font-bold text-primary-green">94%</p>
-        <p className="text-sm text-text-secondary">Exceed Projected Savings</p>
-      </div>
-      <div className="bg-[#151515] p-4 rounded-lg">
-        <p className="text-3xl font-bold text-primary-green">100%</p>
-        <p className="text-sm text-text-secondary">Pilot to Production Rate</p>
-      </div>
-      <div className="bg-[#151515] p-4 rounded-lg">
-        <p className="text-3xl font-bold text-primary-green">847%</p>
-        <p className="text-sm text-text-secondary">Average Year 1 ROI</p>
-      </div>
-    </div>
-
-    <h4 className="text-2xl font-bold text-white pt-4">Real Results from Real Clients</h4>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-[#1A1A1A] border border-border-color rounded-xl p-6 hover:border-primary-green hover:-translate-y-1 transition-all">
-        <p className="font-semibold text-primary-green mb-2">Manufacturing Client - $150M Revenue</p>
-        <p className="text-text-secondary">
-          <span className="text-red-400 font-medium">Challenge:</span> Manual processes consuming 2,300 hours/month.
-        </p>
-        <p className="text-text-secondary">
-          <span className="text-teal-400 font-medium">Solution:</span> 8 AI automation implementations.
-        </p>
-        <p className="text-text-secondary">
-          <span className="text-accent-gold font-medium">Result:</span> $2.8M annual savings, 67% process time
-          reduction.
-        </p>
-      </div>
-      <div className="bg-[#1A1A1A] border border-border-color rounded-xl p-6 hover:border-primary-green hover:-translate-y-1 transition-all">
-        <p className="font-semibold text-primary-green mb-2">Financial Services - $85M AUM</p>
-        <p className="text-text-secondary">
-          <span className="text-red-400 font-medium">Challenge:</span> Client onboarding taking 14 days average.
-        </p>
-        <p className="text-text-secondary">
-          <span className="text-teal-400 font-medium">Solution:</span> AI-powered document processing and workflow
-          automation.
-        </p>
-        <p className="text-text-secondary">
-          <span className="text-accent-gold font-medium">Result:</span> Onboarding reduced to 2.3 days, 34% client
-          satisfaction increase.
-        </p>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <StepCard
+        number="01"
+        title="DEEP INTELLIGENCE GATHERING"
+        timeline="Week 1-4"
+        description="We conduct comprehensive reconnaissance of your business ecosystem - not just surface-level analysis, but deep industry intelligence gathering that maps your competitive landscape, market dynamics, and operational context."
+        highlights={[
+          "Multi-source data aggregation across industry databases",
+          "Competitive intelligence and market trend analysis",
+          "Social sentiment and digital footprint mapping",
+          "Identification of relevant real-time data feeds",
+          "Business process archaeology and tribal knowledge extraction",
+        ]}
+      />
+      <StepCard
+        number="02"
+        title="AGENT ARCHITECTURE DESIGN"
+        timeline="Week 5-8"
+        description="We engineer four specialized AI agents with complex meta-prompts, each calibrated to your industry and equipped with the mental models needed to elevate your business to the next operational level."
+        highlights={[
+          "Custom agent personas with industry-specific expertise",
+          "Hierarchical intelligence from macro strategy to micro execution",
+          "Integration with team communications and workflows",
+          "Advanced prompt engineering with contextual awareness",
+          "Real-time collaborative intelligence extraction",
+        ]}
+      />
+      <StepCard
+        number="03"
+        title="CONTEXT GRAPH CONSTRUCTION"
+        timeline="Week 9-12"
+        description="We build your proprietary Context Graph™ - a dynamic knowledge repository that becomes an invaluable company asset, storing your processes, insights, and AI-ready prompts for continuous business intelligence."
+        highlights={[
+          "Proprietary knowledge graph construction",
+          "Automated bottleneck identification and resolution",
+          "Custom automation recommendations and implementation",
+          "Enterprise-grade AI prompt library development",
+          "Continuous learning and adaptation mechanisms",
+        ]}
+      />
     </div>
   </div>
-)
+);
 
-export default function ProcessExplainerModal({ isOpen, onClose }: ProcessExplainerModalProps) {
-  const [activeTab, setActiveTab] = useState(tabs[0].id)
-  const modalRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+const ArchitectureTabContent = () => (
+  <div className="space-y-10">
+    <div className="text-center max-w-3xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+        The <span className="text-primary-green">Context Graph™</span> Technical Foundation
+      </h2>
+      <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+        Built on enterprise-grade knowledge graph architecture, our Context Graph™ creates a dynamic, semantic understanding of your business that evolves with your operations.
+      </p>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <StepCard
+        number="KG"
+        title="Knowledge Graph Core"
+        timeline="Data Foundation"
+        description="Utilizes Neo4j for robust, scalable graph data storage, enabling complex relationship modeling and high-performance querying of your business DNA."
+        highlights={[
+          "Schema-flexible data modeling",
+          "ACID transactions for data integrity",
+          "Cypher query language for intuitive data traversal",
+          "High availability and fault tolerance",
+        ]}
+        icon={Database}
+      />
+      <StepCard
+        number="VE"
+        title="Vector Embeddings"
+        timeline="Semantic Understanding"
+        description="Leverages Sentence Transformers and FAISS for converting textual data into dense vector representations, enabling semantic search and similarity analysis."
+        highlights={[
+          "State-of-the-art embedding models",
+          "Efficient similarity search (ANN)",
+          "Scalable indexing for large datasets",
+          "Contextual understanding of unstructured data",
+        ]}
+        icon={GitBranch}
+      />
+      <StepCard
+        number="API"
+        title="API & Integration Layer"
+        timeline="Seamless Connectivity"
+        description="Built with FastAPI (Python) for high-performance, asynchronous API endpoints, ensuring smooth integration with your existing systems and workflows."
+        highlights={[
+          "RESTful and GraphQL API options",
+          "Automatic data validation and serialization",
+          "OAuth2 and JWT for secure authentication",
+          "Interactive API documentation (Swagger/OpenAPI)",
+        ]}
+        icon={Code2}
+      />
+      <StepCard
+        number="LLM"
+        title="LLM Orchestration"
+        timeline="Intelligent Processing"
+        description="Integrates with LangChain and major LLM providers (OpenAI, Anthropic) for sophisticated prompt engineering, agentic workflows, and content generation."
+        highlights={[
+          "Modular chain construction",
+          "Memory management for contextual conversations",
+          "Access to diverse foundation models",
+          "Tool usage and function calling capabilities",
+        ]}
+        icon={BrainCircuit}
+      />
+      <StepCard
+        number="CI/CD"
+        title="Deployment & MLOps"
+        timeline="Reliable Operations"
+        description="Employs Docker for containerization, Kubernetes for orchestration, and GitHub Actions for CI/CD, ensuring robust deployment and operational excellence."
+        highlights={[
+          "Reproducible build environments",
+          "Automated testing and deployment pipelines",
+          "Scalable infrastructure management",
+          "Monitoring and logging with Prometheus & Grafana",
+        ]}
+        icon={Layers}
+      />
+       <StepCard
+        number="SEC"
+        title="Security & Compliance"
+        timeline="Data Protection"
+        description="Implements end-to-end encryption, role-based access control (RBAC), and regular security audits to protect your sensitive data and ensure compliance."
+        highlights={[
+          "Data encryption at rest and in transit",
+          "Principle of least privilege access",
+          "Compliance with GDPR, SOC 2 (as applicable)",
+          "Vulnerability scanning and penetration testing",
+        ]}
+        icon={ShieldCheck}
+      />
+    </div>
+  </div>
+);
+
+const AgentsTabContent = () => (
+  <div className="space-y-10">
+    <div className="text-center max-w-3xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+        Meet Your <span className="text-primary-green">Tier 4 AI Agent Team</span>
+      </h2>
+      <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+        Our specialized AI agents are engineered with distinct cognitive models and industry expertise, forming a virtual executive team to drive strategic transformation and operational excellence.
+      </p>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      <StepCard
+        number="🎯"
+        title="ATLAS"
+        timeline="The Visionary Architect"
+        description="Strategic intelligence with market analysis and trend forecasting."
+        highlights={[
+          "SWOT/PESTEL analysis automation",
+          "Scenario planning and risk assessment",
+          "New market entry evaluation",
+          "Innovation and R&D prioritization",
+        ]}
+        icon={Target}
+      />
+      <StepCard
+        number="🧭"
+        title="NAVIGATOR"
+        timeline="The Process Optimizer"
+        description="Operational planning with gap analysis and resource optimization."
+        highlights={[
+          "Business process modeling (BPMN)",
+          "Root cause analysis of inefficiencies",
+          "Workflow automation design (RPA)",
+          "Supply chain optimization",
+        ]}
+        icon={Cog}
+      />
+      <StepCard
+        number="🎼"
+        title="MAESTRO"
+        timeline="The Corporate Brain"
+        description="Integration orchestration with workflow automation."
+        highlights={[
+          "Internal knowledge base management",
+          "Competitive intelligence monitoring",
+          "Employee skill gap analysis",
+          "Best practice dissemination",
+        ]}
+        icon={Lightbulb}
+      />
+      <StepCard
+        number="⚡"
+        title="CATALYST"
+        timeline="The Guardian of Standards"
+        description="Execution engine with task automation and ROI measurement."
+        highlights={[
+          "Regulatory change tracking",
+          "Automated compliance checks",
+          "Policy document management",
+          "Ethical AI framework enforcement",
+        ]}
+        icon={BookOpen}
+      />
+    </div>
+  </div>
+);
+
+
+const tabsConfig = [
+  { id: "process", label: "The Process", component: ProcessTabContent },
+  { id: "architecture", label: "Technical Architecture", component: ArchitectureTabContent },
+  { id: "agents", label: "Agent Intelligence", component: AgentsTabContent },
+];
+
+export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModalProps) => {
+  const [activeTab, setActiveTab] = useState(tabsConfig[0].id);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<string | number>("auto");
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose()
+      if (event.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
     }
-    document.addEventListener("keydown", handleEsc)
-    return () => document.removeEventListener("keydown", handleEsc)
-  }, [onClose])
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen, onClose]);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
+      // Calculate dynamic height for tab content
+      if (modalRef.current && headerRef.current && footerRef.current) {
+        const modalHeight = modalRef.current.clientHeight;
+        const headerHeight = headerRef.current.offsetHeight;
+        const footerHeight = footerRef.current.offsetHeight;
+        // Consider padding/margins if any on the modal-content container itself
+        const availableHeight = modalHeight - headerHeight - footerHeight - (2 * 1); // Assuming 1px for borders or minimal padding
+        setContentHeight(Math.max(200, availableHeight - 80)); // 80px for tab buttons and some breathing room
+      }
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     }
-  }, [isOpen])
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+  
+  // Recalculate on window resize
+  useEffect(() => {
+    const calculateHeight = () => {
+      if (isOpen && modalRef.current && headerRef.current && footerRef.current) {
+        const modalHeight = modalRef.current.clientHeight;
+        const headerHeight = headerRef.current.offsetHeight;
+        const footerHeight = footerRef.current.offsetHeight;
+        const availableHeight = modalHeight - headerHeight - footerHeight - 2; 
+        setContentHeight(Math.max(200, availableHeight - 80));
+      }
+    };
+    window.addEventListener('resize', calculateHeight);
+    return () => window.removeEventListener('resize', calculateHeight);
+  }, [isOpen]);
 
-  const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId)
-    if (contentRef.current) {
-      contentRef.current.scrollTop = 0
-    }
-  }
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case "overview":
-        return <OverviewTab />
-      case "phase1":
-        return <Phase1Tab />
-      case "phase2":
-        return <Phase2Tab />
-      case "phase3":
-        return <Phase3Tab />
-      case "results":
-        return <ResultsTab />
-      default:
-        return null
-    }
-  }
+  if (!isOpen) return null;
+
+  const ActiveTabContent = tabsConfig.find(tab => tab.id === activeTab)?.component || (() => null);
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          ref={modalRef}
+          initial={{ scale: 0.9, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 50 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
-          onClick={onClose}
+          className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] border border-[#333] rounded-2xl w-full max-w-4xl lg:max-w-6xl h-[95vh] sm:h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/20"
         >
-          <motion.div
-            ref={modalRef}
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-secondary-black border border-border-color rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/10"
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between p-5 md:p-6 border-b border-border-color flex-shrink-0 bg-[#1A1A1A]">
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold text-white">Our Proven 12-Week Process</h2>
-                <p className="text-sm text-text-secondary hidden md:block">
-                  How We Turn Business Chaos Into AI-Powered Clarity
-                </p>
-              </div>
-              <button
-                onClick={onClose}
-                className="text-text-secondary hover:text-white p-2 rounded-full hover:bg-[#2A2A2A] transition-colors"
-                aria-label="Close modal"
-              >
-                <X className="h-5 w-5" viewBox="0 0 24 24" />
-              </button>
+          {/* Header */}
+          <div ref={headerRef} className="flex items-start justify-between p-5 sm:p-6 border-b border-[#333]">
+            <div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1">
+                <span className="bg-gradient-to-r from-primary-green to-[#00cc6a] text-transparent bg-clip-text">
+                  Under the Hood
+                </span>
+              </h1>
+              <p className="text-sm sm:text-base text-gray-300">
+                How We Engineer AI That Actually Understands Your Business
+              </p>
             </div>
+            <button
+              onClick={onClose}
+              aria-label="Close modal"
+              className="p-2 rounded-lg text-gray-400 hover:bg-[#333] hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary-green"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-            {/* Tabs */}
-            <div className="flex-shrink-0 border-b border-border-color bg-[#151515] px-4 md:px-6 overflow-x-auto">
-              <nav className="flex space-x-1 md:space-x-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleTabClick(tab.id)}
-                    className="px-3 py-4 text-sm font-medium transition-colors whitespace-nowrap rounded-t-md"
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
+          {/* Tabs */}
+          <div className="border-b border-[#333] bg-[#1e1e1e]/50">
+            <nav className="flex space-x-1 px-2 sm:px-4 overflow-x-auto no-scrollbar">
+              {tabsConfig.map((tab) => (
+                <TabButton
+                  key={tab.id}
+                  label={tab.label}
+                  isActive={activeTab === tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                />
+              ))}
+            </nav>
+          </div>
 
-            {/* Content */}
-            <div ref={contentRef} className="p-6 md:p-8 overflow-y-auto flex-grow">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="flex space-x-1 overflow-x-auto pb-1 scrollbar-hide"
-                >
-                  {renderContent()}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Footer */}
-            <div className="flex-shrink-0 p-4 md:p-6 border-t border-border-color bg-[#151515] flex flex-col md:flex-row items-center justify-center gap-4">
-              <CustomButton
-                variant="primary"
-                size="default"
-                onClick={() => {
-                  onClose()
-                  window.location.href = "/book-call"
-                }}
+          {/* Tab Content */}
+          <div className="flex-grow p-5 sm:p-6 md:p-8 overflow-y-auto" style={{ height: contentHeight }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.25 }}
               >
-                <Target className="mr-2 h-5 w-5" />
-                Get Your Opportunity Assessment
-              </CustomButton>
-              <CustomButton
-                variant="secondary"
-                size="secondary"
-                onClick={() => {
-                  onClose()
-                  window.location.href = "/book-call"
-                }}
+                <ActiveTabContent />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          
+          {/* Footer CTA */}
+          <div ref={footerRef} className="p-5 sm:p-6 border-t border-[#333] bg-[#1e1e1e]/50">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
+              <a
+                href="/contact?service=ai-strategy-call"
+                className="w-full sm:w-auto flex items-center justify-center px-5 py-3 bg-gradient-to-r from-primary-green to-[#00cc6a] text-black font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
               >
-                <Phone className="mr-2 h-5 w-5" />
-                Schedule Strategic Consultation
-              </CustomButton>
+                <Phone size={18} className="mr-2" />
+                Book a Free AI Strategy Call
+              </a>
+              <a
+                href="/about/our-process"
+                className="w-full sm:w-auto flex items-center justify-center px-5 py-3 border-2 border-primary-green text-primary-green font-semibold rounded-lg hover:bg-primary-green hover:text-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
+              >
+                Learn More About Our Process
+                <ArrowRight size={18} className="ml-2" />
+              </a>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
-      )}
+      </div>
     </AnimatePresence>
-  )
-}
+  );
+};
+
+export default ProcessExplainerModal;
