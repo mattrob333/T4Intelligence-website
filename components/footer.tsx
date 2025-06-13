@@ -15,7 +15,7 @@ const footerLinks = {
   connect: [
     { name: "Book a Call", href: "/book-call", icon: Phone },
     { name: "LinkedIn", href: "https://www.linkedin.com/company/tier-4-intelligence/", icon: Linkedin, external: true },
-    { name: "success@tier4.ai", href: "mailto:success@tier4.ai", icon: Mail },
+    { name: "info@tier4intelligence.com", href: "mailto:info@tier4intelligence.com", icon: Mail },
   ],
 }
 
