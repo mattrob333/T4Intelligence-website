@@ -11,13 +11,11 @@ const footerLinks = {
     { name: "FOUNDATION", href: "/business-dna" },
     { name: "THE BUILD", href: "/opportunity-blueprint" },
     { name: "YOUR CHIEF AI OFFICER", href: "/fractional-cao" },
-    { name: "Resources", href: "/resources" },
   ],
   connect: [
     { name: "Book a Call", href: "/book-call", icon: Phone },
     { name: "LinkedIn", href: "https://www.linkedin.com/company/tier-4-intelligence/", icon: Linkedin, external: true },
     { name: "success@tier4.ai", href: "mailto:success@tier4.ai", icon: Mail },
-    { name: "1-800-TIER4AI", href: "tel:1-800-843-7424", icon: Phone },
   ],
 }
 
