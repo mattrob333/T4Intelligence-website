@@ -27,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/png" href="/images/Property%201=color.png" />
+      </head>
       <body className={cn("min-h-screen bg-background font-inter antialiased", inter.variable)}>
         {/* ThemeProvider might not be strictly necessary if only dark mode is used, 
           but good practice if theme toggling might be added later.
