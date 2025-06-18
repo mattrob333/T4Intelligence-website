@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef } from "react"
 import { X, Copy, Check, Target } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { CustomButton } from "@/components/ui/custom-button"
 import { cn } from "@/lib/utils"
 
@@ -163,27 +165,84 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
 
               {/* Code Block Container */}
               <div className="bg-black border border-[#2A2A2A] rounded-lg relative group">
-                <div className="p-6 font-mono text-sm text-[#E0E0E0] leading-relaxed overflow-x-auto">
+                <div className="p-6 text-sm text-[#E0E0E0] leading-relaxed overflow-x-auto">
                   <style jsx global>{`
-                    .blueprint-markdown-preview strong, .blueprint-markdown-preview b { color: var(--accent-gold); }
-                    .blueprint-markdown-preview ul, .blueprint-markdown-preview ol { color: #E0E0E0; margin-left: 1.5em; }
-                    .blueprint-markdown-preview li { margin-bottom: 0.25em; }
-                    .blueprint-markdown-preview p { margin-bottom: 0.5em; color: #B0B0B0; } /* Default p color */
-                    .blueprint-markdown-preview code { background-color: #2a2a2a; padding: 0.2em 0.4em; border-radius: 3px; font-size: 85%; color: #E0E0E0; }
-                    .blueprint-markdown-preview hr { border-color: #2A2A2A; margin-top: 1em; margin-bottom: 1em;}
-
-                    /* Specific text styling */
-                    .blueprint-markdown-preview .text-primary-green { color: var(--primary-green) !important; }
-                    .blueprint-markdown-preview .text-accent-gold { color: var(--accent-gold) !important; }
-                    .blueprint-markdown-preview .text-accent-red { color: #FF6B6B !important; } /* Red for costs/negative percentages */
-                    .blueprint-markdown-preview .text-text-secondary { color: #B0B0B0 !important; } /* For general percentages or less emphasized text */
+                    .blueprint-markdown {
+                      color: #E0E0E0;
+                      line-height: 1.6;
+                    }
+                    .blueprint-markdown h1, 
+                    .blueprint-markdown h2, 
+                    .blueprint-markdown h3, 
+                    .blueprint-markdown h4, 
+                    .blueprint-markdown h5, 
+                    .blueprint-markdown h6 {
+                      color: white;
+                      margin-top: 1.5em;
+                      margin-bottom: 0.5em;
+                      line-height: 1.2;
+                    }
+                    .blueprint-markdown h1 { font-size: 1.8em; }
+                    .blueprint-markdown h2 { font-size: 1.5em; }
+                    .blueprint-markdown h3 { font-size: 1.3em; }
+                    .blueprint-markdown p {
+                      margin-bottom: 1em;
+                      color: #B0B0B0;
+                    }
+                    .blueprint-markdown ul, 
+                    .blueprint-markdown ol {
+                      margin-left: 1.5em;
+                      margin-bottom: 1em;
+                    }
+                    .blueprint-markdown li {
+                      margin-bottom: 0.5em;
+                    }
+                    .blueprint-markdown strong, 
+                    .blueprint-markdown b {
+                      color: var(--accent-gold);
+                    }
+                    .blueprint-markdown hr {
+                      border: none;
+                      border-top: 1px solid #2A2A2A;
+                      margin: 2em 0;
+                    }
+                    .blueprint-markdown table {
+                      width: 100%;
+                      border-collapse: collapse;
+                      margin: 1.5em 0;
+                    }
+                    .blueprint-markdown th,
+                    .blueprint-markdown td {
+                      border: 1px solid #2A2A2A;
+                      padding: 0.5em 1em;
+                      text-align: left;
+                    }
+                    .blueprint-markdown th {
+                      background-color: #1A1A1A;
+                    }
+                    .blueprint-markdown code {
+                      background-color: #2A2A2A;
+                      padding: 0.2em 0.4em;
+                      border-radius: 3px;
+                      font-family: monospace;
+                      font-size: 0.9em;
+                    }
+                    .blueprint-markdown pre {
+                      background-color: #1A1A1A;
+                      padding: 1em;
+                      border-radius: 4px;
+                      overflow-x: auto;
+                    }
+                    .blueprint-markdown pre code {
+                      background: none;
+                      padding: 0;
+                    }
                   `}</style>
-                  <div 
-                    className="blueprint-markdown-preview" 
-                    dangerouslySetInnerHTML={{ 
-                      __html: processedContent 
-                    }} 
-                  />
+                  <div className="blueprint-markdown">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {markdownContent}
+                    </ReactMarkdown>
+                  </div>
                 </div>
                 <button
                   onClick={handleCopy}

@@ -74,7 +74,7 @@ export default function HeroSection() {
                 id="opportunity-blueprint-cta"
                 className="w-full justify-center py-3 text-base sm:text-lg"
               >
-                START BUILDING - $40K-$60K
+                START BUILDING
               </CustomButton>
               <p className="text-xs sm:text-sm text-text-secondary text-center px-2">
                 ✓ Working AI, Not PowerPoints ✓ Guaranteed ROI or We Keep Building
