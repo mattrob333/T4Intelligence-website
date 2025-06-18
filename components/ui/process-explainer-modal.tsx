@@ -296,6 +296,7 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
   const modalRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<string | number>("auto");
 
   useEffect(() => {
@@ -350,6 +351,12 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
     return () => window.removeEventListener('resize', calculateHeight);
   }, [isOpen]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0;
+    }
+  }, [activeTab]);
+
   if (!isOpen) return null;
 
   const ActiveTabContent = tabsConfig.find(tab => tab.id === activeTab)?.component || (() => null);
@@ -401,7 +408,7 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
           </div>
 
           {/* Tab Content */}
-          <div className="flex-grow p-5 sm:p-6 md:p-8 overflow-y-auto" style={{ height: contentHeight }}>
+          <div ref={contentRef} className="flex-grow p-5 sm:p-6 md:p-8 overflow-y-auto" style={{ height: contentHeight }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}

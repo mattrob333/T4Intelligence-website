@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function BookCallPage() {
   return (
-    <div className="bg-black text-text-primary py-12 md:py-20">
+    <div className="bg-black text-text-primary pt-24 md:pt-section-padding pb-12 md:pb-20">
       {" "}
-      {/* Reduced top/bottom padding slightly */}
+      {/* Added mobile top padding to offset fixed header */}
       <div className="container mx-auto px-4 md:px-6 max-w-3xl">
         {" "}
         {/* Slightly reduced max-width for better form readability */}
