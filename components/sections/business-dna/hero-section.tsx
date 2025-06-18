@@ -4,6 +4,7 @@ import { CustomButton } from "@/components/ui/custom-button"
 import { PlayCircle, CheckCircle, FileText } from "lucide-react"
 import { motion } from "framer-motion"
 import DnaMapModal from "@/components/dna-map-modal"
+import Tier4AgentFileTree from "@/components/tier4-agent-file-tree"
 
 const trustElements = ["30-Day Build", "100% Success Rate", "47% Avg. Process Improvement"]
 
@@ -31,12 +32,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="max-w-3xl mx-auto mb-10 aspect-video bg-card-bg border border-border-color rounded-lg flex items-center justify-center"
+            className="max-w-4xl mx-auto mb-10"
           >
-            <div className="text-center p-8">
-              <PlayCircle className="h-16 w-16 mx-auto text-primary-green mb-4" />
-              <p className="text-xl font-medium text-text-primary">5-Minute Demo: How We Build Your AI Foundation</p>
-            </div>
+            <Tier4AgentFileTree />
           </motion.div>
 
           <motion.div 
