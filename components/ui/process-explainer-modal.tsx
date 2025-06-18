@@ -20,7 +20,7 @@ const TabButton = ({ label, isActive, onClick }: TabButtonProps) => (
   <button
     onClick={onClick}
     className={cn(
-      "px-6 py-4 text-sm sm:text-base font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none",
+      "px-2 sm:px-4 md:px-6 py-3 sm:py-4 text-xs sm:text-sm md:text-base font-medium border-b-2 transition-colors duration-200 ease-in-out focus:outline-none whitespace-nowrap flex-1 sm:flex-none",
       isActive
         ? "border-primary-green text-primary-green"
         : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
@@ -286,9 +286,9 @@ const AgentsTabContent = () => (
 );
 
 const tabsConfig = [
-  { id: "process", label: "Building Your Foundation", component: ProcessTabContent },
+  { id: "process", label: "The Process", component: ProcessTabContent },
   { id: "architecture", label: "Technical Architecture", component: ArchitectureTabContent },
-  { id: "agents", label: "Your AI Executives", component: AgentsTabContent },
+  { id: "agents", label: "Agent Intelligence", component: AgentsTabContent },
 ];
 
 export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModalProps) => {
@@ -356,14 +356,14 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-1 sm:p-4">
         <motion.div
           ref={modalRef}
           initial={{ scale: 0.9, opacity: 0, y: 50 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 50 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] border border-[#333] rounded-2xl w-full max-w-4xl lg:max-w-6xl h-[95vh] sm:h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/20"
+          className="bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] border border-[#333] rounded-lg sm:rounded-2xl w-full max-w-4xl lg:max-w-6xl h-[98vh] sm:h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-primary-green/20"
         >
           {/* Header */}
           <div ref={headerRef} className="flex items-start justify-between p-5 sm:p-6 border-b border-[#333]">
@@ -388,7 +388,7 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
 
           {/* Tabs */}
           <div className="border-b border-[#333] bg-[#1e1e1e]/50">
-            <nav className="flex space-x-1 px-2 sm:px-4 overflow-x-auto no-scrollbar">
+            <nav className="flex px-2 sm:px-4">
               {tabsConfig.map((tab) => (
                 <TabButton
                   key={tab.id}

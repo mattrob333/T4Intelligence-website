@@ -234,7 +234,7 @@ export default function HeroSection() {
   }, [handleResize, handleMouseMove, animateDots]) // createDots is stable, no need to list if not changing
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-section-padding-mobile md:py-section-padding overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center justify-center py-section-padding-mobile md:py-section-padding overflow-hidden bg-background pt-24 md:pt-section-padding">
       <canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full pointer-events-none" />
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <motion.div
