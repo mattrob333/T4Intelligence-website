@@ -98,27 +98,6 @@ export default function PricingComparisonSection() {
             </div>
           </motion.div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-8 bg-card-bg border border-border-color rounded-lg p-6 max-w-3xl mx-auto"
-          >
-            <div className="flex items-start">
-              <div className="bg-primary-green/10 p-2 rounded-full mr-4">
-                <span className="text-primary-green font-bold">✓</span>
-              </div>
-              <div>
-                <p className="font-bold text-text-primary mb-2">SMART CLIENT TIP:</p>
-                <p className="text-text-secondary">
-                  "Most clients fund their entire AI transformation from the savings we identify in Week 1. The Foundation™ literally pays for The Build."
-                </p>
-                <CustomButton variant="secondary" size="default" className="mt-4" onClick={() => (window.location.href = "/book-call")}>
-                  START WITH FOUNDATION DISCOVERY →
-                </CustomButton>
-              </div>
-            </div>
-          </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

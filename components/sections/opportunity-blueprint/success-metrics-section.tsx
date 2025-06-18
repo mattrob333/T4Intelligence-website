@@ -20,7 +20,7 @@ export default function SuccessMetricsSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-Blueprint <span className="text-primary-green">Success Stories</span>
+Foundation <span className="text-primary-green">Success Stories</span>
         </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {metrics.map((metric, index) => (
@@ -46,7 +46,7 @@ Blueprint <span className="text-primary-green">Success Stories</span>
           className="bg-card-bg p-8 rounded-lg border border-primary-green max-w-3xl mx-auto text-center"
         >
           <p className="text-body-large italic text-text-primary mb-4">
-            "The Blueprint paid for itself 23X over. We found $2M in savings we had no idea existed."
+            "The Foundation paid for itself 23X over. We found $2M in savings we had no idea existed."
           </p>
           <div className="mt-6">
             <CustomButton variant="primary" size="default" className="w-full max-w-xs mx-auto">
