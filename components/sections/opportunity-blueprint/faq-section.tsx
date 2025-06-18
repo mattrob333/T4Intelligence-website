@@ -113,14 +113,6 @@ export default function FAQSection() {
           <p className="text-text-secondary mb-6">
             Still have questions? Let's talk about your AI executives.
           </p>
-          <CustomButton 
-            variant="primary" 
-            size="default"
-            onClick={() => console.log("Meet Your AI Executives")}
-            className="mx-auto"
-          >
-            Meet Your AI Executives
-          </CustomButton>
         </motion.div>
       </div>
     </section>

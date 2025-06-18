@@ -131,6 +131,14 @@ export default function Navigation() {
             className="md:hidden absolute top-[80px] left-0 right-0 bg-black/90 backdrop-blur-md shadow-lg"
           >
             <nav className="flex flex-col items-center py-4 space-y-4">
+              {/* Home button for mobile */}
+              <Link
+                href="/"
+                className="text-text-secondary hover:text-text-primary transition-colors py-2"
+                onClick={toggleMenu}
+              >
+                Home
+              </Link>
               {navItems.map((item) =>
                 item.dropdown ? (
                   <div key={item.name} className="w-full text-center">
