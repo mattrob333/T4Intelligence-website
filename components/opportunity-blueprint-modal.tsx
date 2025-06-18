@@ -99,6 +99,20 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
   // Process the markdown content before passing it to ReactMarkdown
   const processedContent = processMarkdown(markdownContent);
 
+  // Create a safe markdown renderer to handle React 19 compatibility
+  const MarkdownRenderer = ({ content }: { content: string }) => {
+    try {
+      return (
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {content}
+        </ReactMarkdown>
+      );
+    } catch (error) {
+      console.error('Markdown rendering error:', error);
+      return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -107,7 +121,7 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 md:p-0"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-2 sm:p-4"
           onClick={onClose}
           aria-modal="true"
           role="dialog"
@@ -118,41 +132,42 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-[16px] w-full max-w-[900px] max-h-[90vh] flex flex-col overflow-hidden"
+            className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-[12px] sm:rounded-[16px] w-full max-w-[95vw] sm:max-w-[900px] max-h-[95vh] sm:max-h-[90vh] flex flex-col overflow-hidden"
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 md:p-8 border-b border-[#2A2A2A] flex-shrink-0">
-              <div>
-                <h2 className="text-xl md:text-[28px] font-bold text-white">Real Client AI Opportunity Blueprint</h2>
-                <p className="text-sm md:text-base text-[#B0B0B0]">Confidential - Names Changed for Privacy</p>
+            <div className="flex items-center justify-between p-4 sm:p-6 md:p-8 border-b border-[#2A2A2A] flex-shrink-0">
+              <div className="flex-1 min-w-0">
+                <h2 className="text-lg sm:text-xl md:text-[28px] font-bold text-white truncate">Real Client Build Blueprint</h2>
+                <p className="text-xs sm:text-sm md:text-base text-[#B0B0B0]">Confidential - Names Changed for Privacy</p>
               </div>
               <button
                 onClick={onClose}
                 aria-label="Close modal"
-                className="text-[#B0B0B0] hover:text-white transition-colors"
+                className="text-[#B0B0B0] hover:text-white transition-colors ml-2 flex-shrink-0"
               >
-                <X size={24} />
+                <X size={20} className="sm:hidden" />
+                <X size={24} className="hidden sm:block" />
               </button>
             </div>
 
             {/* Modal Content Area (Scrollable) */}
-            <div className="p-6 md:p-8 overflow-y-auto flex-grow">
+            <div className="p-4 sm:p-6 md:p-8 overflow-y-auto flex-grow">
               {/* Explanation Section */}
-              <div className="bg-[#1A1A1A] border border-primary-green rounded-[12px] p-6 mb-6">
+              <div className="bg-[#1A1A1A] border border-primary-green rounded-[8px] sm:rounded-[12px] p-4 sm:p-6 mb-4 sm:mb-6">
                 <div className="flex items-start">
-                  <Target size={28} className="text-primary-green mr-4 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-bold text-white mb-2 text-lg">🎯 Real Results, Real Client</h3>
-                    <div className="text-[#B0B0B0] text-sm leading-relaxed space-y-2">
+                  <Target size={24} className="text-primary-green mr-3 sm:mr-4 flex-shrink-0 mt-1 sm:w-7 sm:h-7" />
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-white mb-2 text-base sm:text-lg">🎯 Real Results, Real Client</h3>
+                    <div className="text-[#B0B0B0] text-xs sm:text-sm leading-relaxed space-y-2">
                       <p>
-                        This is an actual AI Opportunity Blueprint delivered to a $75M manufacturing client in 2024.
+                        This is an actual Build Blueprint delivered to a $75M manufacturing client in 2024.
                         We've anonymized company details but preserved all metrics and recommendations. This blueprint
                         was generated in 10 days and led to $3.2M in identified savings within 90 days of
                         implementation.
                       </p>
                       <p>What you're seeing:</p>
-                      <ul className="list-disc list-inside pl-4">
+                      <ul className="list-disc list-inside pl-2 sm:pl-4 space-y-1">
                         <li>Exact format delivered to C-suite executives</li>
                         <li>Real ROI calculations and timelines</li>
                         <li>Actual automation opportunities identified</li>
@@ -165,7 +180,7 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
 
               {/* Code Block Container */}
               <div className="bg-black border border-[#2A2A2A] rounded-lg relative group">
-                <div className="p-6 text-sm text-[#E0E0E0] leading-relaxed overflow-x-auto">
+                <div className="p-3 sm:p-6 text-xs sm:text-sm text-[#E0E0E0] leading-relaxed overflow-x-auto">
                   <style jsx global>{`
                     .blueprint-markdown {
                       color: #E0E0E0;
@@ -239,26 +254,24 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
                     }
                   `}</style>
                   <div className="blueprint-markdown">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {markdownContent}
-                    </ReactMarkdown>
+                    <MarkdownRenderer content={processedContent} />
                   </div>
                 </div>
                 <button
                   onClick={handleCopy}
                   className={cn(
-                    "absolute top-3 right-3 bg-[#1A1A1A] border border-primary-green rounded-md px-3 py-2 text-xs md:text-sm font-semibold transition-all duration-200 ease-in-out",
+                    "absolute top-2 right-2 sm:top-3 sm:right-3 bg-[#1A1A1A] border border-primary-green rounded-md px-2 py-1 sm:px-3 sm:py-2 text-xs font-semibold transition-all duration-200 ease-in-out",
                     "text-primary-green hover:bg-primary-green hover:text-black focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-black",
-                    "opacity-0 group-hover:opacity-100 focus:opacity-100",
+                    "opacity-0 group-hover:opacity-100 focus:opacity-100 sm:opacity-0",
                   )}
                 >
                   {isCopied ? (
                     <>
-                      <Check size={16} className="inline mr-1" /> Copied!
+                      <Check size={14} className="inline mr-1 sm:w-4 sm:h-4" /> Copied!
                     </>
                   ) : (
                     <>
-                      <Copy size={16} className="inline mr-1" /> Copy Blueprint
+                      <Copy size={14} className="inline mr-1 sm:w-4 sm:h-4" /> Copy
                     </>
                   )}
                 </button>
@@ -266,11 +279,16 @@ const OpportunityBlueprintModal: React.FC<BlueprintModalProps> = ({ isOpen, onCl
             </div>
 
             {/* Modal Footer */}
-            <div className="p-6 md:p-8 border-t border-[#2A2A2A] flex-shrink-0 flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-[#B0B0B0] text-xs md:text-sm text-center md:text-left">
+            <div className="p-4 sm:p-6 md:p-8 border-t border-[#2A2A2A] flex-shrink-0 flex flex-col items-center justify-between gap-3 sm:gap-4 sm:flex-row">
+              <p className="text-[#B0B0B0] text-xs sm:text-sm text-center sm:text-left order-2 sm:order-1">
                 Results vary. Your blueprint will identify opportunities specific to your business.
               </p>
-              <CustomButton variant="primary" size="default" onClick={handleGetBlueprintClick}>
+              <CustomButton 
+                variant="primary" 
+                size="default" 
+                onClick={handleGetBlueprintClick}
+                className="w-full sm:w-auto order-1 sm:order-2"
+              >
                 Get Your Custom Blueprint
               </CustomButton>
             </div>

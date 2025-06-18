@@ -87,7 +87,7 @@ export default function HeroSection() {
                 onClick={openModal}
                 className="w-full justify-center py-3 text-base sm:text-lg"
               >
-                <FileText className="mr-2 h-5 w-5" /> SEE LIVE AUTOMATIONS
+                <FileText className="mr-2 h-5 w-5" /> Build Blueprint Example
               </CustomButton>
             </div>
           </motion.div>
@@ -99,7 +99,7 @@ export default function HeroSection() {
             className="inline-flex items-center justify-center bg-primary-green/10 text-primary-green font-semibold px-4 py-2 rounded-full"
           >
             <Award className="h-5 w-5 mr-2" />
-            100% of the Blueprint cost credits toward implementation
+            100% of the Foundation cost credits towards the Build Phase
           </motion.div>
         </div>
       </section>
