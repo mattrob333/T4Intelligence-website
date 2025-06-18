@@ -264,11 +264,11 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <CustomButton variant="primary" size="default" onClick={() => setIsModalOpen(true)}>
-            <Lightbulb className="mr-2 h-5 w-5" /> See How We Do It
+          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/business-dna")}>
+            <Lightbulb className="mr-2 h-5 w-5" /> See Your AI Foundation™
           </CustomButton>
           <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
-            Get Your AI Roadmap
+            Book Strategy Call
           </CustomButton>
         </motion.div>
 

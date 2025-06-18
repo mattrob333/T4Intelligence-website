@@ -51,7 +51,7 @@ export default function WhatIsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
-            className="relative h-96 bg-card-bg rounded-lg border border-border-color overflow-hidden"
+            className="relative h-96 bg-card-bg rounded-lg border border-border-color overflow-hidden hidden md:block"
           >
             <Image 
               src="/images/what-is-foundation.png"
