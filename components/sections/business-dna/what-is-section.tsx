@@ -43,7 +43,7 @@ export default function WhatIsSection() {
             <div className="bg-card-bg p-6 rounded-lg border border-border-color">
               <p className="text-lg font-bold text-text-primary">Your Foundation Becomes Your Competitive Moat</p>
               <p className="text-text-secondary">Growing organizational knowledge for processes, systems, people, and AI that compounds in value over time.</p>
-              <p className="mt-4 font-medium text-text-primary">In 30 days your business has a 23-page playbook any AI can use.</p>
+              <p className="mt-4 font-medium text-text-primary">In 30 days your business has a playbook any AI can use.</p>
             </div>
           </motion.div>
           <motion.div

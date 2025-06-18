@@ -2,6 +2,8 @@
 import { motion } from "framer-motion"
 import { CustomButton } from "@/components/ui/custom-button"
 import { Download } from "lucide-react"
+import { useState } from "react"
+import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 
 const deliverables = [
   "Complete Business Intelligence Files",
@@ -22,6 +24,8 @@ const subtexts = [
 ]
 
 export default function DeliverablesSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section className="py-section-padding-mobile md:py-section-padding">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,11 +60,15 @@ export default function DeliverablesSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <CustomButton variant="primary" size="default" onClick={() => console.log("Download clicked")}>
-            <Download className="mr-2 h-5 w-5" /> GET SAMPLE FOUNDATION FILES →
+          <CustomButton variant="primary" size="default" onClick={() => setIsModalOpen(true)}>
+            <Download className="mr-2 h-5 w-5" /> Learn More about the Foundation
           </CustomButton>
         </motion.div>
       </div>
+      <ProcessExplainerModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   )
 }

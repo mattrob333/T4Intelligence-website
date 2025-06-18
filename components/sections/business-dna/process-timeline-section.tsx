@@ -92,9 +92,9 @@ export default function ProcessTimelineSection() {
           <CustomButton
             variant="secondary"
             size="secondary"
-            onClick={() => console.log("See Process in Action clicked")}
+            onClick={() => (window.location.href = "/book-call")}
           >
-            SEE THE PROCESS IN ACTION →
+            Book a Strategy Call
           </CustomButton>
         </motion.div>
       </div>
