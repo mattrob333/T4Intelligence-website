@@ -155,8 +155,8 @@ export default function Tier4AgentFileTree() {
   }, [selectedAgent])
 
   return (
-    <div className="bg-[#111113] border border-neutral-800 rounded-lg text-neutral-300 flex h-[430px] max-w-4xl mx-auto">
-      {/* Left Sidebar */}
+    <div className="bg-[#111113] border border-neutral-800 rounded-lg text-neutral-300 flex flex-col md:flex-row h-[350px] md:h-[430px] max-w-4xl mx-auto">
+      {/* Left Sidebar - Desktop Only */}
       <div className="w-[280px] flex-shrink-0 bg-[#1e1e1e] border-r border-neutral-800 md:flex flex-col hidden overflow-y-auto">
         <div className="p-2 space-y-1">
           {AGENTS.map((agent) => {
@@ -183,8 +183,8 @@ export default function Tier4AgentFileTree() {
       </div>
 
       {/* Mobile Tab Selector */}
-      <div className="md:hidden w-full border-b border-neutral-800 bg-[#1e1e1e] p-2">
-        <div className="flex space-x-1 overflow-x-auto whitespace-nowrap">
+      <div className="md:hidden w-full border-b border-neutral-800 bg-[#1e1e1e] p-3 flex-shrink-0">
+        <div className="flex space-x-2 overflow-x-auto">
           {AGENTS.map((agent) => {
             const isActive = selectedAgent === agent.name
             return (
@@ -193,11 +193,11 @@ export default function Tier4AgentFileTree() {
                 onClick={() => setSelectedAgent(agent.name)}
                 aria-pressed={isActive}
                 className={cn(
-                  "flex-shrink-0 text-left p-2.5 rounded-md transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 font-sans",
-                  isActive ? "bg-[#2a2a2a] text-white" : "bg-neutral-700/50 text-neutral-300 hover:bg-neutral-700",
+                  "flex-shrink-0 text-center px-3 py-2 rounded-md transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 font-sans min-w-[70px]",
+                  isActive ? "bg-[#2a2a2a] text-white border border-green-500" : "bg-neutral-700/50 text-neutral-300 hover:bg-neutral-700",
                 )}
               >
-                <p className="font-semibold text-xs">{agent.name}</p>
+                <p className="font-semibold text-sm whitespace-nowrap">{agent.name}</p>
               </button>
             )
           })}
@@ -205,14 +205,14 @@ export default function Tier4AgentFileTree() {
       </div>
 
       {/* Right Content Area */}
-      <div className="flex-1 bg-neutral-900 rounded-r-lg flex flex-col overflow-hidden">
-        <div className="p-3 font-mono text-xs text-neutral-500 border-b border-neutral-800 flex-shrink-0">
+      <div className="flex-1 bg-neutral-900 rounded-b-lg md:rounded-r-lg md:rounded-bl-none flex flex-col overflow-hidden">
+        <div className="p-3 font-mono text-xs md:text-xs text-neutral-500 border-b border-neutral-800 flex-shrink-0">
           // {selectedAgent} file tree
         </div>
-        <div className="px-4 py-2 overflow-y-auto flex-1">
-          <div className="font-mono text-base leading-[1.6]">
+        <div className="px-3 md:px-4 py-2 overflow-y-auto flex-1">
+          <div className="font-mono text-sm md:text-base leading-[1.6]">
             {" "}
-            {/* 16px font, line-height 1.6 */}
+            {/* Smaller font on mobile, larger on desktop */}
             {processedTree.map((node) => (
               <div
                 key={node.id}
@@ -220,15 +220,16 @@ export default function Tier4AgentFileTree() {
                   "flex items-center group hover:bg-neutral-800/50 rounded-sm transition-colors duration-100 -ml-1 pl-1 -mr-1 pr-1", // Slight negative margin for hover full bleed
                 )}
               >
-                <span className="text-neutral-600 select-none whitespace-pre">
+                <span className="text-neutral-600 select-none whitespace-pre text-sm md:text-base">
                   {node.prefix.replace(/ /g, "\u00A0")}
                 </span>
-                {node.statusText === "[✓]" && <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mx-1" />}
-                {node.statusText === "[ ]" && <Circle className="w-4 h-4 text-neutral-600 flex-shrink-0 mx-1" />}
-                {node.isFolder && !node.statusText && <Folder className="w-4 h-4 text-purple-400 flex-shrink-0 mx-1" />}
+                {node.statusText === "[✓]" && <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-green-500 flex-shrink-0 mx-1" />}
+                {node.statusText === "[ ]" && <Circle className="w-3 h-3 md:w-4 md:h-4 text-neutral-600 flex-shrink-0 mx-1" />}
+                {node.isFolder && !node.statusText && <Folder className="w-3 h-3 md:w-4 md:h-4 text-purple-400 flex-shrink-0 mx-1" />}
 
                 <span
                   className={cn(
+                    "text-sm md:text-base",
                     { "text-purple-400": node.isFolder },
                     { "text-green-400": node.isCompleted === true },
                     { "text-neutral-500": node.isCompleted === false },
@@ -237,7 +238,7 @@ export default function Tier4AgentFileTree() {
                 >
                   {node.name}
                 </span>
-                {node.extension && <span className="text-neutral-600">{node.extension}</span>}
+                {node.extension && <span className="text-neutral-600 text-sm md:text-base">{node.extension}</span>}
               </div>
             ))}
           </div>
