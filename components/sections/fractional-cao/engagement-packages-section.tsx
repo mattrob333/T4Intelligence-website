@@ -84,6 +84,7 @@ export default function EngagementPackagesSection() {
                 variant={pkg.isMostPopular ? "primary" : "secondary"}
                 size="default"
                 className="w-full mt-auto"
+                onClick={() => (window.location.href = "/book-call")}
               >
                 Select {pkg.name}
               </CustomButton>

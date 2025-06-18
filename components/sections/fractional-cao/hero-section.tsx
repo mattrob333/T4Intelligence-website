@@ -76,10 +76,10 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
-          <CustomButton variant="primary" size="default">
+          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
             MEET YOUR AI EXECUTIVE
           </CustomButton>
-          <CustomButton variant="secondary" size="secondary">
+          <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
             EXPLORE ENGAGEMENT OPTIONS
           </CustomButton>
         </motion.div>

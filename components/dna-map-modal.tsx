@@ -167,12 +167,17 @@ const foundationSampleContent = `# FOUNDATION™ INTELLIGENCE BLUEPRINT - GLOBAL
 ## 5. EXPECTED OUTCOMES
 
 ### 90-Day Metrics
-| Metric | Baseline | Target | Method |
-|--------|----------|--------|---------|
-| Strategic Clarity | Ad-hoc | Weekly AI insights | ATLAS reports |
-| Process Efficiency | Unknown | +40% | NAVIGATOR optimization |
-| System Integration | 3/10 connected | 8/10 connected | MAESTRO orchestration |
-| Team Adoption | 0% | 85% | CATALYST programs |
+
+ 
+
+| Metric              | Baseline        | Target              | Method                  |
+|---------------------|-----------------|---------------------|-------------------------|
+| Strategic Clarity   | Ad-hoc          | Weekly AI insights  | ATLAS reports           |
+| Process Efficiency  | Unknown         | +40%                | NAVIGATOR optimization  |
+| System Integration  | 3/10 connected  | 8/10 connected      | MAESTRO orchestration   |
+| Team Adoption       | 0%              | 85%                 | CATALYST programs       |
+
+ 
 
 ### 12-Month Value Creation
 - **Cost Savings:** $1.2M (automation + efficiency)

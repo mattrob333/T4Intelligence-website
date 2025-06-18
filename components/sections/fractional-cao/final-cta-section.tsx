@@ -42,10 +42,10 @@ export default function FinalCtaSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
-          <CustomButton variant="primary" size="default">
+          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
             Secure Your CAO Now
           </CustomButton>
-          <CustomButton variant="secondary" size="secondary">
+          <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
             Discuss Your Needs
           </CustomButton>
         </motion.div>

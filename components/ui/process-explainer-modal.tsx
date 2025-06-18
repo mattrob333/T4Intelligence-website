@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Phone, ArrowRight, CheckCircle, Layers, GitBranch, Database, BrainCircuit, Code2, ShieldCheck, Target, Lightbulb, Cog, BookOpen } from "lucide-react";
+import { X, Phone, ArrowRight, CheckCircle, Layers, GitBranch, Database, BrainCircuit, Code2, ShieldCheck, Target, Lightbulb, Cog, BookOpen, TrendingUp, BarChart3, Cpu, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProcessExplainerModalProps {
@@ -36,7 +36,7 @@ interface StepCardProps {
   timeline: string;
   description: string;
   highlights: string[];
-  icon?: React.ElementType; // Optional icon for tech highlights
+  icon?: React.ElementType;
 }
 
 const StepCard = ({ number, title, timeline, description, highlights, icon: HighlightIcon }: StepCardProps) => (
@@ -66,55 +66,54 @@ const StepCard = ({ number, title, timeline, description, highlights, icon: High
   </div>
 );
 
-
 const ProcessTabContent = () => (
   <div className="space-y-10">
     <div className="text-center max-w-3xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-        Three Phases to <span className="text-primary-green">AI That Knows Your Business</span>
+        Building Your <span className="text-primary-green">Foundation™</span> in Three Phases
       </h2>
       <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-        We don't build generic AI and hope it works. We engineer a custom intelligence system that understands your industry, your processes, and your unique operational DNA before it ever touches your business.
+        We don't deploy generic AI. We build a Foundation™ - a living intelligence system powered by four specialized AI executives who understand your unique business context, processes, and strategic objectives.
       </p>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
       <StepCard
         number="01"
-        title="DEEP INTELLIGENCE GATHERING"
-        timeline="Week 1-4"
-        description="We conduct comprehensive reconnaissance of your business ecosystem - not just surface-level analysis, but deep industry intelligence gathering that maps your competitive landscape, market dynamics, and operational context."
+        title="PUBLIC INTELLIGENCE COLLECTION"
+        timeline="Pre-Engagement"
+        description="Before our first meeting, your AI executives begin studying your business. We gather public intelligence across multiple sources, building an initial knowledge base that demonstrates immediate value."
         highlights={[
-          "Multi-source data aggregation across industry databases",
-          "Competitive intelligence and market trend analysis",
-          "Social sentiment and digital footprint mapping",
-          "Identification of relevant real-time data feeds",
-          "Business process archaeology and tribal knowledge extraction",
+          "Company data from Crunchbase, LinkedIn, and web presence",
+          "Competitor analysis and market positioning research",
+          "Industry trends and regulatory landscape mapping",
+          "Technology stack analysis using BuiltWith and similar tools",
+          "Customer sentiment from reviews and social media",
         ]}
       />
       <StepCard
         number="02"
-        title="AGENT ARCHITECTURE DESIGN"
-        timeline="Week 5-8"
-        description="We engineer four specialized AI agents with complex meta-prompts, each calibrated to your industry and equipped with the mental models needed to elevate your business to the next operational level."
+        title="AI EXECUTIVE ACTIVATION"
+        timeline="Week 1-2"
+        description="Your four AI executives - ATLAS, NAVIGATOR, MAESTRO, and CATALYST - are trained on your business context. They generate targeted questions and identify the specific internal knowledge they need to maximize their effectiveness."
         highlights={[
-          "Custom agent personas with industry-specific expertise",
-          "Hierarchical intelligence from macro strategy to micro execution",
-          "Integration with team communications and workflows",
-          "Advanced prompt engineering with contextual awareness",
-          "Real-time collaborative intelligence extraction",
+          "Agent-specific knowledge repositories created",
+          "AI-generated discovery questions for key stakeholders",
+          "Initial strategic insights from public data analysis",
+          "Workflow integration points identified",
+          "Quick-win automation opportunities spotted",
         ]}
       />
       <StepCard
         number="03"
-        title="CONTEXT GRAPH CONSTRUCTION"
-        timeline="Week 9-12"
-        description="We build your proprietary Context Graph™ - a dynamic knowledge repository that becomes an invaluable company asset, storing your processes, insights, and AI-ready prompts for continuous business intelligence."
+        title="FOUNDATION™ CONSTRUCTION"
+        timeline="Week 3-4"
+        description="We combine public intelligence with your internal knowledge to build your complete Foundation™. This becomes your proprietary asset - a dynamic intelligence system that continuously learns and adapts to drive your business forward."
         highlights={[
-          "Proprietary knowledge graph construction",
-          "Automated bottleneck identification and resolution",
-          "Custom automation recommendations and implementation",
-          "Enterprise-grade AI prompt library development",
-          "Continuous learning and adaptation mechanisms",
+          "Internal process documentation captured",
+          "Tribal knowledge codified and preserved",
+          "Custom automation workflows deployed",
+          "Real-time intelligence feeds established",
+          "Continuous learning mechanisms activated",
         ]}
       />
     </div>
@@ -125,90 +124,91 @@ const ArchitectureTabContent = () => (
   <div className="space-y-10">
     <div className="text-center max-w-3xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-        The <span className="text-primary-green">Context Graph™</span> Technical Foundation
+        The <span className="text-primary-green">Foundation™</span> Technical Architecture
       </h2>
       <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-        Built on enterprise-grade knowledge graph architecture, our Context Graph™ creates a dynamic, semantic understanding of your business that evolves with your operations.
+        Your Foundation™ is built on a modular, Google Drive-based architecture that's simple to maintain yet powerful enough to support sophisticated AI operations. No complex infrastructure required.
       </p>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       <StepCard
-        number="KG"
-        title="Knowledge Graph Core"
-        timeline="Data Foundation"
-        description="Utilizes Neo4j for robust, scalable graph data storage, enabling complex relationship modeling and high-performance querying of your business DNA."
+        number="KB"
+        title="Knowledge Base Structure"
+        timeline="Core Repository"
+        description="Organized Google Drive folders mirror your four AI executives' domains, with markdown files for easy editing and version control through Drive's native history."
         highlights={[
-          "Schema-flexible data modeling",
-          "ACID transactions for data integrity",
-          "Cypher query language for intuitive data traversal",
-          "High availability and fault tolerance",
+          "shared_context/ for company-wide intelligence",
+          "ATLAS/ for strategic and market data",
+          "NAVIGATOR/ for operational metrics",
+          "MAESTRO/ for technical documentation",
+          "CATALYST/ for change management assets",
         ]}
         icon={Database}
       />
       <StepCard
-        number="VE"
-        title="Vector Embeddings"
-        timeline="Semantic Understanding"
-        description="Leverages Sentence Transformers and FAISS for converting textual data into dense vector representations, enabling semantic search and similarity analysis."
+        number="AI"
+        title="Agent Intelligence Layer"
+        timeline="AI Processing"
+        description="Each AI executive has specialized prompts and retrieval mechanisms, accessing their dedicated knowledge folders while sharing common context for holistic understanding."
         highlights={[
-          "State-of-the-art embedding models",
-          "Efficient similarity search (ANN)",
-          "Scalable indexing for large datasets",
-          "Contextual understanding of unstructured data",
-        ]}
-        icon={GitBranch}
-      />
-      <StepCard
-        number="API"
-        title="API & Integration Layer"
-        timeline="Seamless Connectivity"
-        description="Built with FastAPI (Python) for high-performance, asynchronous API endpoints, ensuring smooth integration with your existing systems and workflows."
-        highlights={[
-          "RESTful and GraphQL API options",
-          "Automatic data validation and serialization",
-          "OAuth2 and JWT for secure authentication",
-          "Interactive API documentation (Swagger/OpenAPI)",
-        ]}
-        icon={Code2}
-      />
-      <StepCard
-        number="LLM"
-        title="LLM Orchestration"
-        timeline="Intelligent Processing"
-        description="Integrates with LangChain and major LLM providers (OpenAI, Anthropic) for sophisticated prompt engineering, agentic workflows, and content generation."
-        highlights={[
-          "Modular chain construction",
-          "Memory management for contextual conversations",
-          "Access to diverse foundation models",
-          "Tool usage and function calling capabilities",
+          "Agent-specific meta-prompts and personas",
+          "YAML frontmatter for intelligent filtering",
+          "Contextual retrieval based on agent scope",
+          "Cross-agent collaboration protocols",
         ]}
         icon={BrainCircuit}
       />
       <StepCard
-        number="CI/CD"
-        title="Deployment & MLOps"
-        timeline="Reliable Operations"
-        description="Employs Docker for containerization, Kubernetes for orchestration, and GitHub Actions for CI/CD, ensuring robust deployment and operational excellence."
+        number="INT"
+        title="Integration Framework"
+        timeline="Data Flow"
+        description="Simple yet powerful integrations connect your Foundation™ to live data sources, ensuring your AI executives always have current intelligence."
         highlights={[
-          "Reproducible build environments",
-          "Automated testing and deployment pipelines",
-          "Scalable infrastructure management",
-          "Monitoring and logging with Prometheus & Grafana",
+          "RSS feeds for market intelligence",
+          "API connections to business systems",
+          "Meeting transcription pipelines",
+          "Document upload workflows",
+        ]}
+        icon={GitBranch}
+      />
+      <StepCard
+        number="SEC"
+        title="Security & Access"
+        timeline="Data Protection"
+        description="Leverages Google Workspace's enterprise security while maintaining granular access controls for different stakeholders and data sensitivity levels."
+        highlights={[
+          "Google Workspace security compliance",
+          "Folder-level access permissions",
+          "Audit trails and version history",
+          "Encrypted data at rest and in transit",
+        ]}
+        icon={ShieldCheck}
+      />
+      <StepCard
+        number="EVO"
+        title="Evolution Engine"
+        timeline="Continuous Learning"
+        description="Your Foundation™ grows smarter over time through automated updates, new document ingestion, and feedback loops from your AI executives' interactions."
+        highlights={[
+          "Weekly intelligence updates",
+          "Automated document classification",
+          "Performance metric tracking",
+          "Knowledge gap identification",
         ]}
         icon={Layers}
       />
-       <StepCard
-        number="SEC"
-        title="Security & Compliance"
-        timeline="Data Protection"
-        description="Implements end-to-end encryption, role-based access control (RBAC), and regular security audits to protect your sensitive data and ensure compliance."
+      <StepCard
+        number="API"
+        title="Access & Interfaces"
+        timeline="User Interaction"
+        description="Multiple ways to interact with your AI executives, from simple chat interfaces to sophisticated workflow automations."
         highlights={[
-          "Data encryption at rest and in transit",
-          "Principle of least privilege access",
-          "Compliance with GDPR, SOC 2 (as applicable)",
-          "Vulnerability scanning and penetration testing",
+          "Natural language query interface",
+          "Scheduled report generation",
+          "Slack/Teams integration options",
+          "Custom dashboard creation",
         ]}
-        icon={ShieldCheck}
+        icon={Code2}
       />
     </div>
   </div>
@@ -218,74 +218,77 @@ const AgentsTabContent = () => (
   <div className="space-y-10">
     <div className="text-center max-w-3xl mx-auto">
       <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-        Meet Your <span className="text-primary-green">Tier 4 AI Agent Team</span>
+        Your <span className="text-primary-green">AI Executive Team</span>
       </h2>
       <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-        Our specialized AI agents are engineered with distinct cognitive models and industry expertise, forming a virtual executive team to drive strategic transformation and operational excellence.
+        Four specialized AI executives work together as your virtual C-suite, each bringing unique expertise and perspective to transform your business. They collaborate, share insights, and drive coordinated action across all levels of your organization.
       </p>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
       <StepCard
         number="🎯"
         title="ATLAS"
-        timeline="The Visionary Architect"
-        description="Strategic intelligence with market analysis and trend forecasting."
+        timeline="Strategic Intelligence Officer"
+        description="Your 30,000-foot strategist who spots opportunities others miss. ATLAS synthesizes market intelligence, competitive dynamics, and industry trends to guide transformative decisions."
         highlights={[
-          "SWOT/PESTEL analysis automation",
-          "Scenario planning and risk assessment",
-          "New market entry evaluation",
-          "Innovation and R&D prioritization",
+          "Market opportunity identification and sizing",
+          "Competitive threat analysis and response strategies",
+          "Industry trend forecasting and scenario planning",
+          "M&A target identification and evaluation",
+          "Strategic risk assessment and mitigation",
         ]}
-        icon={Target}
+        icon={TrendingUp}
       />
       <StepCard
         number="🧭"
         title="NAVIGATOR"
-        timeline="The Process Optimizer"
-        description="Operational planning with gap analysis and resource optimization."
+        timeline="Operations Excellence Officer"
+        description="Your operational architect who turns vision into measurable outcomes. NAVIGATOR analyzes performance, identifies bottlenecks, and charts the course to operational excellence."
         highlights={[
-          "Business process modeling (BPMN)",
-          "Root cause analysis of inefficiencies",
-          "Workflow automation design (RPA)",
-          "Supply chain optimization",
+          "KPI analysis and performance optimization",
+          "Process efficiency mapping and improvement",
+          "Resource allocation and capacity planning",
+          "Go-to-market strategy refinement",
+          "Revenue optimization and cost reduction",
         ]}
-        icon={Cog}
+        icon={BarChart3}
       />
       <StepCard
         number="🎼"
         title="MAESTRO"
-        timeline="The Corporate Brain"
-        description="Integration orchestration with workflow automation."
+        timeline="Technology Integration Officer"
+        description="Your systems orchestrator who makes everything work in harmony. MAESTRO identifies automation opportunities, manages technical integration, and ensures your tech stack sings."
         highlights={[
-          "Internal knowledge base management",
-          "Competitive intelligence monitoring",
-          "Employee skill gap analysis",
-          "Best practice dissemination",
+          "System integration and workflow automation",
+          "Technical debt identification and resolution",
+          "AI/ML opportunity assessment and deployment",
+          "Data pipeline optimization and governance",
+          "Technology roadmap development",
         ]}
-        icon={Lightbulb}
+        icon={Cpu}
       />
       <StepCard
         number="⚡"
         title="CATALYST"
-        timeline="The Guardian of Standards"
-        description="Execution engine with task automation and ROI measurement."
+        timeline="Change & Adoption Officer"
+        description="Your transformation champion who ensures ideas become reality. CATALYST drives adoption, manages change, and maintains momentum throughout your AI journey."
         highlights={[
-          "Regulatory change tracking",
-          "Automated compliance checks",
-          "Policy document management",
-          "Ethical AI framework enforcement",
+          "Change readiness assessment and planning",
+          "Stakeholder engagement and communication",
+          "Training program development and delivery",
+          "Adoption metrics tracking and optimization",
+          "Cultural transformation facilitation",
         ]}
-        icon={BookOpen}
+        icon={Users}
       />
     </div>
   </div>
 );
 
-
 const tabsConfig = [
-  { id: "process", label: "The Process", component: ProcessTabContent },
+  { id: "process", label: "Building Your Foundation", component: ProcessTabContent },
   { id: "architecture", label: "Technical Architecture", component: ArchitectureTabContent },
-  { id: "agents", label: "Agent Intelligence", component: AgentsTabContent },
+  { id: "agents", label: "Your AI Executives", component: AgentsTabContent },
 ];
 
 export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModalProps) => {
@@ -318,14 +321,12 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // Calculate dynamic height for tab content
       if (modalRef.current && headerRef.current && footerRef.current) {
         const modalHeight = modalRef.current.clientHeight;
         const headerHeight = headerRef.current.offsetHeight;
         const footerHeight = footerRef.current.offsetHeight;
-        // Consider padding/margins if any on the modal-content container itself
-        const availableHeight = modalHeight - headerHeight - footerHeight - (2 * 1); // Assuming 1px for borders or minimal padding
-        setContentHeight(Math.max(200, availableHeight - 80)); // 80px for tab buttons and some breathing room
+        const availableHeight = modalHeight - headerHeight - footerHeight - 2;
+        setContentHeight(Math.max(200, availableHeight - 80));
       }
     } else {
       document.body.style.overflow = "auto";
@@ -335,7 +336,6 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
     };
   }, [isOpen]);
   
-  // Recalculate on window resize
   useEffect(() => {
     const calculateHeight = () => {
       if (isOpen && modalRef.current && headerRef.current && footerRef.current) {
@@ -349,7 +349,6 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
     window.addEventListener('resize', calculateHeight);
     return () => window.removeEventListener('resize', calculateHeight);
   }, [isOpen]);
-
 
   if (!isOpen) return null;
 
@@ -371,11 +370,11 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl font-bold mb-1">
                 <span className="bg-gradient-to-r from-primary-green to-[#00cc6a] text-transparent bg-clip-text">
-                  Under the Hood
+                  How Your Foundation™ Works
                 </span>
               </h1>
               <p className="text-sm sm:text-base text-gray-300">
-                How We Engineer AI That Actually Understands Your Business
+                From Public Intelligence to Your AI Executive Team in 30 Days
               </p>
             </div>
             <button
@@ -420,17 +419,17 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
           <div ref={footerRef} className="p-5 sm:p-6 border-t border-[#333] bg-[#1e1e1e]/50">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
               <a
-                href="/contact?service=ai-strategy-call"
+                href="/contact?service=foundation-demo"
                 className="w-full sm:w-auto flex items-center justify-center px-5 py-3 bg-gradient-to-r from-primary-green to-[#00cc6a] text-black font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
               >
                 <Phone size={18} className="mr-2" />
-                Book a Free AI Strategy Call
+                See Your AI Executives in Action
               </a>
               <a
-                href="/about/our-process"
+                href="/foundation"
                 className="w-full sm:w-auto flex items-center justify-center px-5 py-3 border-2 border-primary-green text-primary-green font-semibold rounded-lg hover:bg-primary-green hover:text-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
               >
-                Learn More About Our Process
+                Learn More About Foundation™
                 <ArrowRight size={18} className="ml-2" />
               </a>
             </div>
