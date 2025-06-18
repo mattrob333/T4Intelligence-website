@@ -12,15 +12,6 @@ import { cn } from "@/lib/utils"
 // Hardcoded foundation sample content
 const foundationSampleContent = `# FOUNDATION™ INTELLIGENCE BLUEPRINT - GLOBAL PARTS MANUFACTURING INC.
 
----
-title: "Foundation Intelligence Blueprint"
-source: "Tier 4 Intelligence AI Executive Team"
-owner: "intel@tier4.ai"
-agent_scope: ["shared"]
-created: "2025-06-18"
-tags: ["foundation", "executive", "client-sample"]
----
-
 ## EXECUTIVE OVERVIEW
 
 **ORGANIZATION:** Global Parts Manufacturing Inc.  
