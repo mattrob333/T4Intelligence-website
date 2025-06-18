@@ -105,17 +105,6 @@ export default function WhatsIncludedSection() {
             Start Building Your AI Team
           </CustomButton>
         </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <CustomButton variant="secondary" size="secondary" onClick={() => console.log("Download Sample Blueprint")}>
-            <Download className="mr-2 h-5 w-5" /> GET SAMPLE BLUEPRINT DECK →
-          </CustomButton>
-        </motion.div>
       </div>
     </section>
   )
