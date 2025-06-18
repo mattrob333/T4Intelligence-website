@@ -245,10 +245,7 @@ const FoundationModal: React.FC<FoundationModalProps> = ({
 
   const handleBuildFoundationClick = () => {
     onClose()
-    const ctaButton = document.getElementById("main-cta-foundation")
-    if (ctaButton) {
-      ctaButton.scrollIntoView({ behavior: "smooth" })
-    }
+    window.location.href = "/book-call"
   }
 
   return (

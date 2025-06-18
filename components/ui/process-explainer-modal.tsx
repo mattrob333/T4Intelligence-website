@@ -417,14 +417,7 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
           
           {/* Footer CTA */}
           <div ref={footerRef} className="p-5 sm:p-6 border-t border-[#333] bg-[#1e1e1e]/50">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4">
-              <button
-                onClick={() => (window.location.href = "/book-call")}
-                className="w-full sm:w-auto flex items-center justify-center px-5 py-3 bg-gradient-to-r from-primary-green to-[#00cc6a] text-black font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
-              >
-                <Phone size={18} className="mr-2" />
-                See Your AI Executives in Action
-              </button>
+            <div className="flex justify-center items-center">
               <button
                 onClick={() => (window.location.href = "/book-call")}
                 className="w-full sm:w-auto flex items-center justify-center px-5 py-3 border-2 border-primary-green text-primary-green font-semibold rounded-lg hover:bg-primary-green hover:text-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
