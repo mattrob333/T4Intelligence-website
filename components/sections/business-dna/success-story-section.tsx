@@ -31,18 +31,10 @@ export default function SuccessStorySection() {
               <p className="text-2xl font-bold text-primary-green">$2.4M</p>
               <p className="text-sm text-text-secondary">Annual savings</p>
             </div>
-            <div>
+            <div className="text-center">
               <p className="text-2xl font-bold text-primary-green">4 Months</p>
               <p className="text-sm text-text-secondary">Time to ROI</p>
             </div>
-            <CustomButton
-              variant="secondary"
-              size="secondary"
-              className="w-full mt-4"
-              onClick={() => console.log("Read Full Case Study clicked")}
-            >
-              Read Full Case Study →
-            </CustomButton>
           </div>
         </motion.div>
       </div>
