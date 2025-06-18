@@ -2,8 +2,12 @@
 import { CustomButton } from "@/components/ui/custom-button"
 import { ShieldCheck } from "lucide-react"
 import { motion } from "framer-motion"
+import { useState } from "react"
+import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 
 export default function GuaranteeSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section className="relative py-section-padding-mobile md:py-section-padding bg-urgency-gradient bg-200% animate-subtle-gradient overflow-hidden">
       <div className="absolute inset-0 bg-black/60"></div>
@@ -39,7 +43,7 @@ export default function GuaranteeSection() {
           <CustomButton
             variant="secondary"
             size="secondary"
-            onClick={() => (window.location.href = "/foundation-details")}
+            onClick={() => setIsModalOpen(true)}
           >
             Explore Foundation Details →
           </CustomButton>
@@ -52,14 +56,15 @@ export default function GuaranteeSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <CustomButton variant="primary" size="default" onClick={() => console.log("Start Your DNA Mapping clicked")}>
-Build Your AI Foundation
+          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
+            Build Your AI Foundation
           </CustomButton>
           <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
             Talk to Our Team
           </CustomButton>
         </motion.div>
       </div>
+      <ProcessExplainerModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

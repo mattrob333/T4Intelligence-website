@@ -6,24 +6,36 @@ import { CustomButton } from "@/components/ui/custom-button"
 
 const faqs = [
   {
-    question: "How is this different from a consulting report?",
-    answer: "Most consulting reports gather dust on a shelf. The Blueprint is an executable plan with clear ROI calculations, specific AI tools needed, and a 90-day action plan. We don't just tell you what to do - we show you exactly how to do it with your existing team and tech stack."
+    question: "How is this different from hiring consultants or a full-time AI executive?",
+    answer: "Consultants give you PowerPoints and leave. A full-time Chief AI Officer costs $400K+ per year. Your Foundation™ gives you four specialized AI executives working 24/7, plus a Fractional CAO to guide them - all for 80% less than a single full-time hire. They start delivering insights before you even sign a contract."
   },
   {
-    question: "What if we don't have technical resources?",
-    answer: "No problem. We can connect you with our vetted implementation partners or help you build an internal AI team. Many clients start with our managed services and transition to in-house as they build capabilities."
+    question: "What exactly are these AI executives?",
+    answer: "ATLAS, NAVIGATOR, MAESTRO, and CATALYST are specialized AI agents trained on your specific business context. They're not generic chatbots - they're custom-built executives with deep knowledge of your industry, your processes, and your unique challenges. They work together as your virtual C-suite, available 24/7."
   },
   {
-    question: "How do you guarantee $500K in savings?",
-    answer: "We analyze your P&L, operational metrics, and industry benchmarks to identify inefficiencies. If we can't find at least $500K in potential savings, we'll refund 100% of your investment. It's that simple."
+    question: "How quickly can we see real results?",
+    answer: "Day 1: Your AI executives are already analyzing public data about your business. Week 1: They've identified your top automation opportunities. Week 4: First automations are live. Month 4: Full ROI realized. Most clients see payback in 90-120 days."
   },
   {
-    question: "What's the typical implementation timeline?",
-    answer: "Most clients see their first results within 30 days and full implementation in 90-120 days. We focus on quick wins first to fund the rest of your transformation."
+    question: "What if we don't have the technical resources to manage AI?",
+    answer: "That's exactly why we include Fractional CAO services. You get expert AI leadership without the full-time cost. We handle the technical complexity while your team focuses on using the insights. Many clients start with heavy support and gradually build internal capabilities."
   },
   {
-    question: "Can we customize the engagement?",
-    answer: "Absolutely. While we have a proven framework, every engagement is tailored to your specific business needs, tech stack, and team capabilities."
+    question: "How do you guarantee ROI?",
+    answer: "Before we even meet, your AI executives analyze your business and identify savings opportunities. If ATLAS, NAVIGATOR, MAESTRO, and CATALYST together can't find at least $500K in potential value, we'll refund 100% of your investment. We're that confident in our approach."
+  },
+  {
+    question: "Is our data secure with the Foundation™?",
+    answer: "Absolutely. Your Foundation™ lives in your own secure Google Workspace environment. You maintain complete control and ownership. We use enterprise-grade security, and your AI executives only access what you explicitly permit. Your competitive intelligence stays yours."
+  },
+  {
+    question: "Can we customize which AI executives we need?",
+    answer: "While all four executives work best as a team, we can adjust their focus based on your priorities. Need more strategic analysis? ATLAS takes the lead. Focusing on operations? NAVIGATOR drives the agenda. The Foundation™ adapts to your needs."
+  },
+  {
+    question: "What happens after the initial Foundation™ is built?",
+    answer: "Your AI executives keep learning and improving. They automatically ingest new data, adapt to changes in your business, and identify new opportunities. With our continuous support options, they evolve from helpful tools to indispensable members of your leadership team."
   }
 ]
 
@@ -99,15 +111,15 @@ export default function FAQSection() {
           className="mt-12 text-center"
         >
           <p className="text-text-secondary mb-6">
-            Still have questions? We've got answers.
+            Still have questions? Let's talk about your AI executives.
           </p>
           <CustomButton 
             variant="primary" 
             size="default"
-            onClick={() => console.log("Schedule a Call")}
+            onClick={() => console.log("Meet Your AI Executives")}
             className="mx-auto"
           >
-            Schedule a Call
+            Meet Your AI Executives
           </CustomButton>
         </motion.div>
       </div>

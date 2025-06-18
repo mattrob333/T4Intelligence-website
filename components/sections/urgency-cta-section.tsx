@@ -1,6 +1,6 @@
 "use client"
 import { CustomButton } from "@/components/ui/custom-button"
-import { AlertTriangle, CalendarClock, Video } from "lucide-react"
+import { AlertTriangle, CalendarClock } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 
@@ -62,13 +62,10 @@ export default function UrgencyCtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+          className="flex items-center justify-center mb-8"
         >
           <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
             <CalendarClock className="mr-2 h-5 w-5" /> Book Your Strategy Call - 30 Minutes
-          </CustomButton>
-          <CustomButton variant="secondary" size="secondary" onClick={() => console.log("Watch Demo clicked")}>
-            <Video className="mr-2 h-5 w-5" /> Watch Our 7-Minute Demo
           </CustomButton>
         </motion.div>
 

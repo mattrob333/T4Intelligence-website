@@ -89,11 +89,11 @@ export default function PricingComparisonSection() {
             <p className="text-text-secondary mb-4">"Most clients see payback in 90-120 days"</p>
             <div className="border-t border-border-color pt-4 mt-4">
               <p className="text-text-secondary italic mb-4">
-                "Our Blueprint paid for itself before we even started building. Just knowing our real numbers changed everything."
+                "Our Foundation™ paid for itself before we even started building. Just knowing our real numbers changed everything."
                 <span className="block font-semibold mt-2">- Sarah Chen, COO</span>
               </p>
-              <CustomButton variant="primary" size="default" className="w-full max-w-xs mx-auto">
-                BUILD MY BLUEPRINT →
+              <CustomButton variant="primary" size="default" className="w-full max-w-xs mx-auto" onClick={() => (window.location.href = "/book-call")}>
+                BUILD YOUR FOUNDATION™ →
               </CustomButton>
             </div>
           </motion.div>
@@ -111,10 +111,10 @@ export default function PricingComparisonSection() {
               <div>
                 <p className="font-bold text-text-primary mb-2">SMART CLIENT TIP:</p>
                 <p className="text-text-secondary">
-                  "Most clients fund their entire AI transformation from the savings we identify in Week 1. The Blueprint literally pays for The Build."
+                  "Most clients fund their entire AI transformation from the savings we identify in Week 1. The Foundation™ literally pays for The Build."
                 </p>
-                <CustomButton variant="secondary" size="default" className="mt-4">
-                  START WITH BLUEPRINT CALL →
+                <CustomButton variant="secondary" size="default" className="mt-4" onClick={() => (window.location.href = "/book-call")}>
+                  START WITH FOUNDATION DISCOVERY →
                 </CustomButton>
               </div>
             </div>
@@ -128,16 +128,16 @@ export default function PricingComparisonSection() {
           >
             <h3 className="text-xl font-bold text-primary-green mb-3">💡 SMART CLIENT TIP:</h3>
             <p className="text-text-secondary mb-4">
-              Start with Business DNA Map™ first and save $10K on your Blueprint.
+              Start with Foundation™ Discovery first and save $10K on your complete AI transformation.
               <br />
               Total investment for both: <span className="font-semibold text-text-primary">$45K-$75K</span> (save $10K)
             </p>
             <CustomButton
               variant="secondary"
               size="default"
-              onClick={() => (window.location.href = "/business-dna")}
+              onClick={() => (window.location.href = "/book-call")}
             >
-              Start with Business DNA Map →
+              START WITH FOUNDATION™ DISCOVERY →
             </CustomButton>
           </motion.div>
         </div>

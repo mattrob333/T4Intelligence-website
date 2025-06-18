@@ -46,7 +46,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="w-full sm:w-auto">
-              <CustomButton variant="primary" size="lg" className="w-full">
+              <CustomButton variant="primary" size="lg" className="w-full" onClick={() => (window.location.href = "/book-call")}>
                 START YOUR FOUNDATION
               </CustomButton>
             </div>

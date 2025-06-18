@@ -70,7 +70,7 @@ export default function HeroSection() {
               <CustomButton
                 variant="primary"
                 size="default"
-                onClick={openModal}
+                onClick={() => (window.location.href = "/book-call")}
                 id="opportunity-blueprint-cta"
                 className="w-full justify-center py-3 text-base sm:text-lg"
               >

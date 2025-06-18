@@ -3,10 +3,6 @@ import Image from "next/image"
 import { Linkedin, Mail, Phone } from "lucide-react"
 
 const footerLinks = {
-  company: [
-    { name: "Our Team", href: "/team" },
-    { name: "Contact", href: "/contact" },
-  ],
   services: [
     { name: "FOUNDATION", href: "/business-dna" },
     { name: "THE BUILD", href: "/opportunity-blueprint" },
@@ -23,22 +19,8 @@ export default function Footer() {
   return (
     <footer className="bg-secondary-black text-text-secondary py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Column 1: Company */}
-          <div>
-            <h5 className="text-lg font-semibold text-text-primary mb-4">Company</h5>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="hover:text-primary-green transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 2: Services */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          {/* Column 1: Services */}
           <div>
             <h5 className="text-lg font-semibold text-text-primary mb-4">Services</h5>
             <ul className="space-y-2">
@@ -52,7 +34,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Connect */}
+          {/* Column 2: Connect */}
           <div>
             <h5 className="text-lg font-semibold text-text-primary mb-4">Connect</h5>
             <ul className="space-y-3">

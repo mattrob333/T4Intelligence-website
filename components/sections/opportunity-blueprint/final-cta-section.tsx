@@ -14,7 +14,7 @@ export default function FinalCTASection() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold text-text-primary mb-6"
           >
-            Ready to Unlock Your $500K+ AI Opportunity?
+            Your AI Executives Are Ready to Find Your <span className="text-primary-green">$500K+</span> Opportunity
           </motion.h2>
           
           <motion.p 
@@ -24,8 +24,8 @@ export default function FinalCTASection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Join forward-thinking manufacturers who are already transforming their operations with AI. 
-            Your first $500K in savings is just 10 days away.
+            ATLAS, NAVIGATOR, MAESTRO, and CATALYST are already analyzing your market position. 
+            Let them show you what they've found - before you pay a dime.
           </motion.p>
           
           <motion.div
@@ -38,19 +38,10 @@ export default function FinalCTASection() {
             <CustomButton 
               variant="primary" 
               size="default"
-              onClick={() => console.log("Get Started")}
+              onClick={() => (window.location.href = "/book-call")}
               className="px-8 py-4 text-lg"
             >
-              Start Your 10-Day Blueprint
-            </CustomButton>
-            
-            <CustomButton 
-              variant="secondary" 
-              size="default"
-              onClick={() => console.log("Book Call")}
-              className="px-8 py-4 text-lg"
-            >
-              Book a 15-Minute Call
+              Activate Your AI Executives
             </CustomButton>
           </motion.div>
           
@@ -61,7 +52,7 @@ export default function FinalCTASection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            ⏳ Next available blueprint slot: {new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+            ⏳ Limited spots available - We only deploy 12 Foundation™ systems per quarter
           </motion.p>
           
           <motion.div 
@@ -72,10 +63,10 @@ export default function FinalCTASection() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <p className="text-text-secondary mb-6">
-              "The Blueprint was the best investment we made last year. We've already implemented 3 of the 5 AI solutions they recommended, and we're on track to save $1.2M annually."
+              "Our AI executives found $1.2M in savings we didn't know existed. NAVIGATOR identified process bottlenecks, MAESTRO automated them, and CATALYST ensured our team embraced the changes. Best investment we've made."
             </p>
             <p className="font-semibold text-primary-green">
-              — Michael Tan, Director of Operations, Precision Manufacturing Co.
+              — Sarah Chen, COO, Global Parts Manufacturing
             </p>
           </motion.div>
         </div>

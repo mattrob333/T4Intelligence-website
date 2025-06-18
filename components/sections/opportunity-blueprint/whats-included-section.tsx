@@ -99,7 +99,7 @@ export default function WhatsIncludedSection() {
           <CustomButton
             variant="primary"
             size="default"
-            onClick={() => console.log("Get Started clicked")}
+            onClick={() => (window.location.href = "/book-call")}
             className="mx-auto"
           >
             Start Building Your AI Team

@@ -1,6 +1,6 @@
 "use client"
 import { CustomButton } from "@/components/ui/custom-button"
-import { CheckCircle, PlayCircle } from "lucide-react"
+import { CheckCircle, Lightbulb } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useCallback, useState } from "react"
 import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
@@ -265,7 +265,7 @@ export default function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
           <CustomButton variant="primary" size="default" onClick={() => setIsModalOpen(true)}>
-            <PlayCircle className="mr-2 h-5 w-5" /> See How We Do It
+            <Lightbulb className="mr-2 h-5 w-5" /> See How We Do It
           </CustomButton>
           <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
             Get Your AI Roadmap

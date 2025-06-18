@@ -1,3 +1,11 @@
+// Temporarily disabled due to embla-carousel version conflicts
+// TODO: Fix embla-carousel version mismatch between 8.5.1 and 8.6.0
+
+export default function SocialProofSection() {
+  return null
+}
+
+/* Original component code - commented out until carousel issue is resolved
 "use client"
 import { Card, CardContent } from "@/components/ui/card" // Using shadcn card for testimonials
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel" // Using shadcn carousel
@@ -21,10 +29,17 @@ const testimonials = [
   },
   {
     quote:
-      "The Business DNA mapping was eye-opening. We discovered $3M in automation opportunities we didn't know existed.",
+      "The Business DNA Map revealed opportunities we didn't know existed. Implementation was seamless and ROI was immediate.",
     author: "Jennifer Wu",
-    title: "COO, Regional Health System",
+    title: "COO, Precision Systems",
     companySize: "$300M Revenue",
+  },
+  {
+    quote:
+      "From blueprint to working AI in 10 weeks. Our customer response time dropped 94% and satisfaction scores are at an all-time high.",
+    author: "David Park",
+    title: "VP Operations, LogiFlow",
+    companySize: "$180M Revenue",
   },
 ]
 
@@ -40,7 +55,7 @@ const clientLogos = [
 
 export default function SocialProofSection() {
   return (
-    <section className="py-section-padding-mobile md:py-section-padding">
+    <section className="py-section-padding-mobile md:py-section-padding bg-background-primary">
       <div className="container mx-auto px-4 md:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -75,7 +90,7 @@ export default function SocialProofSection() {
                         <div>
                           <p className="font-bold text-primary-green">{testimonial.author}</p>
                           <p className="text-sm text-text-secondary">{testimonial.title}</p>
-                          <p className="text-xs text-text-secondary/70">{testimonial.companySize}</p>
+                          <p className="text-xs text-text-secondary mt-1">{testimonial.companySize}</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -83,9 +98,34 @@ export default function SocialProofSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex" />
-            <CarouselNext className="hidden md:flex" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+        >
+          <div>
+            <p className="text-3xl md:text-4xl font-bold text-primary-green mb-2">50+</p>
+            <p className="text-sm md:text-base text-text-secondary">Mid-Market Clients</p>
+          </div>
+          <div>
+            <p className="text-3xl md:text-4xl font-bold text-primary-green mb-2">$127M</p>
+            <p className="text-sm md:text-base text-text-secondary">Total Savings Generated</p>
+          </div>
+          <div>
+            <p className="text-3xl md:text-4xl font-bold text-primary-green mb-2">89%</p>
+            <p className="text-sm md:text-base text-text-secondary">Average Process Automation</p>
+          </div>
+          <div>
+            <p className="text-3xl md:text-4xl font-bold text-primary-green mb-2">5.2X</p>
+            <p className="text-sm md:text-base text-text-secondary">Average ROI Year 1</p>
+          </div>
         </motion.div>
 
         <motion.div
@@ -112,3 +152,4 @@ export default function SocialProofSection() {
     </section>
   )
 }
+*/
