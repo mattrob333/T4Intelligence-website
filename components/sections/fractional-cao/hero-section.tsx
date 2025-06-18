@@ -79,7 +79,12 @@ export default function HeroSection() {
           <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
             MEET YOUR AI EXECUTIVE
           </CustomButton>
-          <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
+          <CustomButton variant="secondary" size="secondary" onClick={() => {
+            const element = document.getElementById('engagement-packages');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}>
             EXPLORE ENGAGEMENT OPTIONS
           </CustomButton>
         </motion.div>

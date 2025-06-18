@@ -44,7 +44,7 @@ const packages = [
 
 export default function EngagementPackagesSection() {
   return (
-    <section className="py-section-padding-mobile md:py-section-padding">
+    <section id="engagement-packages" className="py-section-padding-mobile md:py-section-padding">
       <div className="container mx-auto px-4 md:px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export default function EngagementPackagesSection() {
         >
           <h3 className="text-subsection font-bold text-text-primary">Custom Engagements Available</h3>
           <p className="text-text-secondary mb-4">"Every company is unique. Let's design what works for you."</p>
-          <CustomButton variant="secondary" size="default">
+          <CustomButton variant="secondary" size="default" onClick={() => (window.location.href = "/book-call")}>
             DESIGN YOUR SOLUTION →
           </CustomButton>
         </motion.div>
