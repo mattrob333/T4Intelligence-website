@@ -1,7 +1,7 @@
 "use client"
 import { CheckCircle, Share2 } from "lucide-react"
-import Image from "next/image"
 import { motion } from "framer-motion"
+import OptimizedImage from "@/components/ui/optimized-image"
 
 const points = [
   "How work actually flows (not the org chart version)",
@@ -53,11 +53,15 @@ export default function WhatIsSection() {
             transition={{ duration: 0.7 }}
             className="relative h-96 bg-card-bg rounded-lg border border-border-color overflow-hidden hidden md:block"
           >
-            <Image 
+            <OptimizedImage 
               src="/images/what-is-foundation.png"
               alt="Diagram explaining what a business AI Foundation is"
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              quality={75}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             />
           </motion.div>
         </div>

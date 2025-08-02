@@ -13,6 +13,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
+import { trackFormSubmission, trackEvent } from "@/components/google-analytics"
+import FormProgress from "@/components/ui/form-progress"
 
 const roles = [
   "CEO/President",
@@ -254,10 +256,13 @@ export function BookCallForm() {
         throw new Error(result.error || `Server error: ${response.status}`)
       }
 
+      // Track successful form submission
+      trackFormSubmission('book-call-form')
+      
       toast({
         title: "🎉 Consultation Request Sent!",
         description:
-          "We've received your details and will be in touch shortly to confirm your strategic AI consultation.",
+          "We've received your details and will be in touch within 2 hours to confirm your strategic AI consultation.",
         variant: "default",
       })
       
@@ -274,9 +279,34 @@ export function BookCallForm() {
     }
   }
 
-  const SectionHeader = ({ title }: { title: string }) => (
-    <h2 className="text-2xl font-semibold text-text-primary border-b-2 border-primary-green pb-3 mb-8">{title}</h2>
-  )
+  const sectionNames = [
+    "Contact Info",
+    "Company Details", 
+    "AI Journey",
+    "Project Timeline",
+    "Interests",
+    "Additional Details",
+    "Scheduling"
+  ]
+  
+  const [currentSection, setCurrentSection] = useState(1)
+  
+  const SectionHeader = ({ title, sectionNumber }: { title: string; sectionNumber: number }) => {
+    if (currentSection !== sectionNumber) {
+      setCurrentSection(sectionNumber)
+    }
+    return (
+      <>
+        <FormProgress 
+          currentStep={sectionNumber}
+          totalSteps={7}
+          stepLabels={sectionNames}
+          className="mb-6"
+        />
+        <h2 className="text-2xl font-semibold text-text-primary border-b-2 border-primary-green pb-3 mb-8">{title}</h2>
+      </>
+    )
+  }
 
   const inputClasses =
     "bg-neutral-800 border-neutral-700 hover:border-primary-green focus:border-primary-green focus:ring-primary-green text-text-primary placeholder:text-neutral-500 rounded-md"
@@ -293,7 +323,7 @@ export function BookCallForm() {
       >
         {/* Section 1: Your Contact Information */}
         <section className="space-y-6">
-          <SectionHeader title="1. Your Contact Information" />
+          <SectionHeader title="1. Your Contact Information" sectionNumber={1} />
           <FormField
             control={form.control}
             name="fullName"
@@ -374,7 +404,7 @@ export function BookCallForm() {
 
         {/* Section 2: About Your Company */}
         <section className="space-y-6">
-          <SectionHeader title="2. About Your Company" />
+          <SectionHeader title="2. About Your Company" sectionNumber={2} />
           <FormField
             control={form.control}
             name="annualRevenue"
@@ -451,7 +481,7 @@ export function BookCallForm() {
 
         {/* Section 3: Your AI & Automation Journey */}
         <section className="space-y-6">
-          <SectionHeader title="3. Your AI & Automation Journey" />
+          <SectionHeader title="3. Your AI & Automation Journey" sectionNumber={3} />
           <FormField
             control={form.control}
             name="aiStatus"
@@ -553,7 +583,7 @@ export function BookCallForm() {
 
         {/* Section 4: Project Details & Timeline */}
         <section className="space-y-6">
-          <SectionHeader title="4. Project Details & Timeline" />
+          <SectionHeader title="4. Project Details & Timeline" sectionNumber={4} />
           <FormField
             control={form.control}
             name="implementationTimeline"
@@ -644,7 +674,7 @@ export function BookCallForm() {
 
         {/* Section 5: What Are You Interested In? */}
         <section className="space-y-6">
-          <SectionHeader title="5. What Are You Interested In?" />
+          <SectionHeader title="5. What Are You Interested In?" sectionNumber={5} />
           <FormField
             control={form.control}
             name="specificInterests"
@@ -722,7 +752,7 @@ export function BookCallForm() {
 
         {/* Section 6: Additional Details */}
         <section className="space-y-6">
-          <SectionHeader title="6. Additional Details" />
+          <SectionHeader title="6. Additional Details" sectionNumber={6} />
           <FormField
             control={form.control}
             name="biggestOpportunity"
@@ -763,7 +793,7 @@ export function BookCallForm() {
 
         {/* Section 7: Preferred Scheduling */}
         <section className="space-y-6">
-          <SectionHeader title="7. Preferred Scheduling" />
+          <SectionHeader title="7. Preferred Scheduling" sectionNumber={7} />
           <FormField
             control={form.control}
             name="preferredTimes"
@@ -849,10 +879,10 @@ export function BookCallForm() {
           <div>
             <h3 className="font-semibold text-text-secondary mb-2">What Happens Next:</h3>
             <ul className="list-disc list-inside text-sm text-neutral-400 space-y-1">
-              <li>Within 2 business hours: Calendar invite with confirmed time</li>
-              <li>24 hours before call: Agenda and prep materials</li>
-              <li>During call: Strategic discussion tailored to your situation</li>
-              <li>After call: Summary with recommended next steps</li>
+              <li><strong>Within 2 hours:</strong> Calendar invite with confirmed time</li>
+              <li><strong>24 hours before:</strong> Custom agenda based on your responses</li>
+              <li><strong>During call:</strong> Strategic AI roadmap tailored to your business</li>
+              <li><strong>After call:</strong> Executive summary with implementation plan</li>
             </ul>
           </div>
           <Button
@@ -866,7 +896,7 @@ export function BookCallForm() {
                 <span>Scheduling...</span>
               </div>
             ) : (
-              "Schedule My Strategic AI Consultation"
+              "Get My 5X ROI Strategy Call (Free)"
             )}
           </Button>
         </footer>

@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { CustomButton } from "@/components/ui/custom-button"
 import { Menu, X, ChevronDown } from "lucide-react"
+import { trackCTAClick } from "@/components/google-analytics"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -110,8 +111,15 @@ export default function Navigation() {
               </Link>
             ),
           )}
-          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
-            Book a Call
+          <CustomButton 
+            variant="primary" 
+            size="default" 
+            onClick={() => {
+              trackCTAClick('Book a Call', 'navigation')
+              window.location.href = "/book-call"
+            }}
+          >
+            Get 5X ROI Assessment
           </CustomButton>
         </nav>
 
@@ -185,11 +193,12 @@ export default function Navigation() {
                 size="default"
                 className="w-11/12"
                 onClick={() => {
+                  trackCTAClick('Book a Call', 'mobile-navigation')
                   toggleMenu()
                   window.location.href = "/book-call"
                 }}
               >
-                Book a Call
+                Get 5X ROI Assessment
               </CustomButton>
             </nav>
           </motion.div>

@@ -6,54 +6,54 @@ import { motion } from "framer-motion"
 const services = [
   {
     icon: Dna,
-    title: "FOUNDATION",
-    tagline: "Build Your AI's Knowledge Foundation",
+    title: "RAPID ASSESSMENT",
+    tagline: "AI Opportunities Identified in 24 Hours",
     stepNumber: 1,
     features: [
-      "Deep-dive analysis of your entire operation",
-      "Capture 20 years of tribal knowledge in 30 days",
-      "Create your proprietary AI training data",
-      "Map every process, system, and shortcut",
-      "100% credit toward implementation"
+      "Proprietary analysis of your operations",
+      "Industry-specific automation opportunities",
+      "High-value use cases prioritized by ROI",
+      "Competitive landscape assessment",
+      "Strategic alignment with business goals"
     ],
-    ctaText: "START HERE →",
-    ctaLink: "/business-dna",
-    bottomNote: "✓ Required first step for all clients"
+    ctaText: "GET ASSESSMENT →",
+    ctaLink: "/book-call",
+    bottomNote: "✓ Before we meet, we analyze your business"
   },
   {
     icon: MapPinned,
-    title: "THE BUILD",
-    tagline: "Turn Opportunities Into Operating Income",
+    title: "PROOF-OF-CONCEPT",
+    tagline: "Working Prototypes in 5 Days",
     stepNumber: 2,
     isMostPopular: true,
     features: [
-      "Build your highest-ROI automation first",
-      "Live, working AI - not PowerPoints",
-      "Guaranteed 3X return in 12 months",
-      "Deploy across all departments",
-      "Pay balance only after proven results"
+      "Functional MVP demonstrations",
+      "Customized to your specific use cases",
+      "Precise technical scoping complete",
+      "Verified cost quotes from vetted partners",
+      "Clear implementation roadmap"
     ],
-    ctaText: "BUILD FAST →",
+    ctaText: "SEE PROTOTYPES →",
     ctaLink: "/opportunity-blueprint",
-    bottomNote: "✓ Where ROI becomes reality"
+    bottomNote: "✓ Tangible results, not theoretical plans"
   },
   {
     icon: UserTie,
-    title: "YOUR CHIEF AI OFFICER",
-    tagline: "Your AI Leadership On Demand",
+    title: "STRATEGIC PARTNERSHIP",
+    tagline: "Your Fractional Chief Automation Officer",
     stepNumber: 3,
     isMaximumValue: true,
     features: [
-      "10X faster than hiring full-time",
-      "Fortune 500 expertise at fraction of cost",
-      "100+ successful implementations",
-      "Strategic oversight + hands-on execution",
-      "Your competitive advantage secured",
-      "Scale up or down as needed"
+      "Executive-level AI strategy leadership",
+      "End-to-end implementation management",
+      "Continuous optimization and scaling",
+      "Cross-functional integration expertise",
+      "World-class results without executive overhead",
+      "Long-term competitive advantage"
     ],
-    ctaText: "LEAD FOREVER →",
+    ctaText: "SCALE SUCCESS →",
     ctaLink: "/fractional-cao",
-    bottomNote: "✓ For companies ready to dominate their market"
+    bottomNote: "✓ Strategic AI leadership for sustained growth"
   }
 ]
 
@@ -68,7 +68,7 @@ export default function ServicesOverviewSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Three Steps to AI-Powered Market Domination
+          From <span className="text-primary-green">Uncertainty to Implementation</span> in One Week
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {services.map((service, index) => (
@@ -92,7 +92,7 @@ export default function ServicesOverviewSection() {
           className="mt-12 text-center"
         >
           <p className="text-text-secondary text-lg max-w-4xl mx-auto">
-            <span className="font-semibold text-text-primary">Client Success Path:</span> <em>93% of our most successful clients progress through all three steps. They start with Foundation, see immediate ROI with The Build, then accelerate past competitors with their Chief AI Officer.</em>
+            <span className="font-semibold text-text-primary">Our Methodology:</span> <em>We've engineered a proprietary system to cut through AI hype and deliver clarity. Using specialized AI research agents and rapid prototyping, we move from assessment to development-ready plan in days, not months.</em>
           </p>
         </motion.div>
       </div>

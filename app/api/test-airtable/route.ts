@@ -68,7 +68,7 @@ export async function GET() {
   } catch (error) {
     console.error('Test endpoint error:', error)
     return NextResponse.json(
-      { error: 'Test endpoint failed', details: error.message },
+      { error: 'Test endpoint failed', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }

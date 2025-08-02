@@ -8,8 +8,14 @@ import RoiEvidenceSection from "@/components/sections/fractional-cao/roi-evidenc
 import FinalCtaSection from "@/components/sections/fractional-cao/final-cta-section"
 
 export const metadata: Metadata = {
-  title: "Fractional CAO | Tier 4 Intelligence",
-  description: "World-class AI leadership without the executive price tag. Your $400K AI Executive for $6K/Month.",
+  title: "Fractional Chief Automation Officer (CAO) Services | Tier 4 Intelligence",
+  description: "Get a world-class fractional CAO for $6K/month vs. $400K+ full-time executive. AI automation leadership for $10M-$100M companies. 5X ROI guaranteed. Book consultation today.",
+  keywords: "fractional chief automation officer, fractional CAO, AI executive services, business automation leadership, AI transformation consulting",
+  openGraph: {
+    title: "Fractional Chief Automation Officer (CAO) Services | Tier 4 Intelligence",
+    description: "Get a world-class fractional CAO for $6K/month vs. $400K+ full-time executive. AI automation leadership for $10M-$100M companies. 5X ROI guaranteed.",
+    url: 'https://tier4intelligence.com/fractional-cao',
+  },
 }
 
 export default function FractionalCaoPage() {

@@ -8,9 +8,15 @@ import SuccessStorySection from "@/components/sections/business-dna/success-stor
 import GuaranteeSection from "@/components/sections/business-dna/guarantee-section"
 
 export const metadata: Metadata = {
-  title: "Business DNA Map™ | Tier 4 Intelligence",
+  title: "Business DNA Map™ - AI Foundation Assessment | Tier 4 Intelligence",
   description:
-    "We map your business DNA so AI finally understands you. Stop forcing your business to speak AI's language and unlock true automation potential.",
+    "Discover your business's AI automation potential with our proprietary DNA Map™. 90-day roadmap to AI transformation for $10M-$100M companies. Free assessment available.",
+  keywords: "business DNA map, AI foundation assessment, business automation consulting, AI readiness assessment, AI implementation roadmap",
+  openGraph: {
+    title: "Business DNA Map™ - AI Foundation Assessment | Tier 4 Intelligence",
+    description: "Discover your business's AI automation potential with our proprietary DNA Map™. 90-day roadmap to AI transformation for $10M-$100M companies.",
+    url: 'https://tier4intelligence.com/business-dna',
+  },
 }
 
 export default function BusinessDnaPage() {

@@ -4,16 +4,16 @@ import { CalendarDays } from "lucide-react"
 
 const callOptions = [
   {
-    title: "Strategy Call",
+    title: "Executive AI Assessment",
     duration: "30 minutes",
-    bestFor: "Exploring if we're a fit",
-    discussionPoints: ["Your AI challenges", "Our approach", "Potential solutions", "Next steps"],
+    bestFor: "Senior leaders evaluating AI strategy",
+    discussionPoints: ["Review your highest-impact opportunities", "See our proprietary analysis methodology", "Discuss implementation timelines", "Determine next steps"],
   },
   {
-    title: "Blueprint Workshop",
-    duration: "60 minutes",
-    bestFor: "Ready to move forward",
-    discussionPoints: ["Initial opportunity analysis", "ROI estimates", "Custom recommendations", "Clear action plan"],
+    title: "Technical Validation Session",
+    duration: "45 minutes",
+    bestFor: "Ready to see working prototypes",
+    discussionPoints: ["Live prototype demonstration", "Detailed ROI projections", "Technical architecture review", "Implementation roadmap & quotes"],
   },
 ]
 
@@ -27,10 +27,10 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h1 className="text-hero-headline-mobile md:text-hero-headline text-text-primary mb-6">
-            Let's Talk About Your <span className="text-primary-green">AI Transformation</span>
+            Get Your <span className="text-primary-green">AI Opportunity Assessment</span> This Week
           </h1>
           <p className="text-body-large-mobile md:text-body-large text-text-secondary max-w-3xl mx-auto mb-12">
-            Choose the conversation that's right for you:
+            See exactly where AI will impact your operations. No theoretical roadmaps—get a working prototype and precise implementation plan in 5 days.
           </p>
         </motion.div>
 

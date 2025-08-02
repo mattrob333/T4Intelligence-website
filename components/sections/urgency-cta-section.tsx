@@ -3,6 +3,7 @@ import { CustomButton } from "@/components/ui/custom-button"
 import { AlertTriangle, CalendarClock } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { trackCTAClick } from "@/components/google-analytics"
 
 export default function UrgencyCtaSection() {
   const [daysAutomating, setDaysAutomating] = useState(0)
@@ -28,7 +29,7 @@ export default function UrgencyCtaSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-text-primary mb-4"
         >
-          Every Day You Wait <span className="text-accent-gold">Costs You Money</span>
+          Get Your 5X ROI Assessment <span className="text-primary-green">This Week</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +38,7 @@ export default function UrgencyCtaSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-body-large-mobile md:text-body-large text-text-secondary max-w-2xl mx-auto mb-10"
         >
-          Your competitors automated another process while you read this page.
+          Join 200+ executives who've transformed their operations. Get a validated assessment, working prototype, and guaranteed 5X ROI plan within days.
         </motion.p>
 
         <motion.div
@@ -48,12 +49,12 @@ export default function UrgencyCtaSection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto mb-12"
         >
           <div className="bg-card-bg/80 p-6 rounded-lg border border-border-color">
-            <p className="text-text-secondary text-sm mb-1">Days your competitors have been automating:</p>
-            <p className="text-4xl font-bold text-primary-green">{daysAutomating.toLocaleString()}</p>
+            <p className="text-text-secondary text-sm mb-1">Average assessment completion:</p>
+            <p className="text-4xl font-bold text-primary-green">24 Hours</p>
           </div>
           <div className="bg-card-bg/80 p-6 rounded-lg border border-border-color">
-            <p className="text-text-secondary text-sm mb-1">Estimated money left on table:</p>
-            <p className="text-4xl font-bold text-primary-green">${moneyLeft.toLocaleString()}</p>
+            <p className="text-text-secondary text-sm mb-1">Working prototype delivery:</p>
+            <p className="text-4xl font-bold text-primary-green">5 Days</p>
           </div>
         </motion.div>
 
@@ -64,8 +65,15 @@ export default function UrgencyCtaSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex items-center justify-center mb-8"
         >
-          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/book-call")}>
-            <CalendarClock className="mr-2 h-5 w-5" /> Book Your Strategy Call - 30 Minutes
+          <CustomButton 
+            variant="primary" 
+            size="default" 
+            onClick={() => {
+              trackCTAClick('Schedule Your AI Assessment', 'urgency-section')
+              window.location.href = "/book-call"
+            }}
+          >
+            <CalendarClock className="mr-2 h-5 w-5" /> Get My 5X ROI Assessment (Free)
           </CustomButton>
         </motion.div>
 
@@ -76,8 +84,7 @@ export default function UrgencyCtaSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-accent-gold font-semibold flex items-center justify-center"
         >
-          <AlertTriangle className="h-5 w-5 mr-2" /> We only work with 12 companies per quarter. 3 spots left for Q2
-          2025.
+          <AlertTriangle className="h-5 w-5 mr-2" /> Limited capacity: We work with only 6 companies per quarter to ensure results.
         </motion.p>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import DnaMapModal from "@/components/dna-map-modal"
 import Tier4AgentFileTree from "@/components/tier4-agent-file-tree"
 
-const trustElements = ["30-Day Build", "100% Success Rate", "47% Avg. Process Improvement"]
+const trustElements = ["24-Hour Analysis", "100% Implementation Success", "Working Prototypes in 5 Days"]
 
 export default function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -21,10 +21,10 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-hero-headline-mobile md:text-hero-headline text-text-primary mb-6">
-              Build The AI Foundation That <span className="text-primary-green">Runs Your Future Business</span>
+              See Your <span className="text-primary-green">AI Opportunity Analysis</span> in Action
             </h1>
             <p className="text-body-large-mobile md:text-body-large text-text-secondary max-w-3xl mx-auto mb-10">
-              We Create Your Company's AI Intelligence Asset - The New 'Data Room' Smart Buyers Will Demand
+              This is how we analyze your operations before our first call—identifying high-impact automation opportunities with surgical precision. See the depth of analysis that enables rapid prototyping.
             </p>
           </motion.div>
           
@@ -45,7 +45,7 @@ export default function HeroSection() {
           >
             <div className="w-full sm:w-auto">
               <CustomButton variant="primary" size="lg" className="w-full" onClick={() => (window.location.href = "/book-call")}>
-                START YOUR FOUNDATION
+                GET YOUR ANALYSIS
               </CustomButton>
             </div>
             <div className="w-full sm:w-auto">
@@ -55,7 +55,7 @@ export default function HeroSection() {
                 onClick={() => setIsModalOpen(true)}
                 className="w-full"
               >
-                SEE SAMPLE FOUNDATION
+                VIEW SAMPLE ANALYSIS
               </CustomButton>
             </div>
           </motion.div>

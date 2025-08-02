@@ -1,10 +1,11 @@
 "use client"
 import { CustomButton } from "@/components/ui/custom-button"
-import { CheckCircle, Lightbulb } from "lucide-react"
+import { CheckCircle, Lightbulb, TrendingUp } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useCallback, useState } from "react"
 import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 import { AnimatedShinyTextDemo } from "@/components/ui/animated-shiny-text-demo"
+import { trackCTAClick } from "@/components/google-analytics"
 
 interface Dot {
   x: number
@@ -20,9 +21,9 @@ interface Dot {
 export default function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const trustBadges = [
-    "From Chaos to Automated in 12 Weeks",
-    "Average Client Saves $2.4M Year One",
-    "Your AI or Your Money Back"
+    "Working Prototypes in 5 Days",
+    "$10M-$100M Companies Trust Us", 
+    "5X ROI Guarantee or You Don't Pay"
   ]
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -251,10 +252,10 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <h1 className="text-hero-headline-mobile md:text-hero-headline text-text-primary mb-6">
-            We Turn Your Messy Business Into An <span className="text-primary-green">AI-Powered Profit Machine</span> in 90 Days
+            <span className="text-primary-green">AI That Actually Works.</span> Results in 90 Days or You Don't Pay.
           </h1>
           <p className="text-body-large-mobile md:text-body-large text-text-secondary max-w-3xl mx-auto mb-10">
-            While top consulting firms charge millions for PowerPoints, we build AI that actually runs your business. Working AI in 90 days. 5X ROI in 6 months. Or you don't pay.
+            Transform your $10M-$100M business with AI automation that delivers measurable ROI. We identify your highest-impact opportunities, build working prototypes in days, and guarantee 5X returns within 90 days. Join 200+ executives who've transformed their operations with our fractional CAO approach.
           </p>
         </motion.div>
 
@@ -264,11 +265,25 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <CustomButton variant="primary" size="default" onClick={() => (window.location.href = "/business-dna")}>
-            <Lightbulb className="mr-2 h-5 w-5" /> See Your AI Foundation™
+          <CustomButton 
+            variant="primary" 
+            size="default" 
+            onClick={() => {
+              trackCTAClick('Get Your AI Assessment', 'hero')
+              window.location.href = "/book-call"
+            }}
+          >
+            <TrendingUp className="mr-2 h-5 w-5" /> Get Your 5X ROI Assessment
           </CustomButton>
-          <CustomButton variant="secondary" size="secondary" onClick={() => (window.location.href = "/book-call")}>
-            Book Strategy Call
+          <CustomButton 
+            variant="secondary" 
+            size="secondary" 
+            onClick={() => {
+              trackCTAClick('See Sample Analysis', 'hero')
+              window.location.href = "/business-dna"
+            }}
+          >
+            See $2.3M Case Study
           </CustomButton>
         </motion.div>
 

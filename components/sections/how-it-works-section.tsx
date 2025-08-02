@@ -8,23 +8,23 @@ import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 const steps = [
   {
     number: "01",
-    title: "WE SCAN YOUR OPERATION",
-    timeframe: "Week 1-4",
-    description: "Like an MRI for your business. We map every process, capture every 'that's how we've always done it,' and turn your tribal knowledge into AI fuel.",
+    title: "RAPID ASSESSMENT",
+    timeframe: "24 Hours",
+    description: "Before we meet, our proprietary AI analysis tools conduct a comprehensive assessment of your operations, industry, and competitive landscape. We identify high-value automation opportunities tailored to your constraints and goals.",
     icon: Dna,
   },
   {
     number: "02",
-    title: "WE SHOW YOU THE MONEY",
-    timeframe: "Week 5-8",
-    description: "We find where you're hemorrhaging cash. Example: 'Your team spends 2,400 hours/month on X. AI can do it in 40 hours. That's $312K/year saved.' With receipts.",
+    title: "EXPERT VALIDATION",
+    timeframe: "Days 1-2",
+    description: "We meet with your leadership team for validation, not exploration. We present findings, confirm pain points, align on strategic goals, and prioritize the highest-impact opportunities with executive clarity.",
     icon: Target,
   },
   {
     number: "03",
-    title: "WE BUILD YOUR MONEY MACHINE",
-    timeframe: "Week 9-12",
-    description: "Launch custom AI employees pre-loaded with your playbook. They start profitable on day one because they already know your business better than new hires ever could.",
+    title: "PROOF-OF-CONCEPT",
+    timeframe: "Days 2-5",
+    description: "Immediate prototyping delivers detailed, functional MVP-level demonstrations customized to your specific use case. You see exactly how the automation will work before committing resources.",
     icon: Bot,
   },
 ]
@@ -41,7 +41,7 @@ export default function HowItWorksSection() {
           transition={{ duration: 0.6 }}
           className="text-section-headline-mobile md:text-section-headline text-center text-text-primary mb-12 md:mb-16"
         >
-          Three Steps to AI That <span className="text-primary-green">Actually Makes Money</span>
+          From <span className="text-primary-green">Assessment to Prototype</span> in One Week
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 md:mb-16">
           {steps.map((step, index) => (
@@ -82,7 +82,7 @@ export default function HowItWorksSection() {
             size="secondary" 
             onClick={() => setIsModalOpen(true)}
           >
-            Explore Our Process →
+            See Our Methodology →
           </CustomButton>
         </motion.div>
       </div>

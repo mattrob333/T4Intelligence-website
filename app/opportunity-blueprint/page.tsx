@@ -9,9 +9,15 @@ import FAQSection from "@/components/sections/opportunity-blueprint/faq-section"
 import FinalCTASection from "@/components/sections/opportunity-blueprint/final-cta-section"
 
 export const metadata: Metadata = {
-  title: "AI Opportunity Blueprint™ | Tier 4 Intelligence",
+  title: "AI Opportunity Blueprint™ - Identify $10M+ AI Opportunities | Tier 4 Intelligence",
   description:
-    "Find $10M in hidden AI opportunities in 10 days. Stop guessing and start knowing exactly where AI will make you money.",
+    "Discover $10M+ in hidden AI automation opportunities in just 10 days. Comprehensive AI consulting assessment for mid-market companies. ROI-focused implementation roadmap.",
+  keywords: "AI opportunity blueprint, AI consulting assessment, business automation opportunities, AI ROI analysis, AI implementation consulting",
+  openGraph: {
+    title: "AI Opportunity Blueprint™ - Identify $10M+ AI Opportunities | Tier 4 Intelligence",
+    description: "Discover $10M+ in hidden AI automation opportunities in just 10 days. Comprehensive AI consulting assessment for mid-market companies.",
+    url: 'https://tier4intelligence.com/opportunity-blueprint',
+  },
 }
 
 export default function OpportunityBlueprintPage() {
