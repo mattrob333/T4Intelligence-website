@@ -6,6 +6,7 @@ import { useEffect, useRef, useCallback, useState } from "react"
 import ProcessExplainerModal from "@/components/ui/process-explainer-modal"
 import { AnimatedShinyTextDemo } from "@/components/ui/animated-shiny-text-demo"
 import { trackCTAClick } from "@/components/google-analytics"
+import Link from "next/link"
 
 interface Dot {
   x: number
@@ -265,26 +266,28 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
         >
-          <CustomButton 
-            variant="primary" 
-            size="default" 
-            onClick={() => {
-              trackCTAClick('Get Your AI Assessment', 'hero')
-              window.location.href = "/book-call"
-            }}
-          >
-            <TrendingUp className="mr-2 h-5 w-5" /> Get Your 5X ROI Assessment
-          </CustomButton>
-          <CustomButton 
-            variant="secondary" 
-            size="secondary" 
-            onClick={() => {
-              trackCTAClick('See Sample Analysis', 'hero')
-              window.location.href = "/business-dna"
-            }}
-          >
-            See $2.3M Case Study
-          </CustomButton>
+          <Link href="/book-call">
+            <CustomButton 
+              variant="primary" 
+              size="default" 
+              onClick={() => {
+                trackCTAClick('Get Your AI Assessment', 'hero')
+              }}
+            >
+              <TrendingUp className="mr-2 h-5 w-5" /> Get Your 5X ROI Assessment
+            </CustomButton>
+          </Link>
+          <Link href="/business-dna">
+            <CustomButton 
+              variant="secondary" 
+              size="secondary" 
+              onClick={() => {
+                trackCTAClick('See Sample Analysis', 'hero')
+              }}
+            >
+              See $2.3M Case Study
+            </CustomButton>
+          </Link>
         </motion.div>
 
         <motion.div

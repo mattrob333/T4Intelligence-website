@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X, Target, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { CustomButton } from "@/components/ui/custom-button"
+import { useRouter } from "next/navigation"
 
 interface ThreeStepProcessModalProps {
   isOpen: boolean
@@ -48,6 +49,7 @@ const steps = [
 ]
 
 export function ThreeStepProcessModal({ isOpen, onClose }: ThreeStepProcessModalProps) {
+  const router = useRouter()
   const modalRef = React.useRef<HTMLDivElement>(null)
 
   // Close modal on Escape key
@@ -150,7 +152,7 @@ export function ThreeStepProcessModal({ isOpen, onClose }: ThreeStepProcessModal
               size="default"
               onClick={() => {
                 onClose()
-                window.location.href = "/book-call"
+                router.push("/book-call")
               }}
             >
               <Target className="mr-2 h-5 w-5" />
@@ -161,7 +163,7 @@ export function ThreeStepProcessModal({ isOpen, onClose }: ThreeStepProcessModal
               size="secondary"
               onClick={() => {
                 onClose()
-                window.location.href = "/book-call"
+                router.push("/book-call")
               }}
             >
               <Phone className="mr-2 h-5 w-5" />

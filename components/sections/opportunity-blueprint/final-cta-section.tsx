@@ -1,8 +1,11 @@
 "use client"
 import { motion } from "framer-motion"
 import { CustomButton } from "@/components/ui/custom-button"
+import { useRouter } from "next/navigation"
 
 export default function FinalCTASection() {
+  const router = useRouter()
+  
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-secondary-black to-card-bg">
       <div className="container mx-auto px-4 md:px-6">
@@ -38,7 +41,7 @@ export default function FinalCTASection() {
             <CustomButton 
               variant="primary" 
               size="default"
-              onClick={() => (window.location.href = "/book-call")}
+              onClick={() => router.push("/book-call")}
               className="px-8 py-4 text-lg"
             >
               Activate Your AI Executives

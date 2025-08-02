@@ -111,16 +111,17 @@ export default function Navigation() {
               </Link>
             ),
           )}
-          <CustomButton 
-            variant="primary" 
-            size="default" 
-            onClick={() => {
-              trackCTAClick('Book a Call', 'navigation')
-              window.location.href = "/book-call"
-            }}
-          >
-            Get 5X ROI Assessment
-          </CustomButton>
+          <Link href="/book-call">
+            <CustomButton 
+              variant="primary" 
+              size="default" 
+              onClick={() => {
+                trackCTAClick('Book a Call', 'navigation')
+              }}
+            >
+              Get 5X ROI Assessment
+            </CustomButton>
+          </Link>
         </nav>
 
         <div className="md:hidden">
@@ -188,18 +189,19 @@ export default function Navigation() {
                   </Link>
                 ),
               )}
-              <CustomButton
-                variant="primary"
-                size="default"
-                className="w-11/12"
-                onClick={() => {
-                  trackCTAClick('Book a Call', 'mobile-navigation')
-                  toggleMenu()
-                  window.location.href = "/book-call"
-                }}
-              >
-                Get 5X ROI Assessment
-              </CustomButton>
+              <Link href="/book-call" className="w-11/12">
+                <CustomButton
+                  variant="primary"
+                  size="default"
+                  className="w-full"
+                  onClick={() => {
+                    trackCTAClick('Book a Call', 'mobile-navigation')
+                    toggleMenu()
+                  }}
+                >
+                  Get 5X ROI Assessment
+                </CustomButton>
+              </Link>
             </nav>
           </motion.div>
         )}

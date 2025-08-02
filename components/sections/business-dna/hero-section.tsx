@@ -5,11 +5,13 @@ import { PlayCircle, CheckCircle, FileText } from "lucide-react"
 import { motion } from "framer-motion"
 import DnaMapModal from "@/components/dna-map-modal"
 import Tier4AgentFileTree from "@/components/tier4-agent-file-tree"
+import { useRouter } from "next/navigation"
 
 const trustElements = ["24-Hour Analysis", "100% Implementation Success", "Working Prototypes in 5 Days"]
 
 export default function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const router = useRouter()
 
   return (
     <>
@@ -44,7 +46,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="w-full sm:w-auto">
-              <CustomButton variant="primary" size="lg" className="w-full" onClick={() => (window.location.href = "/book-call")}>
+              <CustomButton variant="primary" size="lg" className="w-full" onClick={() => router.push("/book-call")}>
                 GET YOUR ANALYSIS
               </CustomButton>
             </div>

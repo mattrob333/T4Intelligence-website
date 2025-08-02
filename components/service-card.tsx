@@ -1,5 +1,6 @@
 "use client"
 import { CustomButton } from "@/components/ui/custom-button"
+import Link from "next/link"
 import type { ElementType } from "react"
 import { motion } from "framer-motion"
 
@@ -98,14 +99,15 @@ export default function ServiceCard({
         </p>
       )}
       
-      <CustomButton
-        variant={isMaximumValue ? "primary" : "secondary"}
-        size="secondary"
-        className="w-full mt-auto"
-        onClick={() => (window.location.href = ctaLink)}
-      >
-        {ctaText}
-      </CustomButton>
+      <Link href={ctaLink} className="w-full mt-auto">
+        <CustomButton
+          variant={isMaximumValue ? "primary" : "secondary"}
+          size="secondary"
+          className="w-full"
+        >
+          {ctaText}
+        </CustomButton>
+      </Link>
     </motion.div>
   )
 }

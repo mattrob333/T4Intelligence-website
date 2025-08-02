@@ -4,10 +4,12 @@ import { AlertTriangle, CalendarClock } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { trackCTAClick } from "@/components/google-analytics"
+import { useRouter } from "next/navigation"
 
 export default function UrgencyCtaSection() {
   const [daysAutomating, setDaysAutomating] = useState(0)
   const [moneyLeft, setMoneyLeft] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     // Simulate live counters - replace with actual logic if needed
@@ -70,7 +72,7 @@ export default function UrgencyCtaSection() {
             size="default" 
             onClick={() => {
               trackCTAClick('Schedule Your AI Assessment', 'urgency-section')
-              window.location.href = "/book-call"
+              router.push("/book-call")
             }}
           >
             <CalendarClock className="mr-2 h-5 w-5" /> Get My 5X ROI Assessment (Free)

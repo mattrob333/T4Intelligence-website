@@ -8,6 +8,7 @@ import { CustomButton } from "@/components/ui/custom-button"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { cn } from "@/lib/utils"
+import { useRouter } from "next/navigation"
 
 // Hardcoded foundation sample content
 const foundationSampleContent = `# FOUNDATION™ INTELLIGENCE BLUEPRINT - GLOBAL PARTS MANUFACTURING INC.
@@ -243,9 +244,11 @@ const FoundationModal: React.FC<FoundationModalProps> = ({
     }
   }
 
+  const router = useRouter()
+
   const handleBuildFoundationClick = () => {
     onClose()
-    window.location.href = "/book-call"
+    router.push("/book-call")
   }
 
   return (

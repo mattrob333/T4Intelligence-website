@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Phone, ArrowRight, CheckCircle, Layers, GitBranch, Database, BrainCircuit, Code2, ShieldCheck, Target, Lightbulb, Cog, BookOpen, TrendingUp, BarChart3, Cpu, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 interface ProcessExplainerModalProps {
   isOpen: boolean;
@@ -298,6 +299,7 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
   const footerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<string | number>("auto");
+  const router = useRouter();
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -426,7 +428,10 @@ export const ProcessExplainerModal = ({ isOpen, onClose }: ProcessExplainerModal
           <div ref={footerRef} className="p-5 sm:p-6 border-t border-[#333] bg-[#1e1e1e]/50">
             <div className="flex justify-center items-center">
               <button
-                onClick={() => (window.location.href = "/book-call")}
+                onClick={() => {
+                  onClose();
+                  router.push("/book-call");
+                }}
                 className="w-full sm:w-auto flex items-center justify-center px-5 py-3 border-2 border-primary-green text-primary-green font-semibold rounded-lg hover:bg-primary-green hover:text-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-green focus:ring-offset-2 focus:ring-offset-[#1a1a1a]"
               >
                 Learn More About Foundation™
